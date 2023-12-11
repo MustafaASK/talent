@@ -1,0 +1,55 @@
+<!-- <div *ngIf="!isCreateEditBuilder">
+    <app-builder></app-builder>
+</div>
+
+
+<div *ngIf="isCreateEditBuilder">
+    <app-profile></app-profile>
+</div>
+
+ -->
+
+ <!-- <div class="container">
+     <div class="row">
+        <div class="example-button-row">
+            <button mat-raised-button>Basic</button>
+            <button mat-raised-button color="primary">Primary</button>
+            <button mat-raised-button color="accent">Accent</button>
+            <button mat-raised-button color="warn">Warn</button>
+            <button mat-raised-button disabled>Disabled</button>
+            <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>
+          </div>
+     </div>
+ </div> -->
+
+ <div fxLayout="row" fxLayout.xs="column"  fxLayoutAlign="center center">
+    <mat-card fxFlex>
+      <div fxLayout="row">
+          <div fxFlex="20" class="action-blurb"></div>
+          <div fxFlex="80">
+
+            <ng-container>
+                <!-- <app-basic-info formGroupName="basicInfo"></app-basic-info> -->
+              
+                <!-- <app-address formGroupName="address"></app-address>
+              
+                <app-colors formArrayName="colors"></app-colors> -->
+
+                <app-basic-information></app-basic-information>
+
+              
+              </ng-container>
+              
+              
+              
+             
+            
+               
+         </div>
+          <div fxFlex="20" class="action-blurb"></div>
+      </div>
+  </mat-card>
+  </div>
+    
+      
+

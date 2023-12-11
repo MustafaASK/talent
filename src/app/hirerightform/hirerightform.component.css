@@ -1,0 +1,41 @@
+
+h2{
+    display: inline-block;
+    margin: auto 0;
+}
+[mat-dialog-content]{
+    max-height: 50vh;
+}
+
+
+.btn {
+    padding: 10px 22px;
+    border-radius: 35px;
+    font-family: "Oswald", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    text-transform: none;
+   
+}
+.btn-primary, .btn-primary:focus {
+    padding: 10px 22px;
+    color: #ffffff;
+    background-color: #000;
+    border-color: #000;
+    font-family: 'Open Sans';
+    box-shadow: none;
+    
+}
+.hire-right{
+    width: 400px;
+}
+.mat-dialog-content{
+    overflow: inherit;
+}
+.mat-form-field{
+    display: block;
+}
+.close {
+    cursor: pointer;
+    float: right;
+    font-size: 30px;
+}

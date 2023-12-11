@@ -1,0 +1,781 @@
+<!-- <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
+  <mat-tab label="Jobs">
+    <div>
+      Jobs
+    </div>
+  </mat-tab>
+  <mat-tab label="Jobs Applied">
+    <div>
+      Jobs Applied
+    </div>
+  </mat-tab>
+</mat-tab-group> -->
+<div *ngIf="!showDetailDescription">
+
+  <div id="wrapper" class="dashboard-box">
+    <div class="container px-sm-0">
+      <div class="row w-100">
+        <div class="col-sm-1 d-none"></div>
+        <div class="col-sm-11 cur-main w-100">
+          <div class="row">
+            <section class="intro my-0">
+              <div class="container px-sm-0">
+                <div class="card-head">
+                  <div class="row">
+                    <div class="col-6 mt-0 mb-3 tab" [ngClass]="{ active: jobsTab }"
+                      (click)="jobsTab = true; clickJobsEvent()">
+                      <p style="text-align: center; margin-bottom: 1rem; margin-top: 1rem;">All Jobs</p>
+                    </div>
+                    <div class="col-6 mt-0 mb-3 tab" [ngClass]="{ active: !jobsTab }"
+                      (click)="jobsTab = false; getJobsApplied(true)">
+                      <p style="text-align: center; margin-bottom: 1rem; margin-top: 1rem;">Applied Jobs</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div id="jobsContent" [hidden]="!jobsTab">
+            <form [formGroup]="jobForm">
+              <div class="row">
+                <section class="intro my-0">
+                  <div class="container card py-0 px-sm-0 mb-0">
+                    <div>
+                      <div class="card-body">
+                        <div class="row">
+                          <!-- col-lg-12 col-xl-10  -->
+                          <!-- <div class="col-12 d-lg-flex flex-row mb-lg-4 mb-xl-0">
+                            <div class="pt-1 pb-2" [ngClass]="{
+                                'col-sm-12 d-flex justify-content-start':
+                                  isMobile,
+                                'col-sm-4': !isMobile
+                              }">
+                              <div class="col-4" *ngIf="isMobile">
+                                <button class="btn d-inline-flex" type="button" (click)="filtersHide = !filtersHide"
+                                  [ngClass]="{
+                                    'btn-outline-secondary': filtersHide,
+                                    'btn-outline-success': filtersHide
+                                  }">
+                                  <mat-icon> filter_alt </mat-icon>
+                                  <span class="d-none d-md-block"> Filters </span>
+                                </button>
+                              </div>
+                              <div class="" [ngClass]="{
+                                  'col-sm-7': isMobile,
+                                  'col-sm-12': !isMobile
+                                }">
+                                <mat-form-field appearance="outline">
+                                  <mat-label>Job Title, Keywords</mat-label>
+                                  <input matInput placeholder="Job Title, Keywords" formControlName="keyWords"
+                                    (keyup.enter)="getJobs('keyWords')" />
+                                  <mat-icon matPrefix>search</mat-icon>
+                                </mat-form-field>
+
+                              </div>
+                            </div>
+                            <div class="pt-2 pb-2" style="margin-right: 10px" [ngClass]="{
+                                'col-sm-12': isMobile,
+                                'col-sm-2': !isMobile
+                              }" [hidden]="filtersHide && isMobile">
+                              <mat-form-field appearance="outline" [ngClass]="{ 'd-block': isMobile }">
+                                <mat-label>Location</mat-label>
+                                <mat-select formControlName="location" (selectionChange)="getJobs('location')">
+                                  <mat-option value="0"></mat-option>
+                                  <mat-option value="AL">Alabama</mat-option>
+                                  <mat-option value="AK">Alaska</mat-option>
+                                  <mat-option value="AS">American Samoa</mat-option>
+                                  <mat-option value="AZ">Arizona</mat-option>
+                                  <mat-option value="AR">Arkansas</mat-option>
+                                  <mat-option value="CA">California</mat-option>
+                                  <mat-option value="CO">Colorado</mat-option>
+                                  <mat-option value="CT">Connecticut</mat-option>
+                                  <mat-option value="DE">Delaware</mat-option>
+                                  <mat-option value="DC">Dist of Columbia</mat-option>
+                                  <mat-option value="FL">Florida</mat-option>
+                                  <mat-option value="GA">Georgia</mat-option>
+                                  <mat-option value="GU">Guam</mat-option>
+                                  <mat-option value="HI">Hawaii</mat-option>
+                                  <mat-option value="ID">Idaho</mat-option>
+                                  <mat-option value="IL">Illinois</mat-option>
+                                  <mat-option value="IN">Indiana</mat-option>
+                                  <mat-option value="IA">Iowa</mat-option>
+                                  <mat-option value="KS">Kansas</mat-option>
+                                  <mat-option value="KY">Kentucky</mat-option>
+                                  <mat-option value="LA">Louisiana</mat-option>
+                                  <mat-option value="ME">Maine</mat-option>
+                                  <mat-option value="MH">Marshall Islands</mat-option>
+                                  <mat-option value="MD">Maryland</mat-option>
+                                  <mat-option value="MA">Massachusetts</mat-option>
+                                  <mat-option value="MI">Michigan</mat-option>
+                                  <mat-option value="FM">Micronesia</mat-option>
+                                  <mat-option value="MN">Minnesota</mat-option>
+                                  <mat-option value="MS">Mississippi</mat-option>
+                                  <mat-option value="MO">Missouri</mat-option>
+                                  <mat-option value="MT">Montana</mat-option>
+                                  <mat-option value="NE">Nebraska</mat-option>
+                                  <mat-option value="NV">Nevada</mat-option>
+                                  <mat-option value="NH">New Hampshire</mat-option>
+                                  <mat-option value="NJ">New Jersey</mat-option>
+                                  <mat-option value="NM">New Mexico</mat-option>
+                                  <mat-option value="NY">New York</mat-option>
+                                  <mat-option value="NC">North Carolina</mat-option>
+                                  <mat-option value="ND">North Dakota</mat-option>
+                                  <mat-option value="MP">Northern Mariana Islands</mat-option>
+                                  <mat-option value="OH">Ohio</mat-option>
+                                  <mat-option value="OK">Oklahoma</mat-option>
+                                  <mat-option value="OR">Oregon</mat-option>
+                                  <mat-option value="PW">Palau</mat-option>
+                                  <mat-option value="PA">Pennsylvania</mat-option>
+                                  <mat-option value="PR">Puerto Rico</mat-option>
+                                  <mat-option value="RI">Rhode Island</mat-option>
+                                  <mat-option value="SC">South Carolina</mat-option>
+                                  <mat-option value="SD">South Dakota</mat-option>
+                                  <mat-option value="TN">Tennessee</mat-option>
+                                  <mat-option value="TX">Texas</mat-option>
+                                  <mat-option value="AA">U.S. Armed Forces America</mat-option>
+                                  <mat-option value="AE">U.S. Armed Forces Europe</mat-option>
+                                  <mat-option value="AP">U.S. Armed Forces Pacific</mat-option>
+                                  <mat-option value="UT">Utah</mat-option>
+                                  <mat-option value="VT">Vermont</mat-option>
+                                  <mat-option value="VI">Virgin Islands (US)</mat-option>
+                                  <mat-option value="VA">Virginia</mat-option>
+                                  <mat-option value="WA">Washington</mat-option>
+                                  <mat-option value="WV">West Virginia</mat-option>
+                                  <mat-option value="WI">Wisconsin</mat-option>
+                                  <mat-option value="WY">Wyoming</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
+                            <div class="pt-2 pb-2" style="margin-right: 10px" [ngClass]="{
+                                'col-sm-12': isMobile,
+                                'col-sm-2': !isMobile
+                              }" [hidden]="filtersHide && isMobile">
+                              <mat-form-field appearance="outline" [ngClass]="{ 'd-block': isMobile }">
+                                <mat-label>Job Type</mat-label>
+                                <mat-select formControlName="jobType" (selectionChange)="getJobs('jobtype')">
+                                  
+                                  <mat-option value="0"></mat-option>
+                                  <mat-option value="Part - Time Contract:1-20">Part - Time Contract (1-20
+                                    Hrs)</mat-option>
+                                  <mat-option value="Part - Time Contract:21-30">Part - Time Contract (21-30
+                                    Hrs)</mat-option>
+                                  <mat-option value="Full - Time Contract">Full - Time Contract</mat-option>
+                                  <mat-option value="Full - Time Employee">Full - Time Employee</mat-option>
+                                  <mat-option value="FreeLancer">FreeLancer</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+
+                            </div>
+
+                            <div class="mt-1 mb-1" style="margin-right: 10px" [ngClass]="{
+                                'col-sm-12': isMobile,
+                                'col-sm-2': !isMobile
+                              }" [hidden]="filtersHide && isMobile">
+                              <mat-form-field appearance="outline" [ngClass]="{ 'd-block': isMobile }">
+                                <mat-label>Pay Type</mat-label>
+                                <mat-select formControlName="payRate" (selectionChange)="getJobs('payrate')">
+                                  <mat-option value="0"></mat-option>
+                                  <mat-option value="Hourly"> Hourly</mat-option>
+                                  <mat-option value="Salary"> Salary</mat-option>
+                                  <mat-option value="Project">
+                                    Project</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+
+                            </div>
+                          </div> -->
+                          <form class=" custom-form d-block " [formGroup]='myForm'>
+
+                            <div class="find-jobs-button-outer-component">
+                              <div class="find-jobs-button-inner-component">
+                                <div class="what-cont">
+                                  <p class="text1-style">What</p>
+                                  <img class="what-clear-icon" *ngIf="myForm.value.control" (click)="clickWhatClear()"
+                                    src="assets/icons/md-close@2x.svg" />
+                                  <input type="text" (keydown)="searchTitle()" class="input1-style"
+                                    placeholder="Job title, Keywords or Company" value="control" formControlName="control"
+                                    [matAutocomplete]="auto" />
+                                  <mat-autocomplete #auto="matAutocomplete">
+                                    <mat-option class="mat-option-con" *ngFor="let street of filteredStreets"
+                                      [value]="street.title">
+                                      {{street.title}}
+                                    </mat-option>
+                                  </mat-autocomplete>
+                                </div>
+                                <div class="location-parent">
+                                  <p class="text1-style">Where</p>
+                                  <span class="location-icons">
+                                    <img class="loc-icon" src="assets/icons/my-location@2x.svg" /> |
+                                    <img class="bus-icon" (click)="openEditCommute()" src="assets/icons/Vector@2x.svg" />
+
+                                  </span>
+                                  <img (click)="clearAddress()" *ngIf="myForm.value.where" class="close-icon-position"
+                                    src="assets/icons/md-close@2x.svg" />
+                                  <input *ngIf="isApiLoaded" #whereFilter type="text" id="where" [options]="placeOptions"
+                                    formControlName="where" class="input1-style location-input"
+                                    placeholder="City, state or Pin code" ngx-google-places-autocomplete
+                                    (onAddressChange)="handleAddressChange($event)" />
+
+
+                                </div>
+                                <button class="find-job-button" mat-flat-button (click)="findJobs()">Find Jobs</button>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </form>
+            <!-- <div class="row" *ngIf="jobsList && !jobsList.length && searched">
+              <div class="col-sm-12">
+                <div class="jobox card">
+                  <h2 class="errorTxt">{{ errorTxt }}</h2>
+                </div>
+              </div>
+            </div> -->
+
+            <!-- <div class="row" *ngIf="jobsList && jobsList.length">
+              <div class="joblistDiv" [ngClass]="{ 'col-sm-12': isMobile, 'col-sm-6': !isMobile }">
+                <div class="col-12" *ngFor="let job of jobsList; let i = index">
+                  <div class="jobox card" (click)="selectJob(i)" [ngClass]="{ selected: job.jobid == selectedJob.jobid }">
+                    <div class="justify-content-between mb-2">
+                      <h4>
+                        <strong [title]="job.jobtitle">{{ job.jobtitle }}</strong>
+                      </h4>
+
+                      
+                    </div>
+                    <ul class="mb-0 jobmeta">
+                      <li><i class="fa fa-building"></i>{{ job.compname }}</li>
+                      <li>
+                        <i class="fa fa-map-marker"></i> {{ job.city
+                        }}<span *ngIf="job.city && job.state">, </span>
+                        {{ job.state }}
+                      </li>
+                      <li>
+                        <i class="fa fa-usd"></i>
+                        <span *ngIf="job.payrange">
+                          {{ job.payrange }}
+                        </span>
+                        <span *ngIf="!job.payrange">
+                          <span *ngIf="job.payrange1">{{ job.payrange1 }} -</span>
+                          {{ job.payrange2 }}
+                        </span>
+                        <span *ngIf="job.paytype"> per {{ job.paytype }} </span>
+                        
+                      </li>
+                    </ul>
+                    <div class="jobrief ckTxt mb-1" [innerHtml]="job.descShort"></div>
+                    <div>
+                      <span class="text-muted"><small>
+                          {{ job.date | date : "MMM d, y" }}
+                        </small></span><span class="applied-success" *ngIf="job.applied">
+                        <i class="fa-regular fa-check"></i>
+                        <span>Applied</span></span>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6" *ngIf="!isMobile">
+                <div class="card jobdescmain" id="jobdesc" *ngIf="selectedJob" (scroll)="scrollCallback($event)"
+                  #jobDetail>
+                  <div class="jobdesc-header">
+                    <div class="d-flex justify-content-between">
+                      <h4>
+                        <strong [title]="selectedJob.jobtitle">{{
+                          selectedJob.jobtitle
+                          }}</strong>
+                      </h4>
+                    </div>
+                    <ul class="mb-0 jobmeta">
+                      <li>
+                        <i class="fa fa-building"></i>{{ selectedJob.compname }}
+                      </li>
+                      <li class="scroll-inline">
+                        <i class="fa fa-map-marker"></i> {{ selectedJob.city
+                        }}<span *ngIf="selectedJob.city && selectedJob.state">,
+                        </span>
+                        {{ selectedJob.state }}
+                      </li>
+                      <li>
+                        <i class="fa fa-usd"></i>
+                        <span *ngIf="selectedJob.payrange">
+                          {{ selectedJob.payrange }}
+                        </span>
+                        <span *ngIf="!selectedJob.payrange">
+                          <span *ngIf="selectedJob.payrange1">{{ selectedJob.payrange1 }} -</span>
+                          {{ selectedJob.payrange2 }}
+                        </span>
+                        <span *ngIf="selectedJob.paytype">
+                          per {{ selectedJob.paytype }}
+                        </span>
+                      </li>
+                    </ul>
+                    
+                    <button href="javascript:void(0);" class="btn btn-primary mt-3 ml-0 mb-0 text-white"
+                      [disabled]="assessmentsAry.length" (click)="applyJob()" *ngIf="!selectedJob.applied">
+                      Apply Now
+                    </button>
+                    <a href="javascript:void(0);" class="btn btn-success mt-3 ml-0 mb-0 text-white"
+                      *ngIf="selectedJob.applied">
+                      Applied
+                    </a>
+                  </div>
+                  <hr />
+                  <div class="jobdesc-body">
+                    <div class="jobrief ckTxt" [innerHtml]="selectedJob.description"></div>
+                  </div>
+                  <div style="min-height: 100%"></div>
+                </div>
+              </div>
+            </div> -->
+
+
+            <div class="filter-outer-con">
+              <div class="fliters-container"
+                *ngIf="editCommuteObj.preferredTransportation  || editCommuteObj.maximumTimeInMinutes">
+                <div class="filters-left-con">
+                  <!-- <div *ngIf="editCommuteObj.includeTrafficEstimate">
+                                  <p class="filter-type-head">Road Traffic</p>
+                                  <div class="filter-container-items">
+                                      <div class="filter-item-con">
+                                          <p class="filter-item-text">{{editCommuteObj.includeTrafficEstimate}}</p>
+                                          <img class="cross-icon" src="assets/icons/md-close@2x.svg"
+                                              (click)="filterObject.isRemote=false;jobsearch()" />
+                                      </div>
+                                  </div>
+          
+                              </div> -->
+                  <div *ngIf="editCommuteObj.preferredTransportation">
+                    <p class="filter-type-head">Transportation</p>
+                    <div class="filter-container-items">
+                      <div class="filter-item-con">
+                        <p class="filter-item-text">{{editCommuteObj.preferredTransportation}}</p>
+                        <img class="cross-icon" src="assets/icons/md-close@2x.svg"
+                          (click)="editCommuteObj.preferredTransportation='';totalData = [];jobsearch()" />
+                      </div>
+                    </div>
+
+                  </div>
+                  <div *ngIf="editCommuteObj.maximumTimeInMinutes">
+                    <p class="filter-type-head">Maximum Time (In Minutes)</p>
+                    <div class="filter-container-items">
+                      <div class="filter-item-con">
+                        <p class="filter-item-text">{{editCommuteObj.maximumTimeInMinutes}}</p>
+                        <img class="cross-icon" src="assets/icons/md-close@2x.svg"
+                          (click)="editCommuteObj.maximumTimeInMinutes='';totalData = [];jobsearch()" />
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="filters-right-con">
+                  <img class="cross-in-blue" src="assets/icons/md-close@2x.svg" (click)="totalData = [];jobsearch()" />
+                  <p class="clear-filters-text" style="cursor: pointer;"
+                    (click)="editCommuteObj.maximumTimeInMinutes='';editCommuteObj.preferredTransportation='';jobsearch()">
+                    Clear All Filters</p>
+                </div>
+              </div>
+            </div>
+            <div class="find-jobs-middle1-outer-container">
+              <mat-spinner color="warn" class="findloader" *ngIf="showLoader && totalData.length === 0"></mat-spinner>
+              <!-- <mat-spinner color="warn" class="findloader"></mat-spinner> -->
+
+              <div class="find-jobs-middle1-inner-container">
+
+
+                <!-- *ngIf="editCommuteObj.preferredTransportation || editCommuteObj.includeTrafficEstimate || editCommuteObj.maximumTimeInMinutes || filterObject.isRemote || (filterObject.jobType != '' && filterObject.jobType != 'All Job Types') || (filterObject.dateposted && filterObject.dateposted != '0') || (filterObject.distance && filterObject.distance != '0')" -->
+                <!-- || editCommuteObj.includeTrafficEstimate -->
+
+
+                <div class="Job-cards-outer-most-con" *ngIf="totalData.length">
+
+
+
+
+                  <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500"
+                    (scrolled)="onScroll()" [scrollWindow]="false">
+                    <!-- <div class="data-card" *ngFor="let item of items">
+                                    {{item}}
+                                </div> -->
+
+                    <mat-card *ngFor="let job of totalData; let i = index;"
+                      [ngClass]="{'job-outer-card': true, 'job-outer-card-selected': job.job_.requisitionId_ === selectedRecord.job_.requisitionId_}"
+                      (click)="showJobDesc(i)">
+                      <mat-card-content class="job-card">
+                        <!-- <p class="job-title-text">Product Security Engineer</p> -->
+                        <p class="job-title-text" [innerHtml]="job.job_.title_"></p>
+                        <p class="location-text">{{checkZipZeros(job.job_.addresses_)}}</p>
+                        <div class="location-day-con">
+                          <p class="location-day-text">{{(checkDaysDiff(job.job_.postingUpdateTime_.seconds_ *
+                            1000))}}
+                          </p>
+                          <!-- <p class="location-text day">{{((checkDaysDiff(job.job_.postingUpdateTime_.seconds_ *
+                                                1000)) <= 10) ? (checkDaysDiff(job.job_.postingUpdateTime_.seconds_ * 1000))
+                                                    + ' day(s) ago' : job.job_.postingUpdateTime_.seconds_ * 1000 |
+                                                    date:'MM/dd/yyyy' }}</p> -->
+                          <!-- ? job.job_.postingUpdateTime_.seconds_ * 1000 |
+                                            date:'MM/dd/yyyy' : '' -->
+                          <div class="d-flex" *ngIf="job.job_.customAttributes_.mapData.isRemote.stringValues_ == 'true'">
+                            <img class="location-icon-style" src="assets/icons/wifi-solid.svg" />
+                            <p class="location-text">Remote</p>
+                          </div>
+                        </div>
+                        <div class="full-time-con">
+                          <img src="assets/icons/briefcase@2x.svg" />
+                          <p class="full-time-text">
+                            <span *ngFor="let empType of job.job_.employmentTypes_;  index as ind">
+                              {{jobTypesList[empType]}}{{ind < job.job_.employmentTypes_.length - 1 ? ', ' : '' }} </span>
+                                <!-- Full time {{job.job_.employmentTypes_ | json}} -->
+                          </p>
+                        </div>
+                        <button (click)="applyForJob(job.job_)" class="apply-button" mat-flat-button color="primary">
+                          <img style="margin-right: 5px;" src="assets/icons/Group@2x.svg" />
+                          <span>Apply</span>
+                        </button>
+
+                      </mat-card-content>
+                    </mat-card>
+
+                    <!-- <mat-card class="job-outer-card">
+                      <mat-card-content class="job-card">
+                        <p class="job-title-text">Product Security Engineer</p>
+                        <p class="location-text">Remote, CA</p>
+                        <div class="location-day-con">
+                          <p class="location-day-con">10/11/2023
+                          </p><div class="d-flex">
+                            <img class="location-icon-style" src="assets/icons/wifi-solid.svg" />
+                            <p class="location-text">Remote</p>
+                          </div>
+                        </div>
+                        <div class="full-time-con">
+                          <img src="assets/icons/briefcase@2x.svg" />
+                          <p class="full-time-text">
+                            <span>
+                              Full time </span>
+                          </p>
+                        </div>
+                        <button class="apply-button" mat-flat-button color="primary">
+                          <img style="margin-right: 5px;" src="assets/icons/Group@2x.svg" />
+                          <span>Apply</span>
+                        </button>
+
+                      </mat-card-content>
+                    </mat-card> -->
+
+
+                    <div class="d-flex flex-row justify-content-center w-100">
+                      <mat-spinner style="align-self: 'center';" color="warn" class="findloader"
+                        *ngIf="showLoader"></mat-spinner>
+                    </div>
+
+
+
+                    <!-- <div *ngIf="isLoading">Loading...</div> -->
+                  </div>
+
+
+                  <div class="detailed-job-con">
+                    <mat-card class="detailed-job-outer-card">
+                      <mat-card-content>
+                        <mat-card class="detailed-job-header-card">
+                          <mat-card-content>
+                            <div class="detailed-job-header-card-content">
+                              <div class="logo-title-location-cont">
+                                <div class="logo-cont">
+                                  <p class="logo-style">C</p>
+                                </div>
+                                <div class="job-title-location-cont">
+
+                                  <p class="job-title-text" *ngIf="selectedRecord.job_.title_"
+                                    [innerHtml]="selectedRecord.job_.title_"></p>
+                                  <!-- <p class="job-title-text">Customer Support Associate - Mumbai
+                                                            (Remote)</p> -->
+                                  <p class="location-text detailed-location-text" *ngIf="selectedRecord.job_.addresses_">
+                                    {{checkZipZeros(selectedRecord.job_.addresses_)}}</p>
+                                  <!-- <p class="location-text detailed-location-text">Maharastra, Mumbai</p> -->
+
+
+                                </div>
+                              </div>
+                              <button (click)="applyForJob(selectedRecord.job_)" class="detailed-apply-button"
+                                mat-flat-button color="primary">
+                                <img style="margin-right: 5px;" src="assets/icons/Group@2x.svg" />
+                                <span>Apply</span>
+                              </button>
+                              <!-- <button class="detailed-apply-button" mat-flat-button color="primary">Apply</button> -->
+
+                            </div>
+                          </mat-card-content>
+                        </mat-card>
+
+                        <div class="detailed-job-bottom-cont">
+                          <div class="job-properties-con">
+                            <p class="job-property">JOB TYPE</p>
+                            <!-- <p class="job-value">Full-Time</p> -->
+
+
+                            <p class="job-value">
+                              <span *ngFor="let empType of selectedRecord.job_.employmentTypes_;  index as ind">
+                                {{jobTypesList[empType]}}{{ind < selectedRecord.job_.employmentTypes_.length - 1 ? ', '
+                                  : '' }} </span>
+                                  <!-- Full time {{job.job_.employmentTypes_ | json}} -->
+                            </p>
+                          </div>
+                          <div class="job-properties-con">
+                            <p class="job-property">LOCATION</p>
+                            <p class="job-value">{{checkZipZeros(selectedRecord.job_.addresses_)}}</p>
+                          </div>
+                          <div class="job-properties-con">
+                            <p class="job-property">POSTED</p>
+                            <p class="job-value" *ngIf="selectedRecord.job_.postingUpdateTime_.seconds_">
+                              <!-- {{selectedRecord.job_.postingUpdateTime_.seconds_ * 1000 | date:'MM/dd/yyyy'}} -->
+                              {{(checkDaysDiff(selectedRecord.job_.postingUpdateTime_.seconds_ * 1000))}}
+                            </p>
+                          </div>
+                          <div class="description-con">
+                            <p class="description-text">Description</p>
+                            <p class="description-text-para" *ngIf="selectedRecord.job_.description_"
+                              [innerHtml]="selectedRecord.job_.description_"></p>
+
+
+                          </div>
+
+
+                        </div>
+                      </mat-card-content>
+                    </mat-card>
+
+                  </div>
+                </div>
+
+                <div class="empty-jobs-card" *ngIf="totalData.length === 0 && showLoader === false">
+                  <div class="empty-jobs-card-inner-con">
+                    <img class="mt-4 mb-4" src="assets/icons/Exclamation mark@2x.svg" />
+                    <p class="sorry-text">Sorry, no matching results found for that search.</p>
+                    <p class="suggestion-text">Try these Suggestions:</p>
+                    <div class="Suggestions-cont">
+                      <ul class="Suggestions-inner-cont">
+                        <li class="list-item-suggestion" *ngFor="let suggestion of SuggestionsList">
+                          <img class="dot-style" src="assets/icons/circle-solid.svg" />
+                          <p class="suggestion-item-text">
+                            {{suggestion}}
+                          </p>
+                        </li>
+
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <div class="empty-jobs-card">
+                  <div class="empty-jobs-card-inner-con">
+                    <img class="mt-4 mb-4" src="assets/icons/Exclamation mark@2x.svg" />
+                    <p class="sorry-text">Sorry, no matching results found for that search.</p>
+                    <p class="suggestion-text">Try these Suggestions:</p>
+                    <div class="Suggestions-cont">
+                      <ul class="Suggestions-inner-cont">
+                        <li class="list-item-suggestion" *ngFor="let suggestion of SuggestionsList">
+                          <img class="dot-style" src="assets/icons/circle-solid.svg" />
+                          <p class="suggestion-item-text">
+                            {{suggestion}}
+                          </p>
+                        </li>
+
+                      </ul>
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+
+
+
+          </div>
+          <div id="jobsAppliedContent" [hidden]="jobsTab">
+            <div class="row" *ngIf="jobsAppliedList && !jobsAppliedList.length && searched">
+              <div class="col-sm-12">
+                <div class="jobox card">
+                  <h2 class="errorTxt">No Jobs Applied</h2>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex flex-row justify-content-center w-100">
+              <mat-spinner style="align-self: 'center';" color="warn" class="findloader"
+                *ngIf="showSpinner"></mat-spinner>
+            </div>
+            <div class="row" *ngIf="jobsAppliedList && jobsAppliedList.length && !showSpinner">
+
+              <div class="col-sm-12 joblistDiv d-flex flex-wrap">
+                <!-- Job Card -->
+                <div class="" *ngFor="let job of jobsAppliedList; let i = index"
+                  [ngClass]="{ 'col-6': !isMobile, 'col-12': isMobile }">
+                  <div class="jobox card">
+                    <div class="d-flex justify-content-between">
+                      <!-- <h4>
+                        <strong [title]="job.jobTitle">{{ job.jobTitle }}</strong>
+                      </h4> -->
+                      <p class="applied-job-title">{{ job.jobTitle }}</p>
+
+                      <!-- <div class="dropdown ml-2">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fa fa-ellipsis-v"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#"> <i class="fa fa-heart"></i>
+                            Save
+                            Job</a>
+                          <a class="dropdown-item" href="#"> <i class="fa fa-ban"></i>
+                            Not
+                            Interested</a>
+                        </div>
+                      </div> -->
+                    </div>
+                    <div class="applied-job-details-cont">
+                      <div style="align-items: center;" class="d-flex flex-row">
+                        <i class="fa fa-building"></i>
+                        <p class="applied-job-text">{{ job.clientName }}</p>
+                      </div>
+                      <div style="align-items: center;" class="d-flex flex-row">
+                        <i class="fa fa-map-marker"></i>
+                        <p class="applied-job-text">{{ job.city }}<span *ngIf="job.city && job.state">, </span>
+                          {{ job.state }}</p>
+                      </div>
+
+                      <div *ngIf="job.payRate" style="align-items: center;" class="d-flex flex-row">
+                        <i class="fa fa-usd"></i>
+                        <p class="applied-job-text"><span>
+                            {{ job.payRate }}
+                          </span></p>
+                      </div>
+                      <p class="applied-job-description">Description</p>
+                      <div class="jobrief ckTxt" [innerHtml]="job.description"></div>
+
+                    </div>
+                    <!-- <ul class="mb-0 jobmeta">
+                      <li><i class="fa fa-building"></i>{{ job.clientName }}</li>
+                      <li>
+                        <i class="fa fa-map-marker"></i> {{ job.city
+                        }}<span *ngIf="job.city && job.state">, </span>
+                        {{ job.state }}
+                      </li>
+                      <li>
+                        <i class="fa fa-usd"></i>
+                        <span *ngIf="job.payRate">
+                          {{ job.payRate }}
+                        </span>
+                        
+                      </li>
+                    </ul> -->
+
+                    <span class="text-muted"><small>
+                        {{ job.appliedDate | date : "MMM d, y" }}
+                      </small></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-1 d-none"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="detail-description" *ngIf="showDetailDescription">
+
+  <div class=" detailed-job-con-mobile">
+      <mat-card class="detailed-job-outer-card">
+          <mat-card-content class="mat-card-content">
+              <mat-card class="detailed-job-header-card">
+                  <mat-card-content>
+                      <div class="detailed-job-header-card-content">
+                          <div class="logo-cont">
+                              <p class="logo-style">C</p>
+                          </div>
+                          <div class="job-title-location-cont">
+
+                              <p class="job-title-text" *ngIf="selectedRecord.job_.title_"
+                                  [innerHtml]="selectedRecord.job_.title_"></p>
+
+                              <p class="location-text detailed-location-text" *ngIf="selectedRecord.job_.addresses_">
+                                  {{checkZipZeros(selectedRecord.job_.addresses_)}}</p>
+                              <!-- <p class="job-title-text">Customer Support Associate - Mumbai 
+                                  (Remote)</p>
+                              <p class="location-text detailed-location-text">Novida</p>
+                              <p class="location-text detailed-location-text">Maharastra, Mumbai</p> -->
+
+                          </div>
+                          <button (click)="applyForJob(selectedRecord.job_)" class="detailed-apply-button"
+                              mat-flat-button color="primary">Apply</button>
+
+                      </div>
+                  </mat-card-content>
+              </mat-card>
+
+              <div class="detailed-job-bottom-cont">
+                  <!-- <div class="detailed-bottom-fixed"> -->
+                  <div class="job-properties-con">
+                      <p class="job-property">JOB TYPE</p>
+                      <!-- <p class="job-value">Full-Time</p> -->
+
+
+                      <p class="job-value">
+                          <span *ngFor="let empType of selectedRecord.job_.employmentTypes_;  index as ind">
+                              {{jobTypesList[empType]}}{{ind < selectedRecord.job_.employmentTypes_.length - 1 ? ', '
+                                  : '' }} </span>
+                                  <!-- Full time {{job.job_.employmentTypes_ | json}} -->
+                      </p>
+                  </div>
+
+                  <div class="job-properties-con">
+                      <p class="job-property">LOCATION</p>
+                      <p class="job-value">{{checkZipZeros(selectedRecord.job_.addresses_)}}</p>
+                  </div>
+                  <div class="job-properties-con">
+                      <p class="job-property">POSTED</p>
+                      <p class="job-value">
+                          <!-- {{selectedRecord.job_.postingUpdateTime_.seconds_ * 1000 |
+                          date:'MM/dd/yyyy'}} -->
+                          {{(checkDaysDiff(selectedRecord.job_.postingUpdateTime_.seconds_ * 1000))}}
+                      </p>
+                  </div>
+                  <!-- </div> -->
+                  <div class="description-con">
+                      <p class="description-text">Description</p>
+
+                      <p class="description-text-para" *ngIf="selectedRecord.job_.description_"
+                          [innerHtml]="selectedRecord.job_.description_"></p>
+
+                  </div>
+
+
+              </div>
+          </mat-card-content>
+      </mat-card>
+
+  </div>
+
+  <div class="back-apply-buttons-con">
+      <!-- <button mat-button color="primary" (click)="showJobDesc()">Back to Results</button>
+      <button class="apply-button-at-back" mat-flat-button color="primary">Apply</button> -->
+      <!-- <button mat-button color="primary" (click)="closeJobDetail()">Back to Results</button> -->
+      <div class="back-to-result-con" (click)="closeJobDetail()">
+          <img src="assets/icons/chevron-left.svg" />
+          <p class="back-to-res-text-style">Back to Results</p>
+      </div>
+      <button class="apply-button-at-back" (click)="applyJobFromMobile(selectedRecord.job_)" mat-flat-button
+          color="primary">
+          <img style="margin-right: 5px;" src="assets/icons/Group@2x.svg" />
+          <span>Apply</span>
+      </button>
+
+  </div>
+</div>
+<!-- <mat-spinner color="warn" *ngIf="showSpinner"></mat-spinner> -->

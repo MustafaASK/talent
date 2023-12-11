@@ -1,0 +1,65 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+    <a routerLink="/find-jobs" class="navbar-brand back-to-home">
+      <img src="assets/icons/arrow_back.svg" alt="" width="180" height="50">
+    </a>
+    <!-- <a class="navbar-brand" routerLink="/login" *ngIf="!isRedirectAssessmentPage">
+      <img src="assets/new/curately-logo.svg" alt="" width="180" height="50">
+    </a> -->
+    <a class="navbar-brand" href="https://www.askconsulting.com/" *ngIf="!isRedirectAssessmentPage">
+      <!-- <img src="assets/new/curately-logo.svg" alt="" width="180" height="50"> -->
+      <img src="assets/icons/logo.png" alt="" width="65" height="30">
+
+    </a>
+    <!-- <p class="bottom-text"><i>Powered by <strong>Equity</strong></i></p> -->
+    <!-- {{authenticated}} == {{isUploadResumeStatus}} == {{isdashboard}} == {{isRedirectAssessmentPage}} -->
+    <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
+      [attr.aria-expanded]="!isCollapsed" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"> <i class="fas fa-bars"></i> </span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <!-- <li class="nav-item">
+          <a class="nav-link1" 
+                    [ngClass]="isDesktop ? 'btn btn-sm btn-primary' : 'nav-link'"  routerLink="/login"  *ngIf="(!authenticated && (isHome || !isLogin) ) && !isUploadResumeStatus && !isdashboard">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link1" 
+                    [ngClass]="isDesktop ? 'btn btn-sm btn-primary' : 'nav-link'"  routerLink="/signup"  *ngIf="(!authenticated && (isHome || isLogin)) && !isUploadResumeStatus && !isdashboard">Signup</a>
+        </li>
+        <li class="nav-item" *ngIf="(isUploadResumeStatus && !isdashboard) && authenticated">
+          <a class="nav-link"  routerLink="/dashboard">Dashboard</a>
+        </li> -->
+        <li class="nav-item" style="cursor: pointer;"
+          *ngIf="(authenticated || (isUploadResumeStatus || isdashboard)) && !isRedirectAssessmentPage">
+          <a class="nav-link" (click)="logout()">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"  aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarTogglerDemo02">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02" [ngbCollapse]="isCollapsed">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link"  routerLink="/home">Home </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  routerLink="/login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/signup">Signup</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav> -->

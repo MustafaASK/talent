@@ -1,0 +1,199 @@
+header {
+    
+  padding: 60px;
+  font-family: "Oswald", Helvetica, Arial, sans-serif; font-size: 25px; font-style: normal; font-variant: normal; font-weight: 500; line-height:normal; 
+  margin : 0px 0px 0px 140px;
+}
+.sub-text{
+  padding: 60px;
+  font-family: "Oswald", Helvetica, Arial, sans-serif; font-size: 18px; font-style: normal; font-variant: normal; font-weight: 500; line-height:normal; 
+  margin : -50px 0px 0px -321px;
+}
+.sub-heading{
+  letter-spacing: normal;
+  font-family: "Oswald", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  margin : -70px 0px 0px 0px;
+}
+.sub-heading2{
+  letter-spacing: normal;
+  font-family: "Oswald", Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  margin : 355px 0px 0px -62px;
+  font-weight: bold;
+  color: black;
+  /* margin-bottom: 55px; */
+}
+.upload-resume-title{
+  letter-spacing: normal;
+  font-family: "Oswald", Helvetica, Arial, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  margin : 0px 0px 0px -264px;
+  
+}
+.icon{
+  position: absolute;
+top: 63%;
+left: 33%;
+transform: translate(-50%, -50%);
+font-size: 32px;
+}
+
+
+/*  SECTIONS  */
+.section {
+clear: both;
+padding: 0px;
+margin: 0px;
+/* width: 1000px; */
+
+}
+
+/*  COLUMN SETUP  */
+.col {
+display: block;
+float:left;
+margin: 1% 0 1% 0.5%;
+
+}
+.col:first-child { margin-left: 0; 
+background-color:#F0F0F0;
+}
+
+
+.span_2_of_2 {
+width: 100%;
+
+}
+.span_1_of_2 {
+width: 49.75%;
+max-width: 49.75%;
+background-color:lightgray;
+height: 300px;
+}
+
+/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
+
+@media only screen and (max-width: 480px) {
+.col { 
+  margin: 1% 0 1% 0%;
+}
+}
+
+@media only screen and (max-width: 480px) {
+.span_2_of_2, .span_1_of_2 { width: 100%; }
+}
+.center {
+margin: 152px 0px 0px 115px;
+}
+
+ngx-dropzone {
+border: 0;
+font-weight: 700;
+/* width: 100%; */
+margin: auto;
+overflow: hidden;
+height: inherit;
+background-color: #F6F7FB ; 
+min-height: 300px;
+/* margin-top: 38px; */
+border: 2px dashed #6472A1;
+opacity: 1;
+}
+.upload {
+ font-size: 50px;
+ height: 60px;
+ width: 60px;
+
+}
+ngx-dropzone-preview {
+ margin: 10px auto;
+}
+.fileDiv{
+width: 90%;
+margin: auto;
+text-align: center;
+color: #717386;
+}
+.fileName {
+max-width: 100%;
+width: 100%;
+word-break: break-all;
+font-weight: 700;
+font-size: 16px;
+}
+.drop-text-bro{
+color: #6472A1;
+font-weight: bold;
+margin-right: 2px;
+font-size: 16px;
+}
+.text-bro{
+letter-spacing: 0px;
+color: #0984E3;
+font-weight: bold;
+font-size: 16px;
+}
+.container{
+margin-bottom: 100px;
+} 
+a.createOne {
+cursor: pointer;
+color: #0984E3;
+font-weight: bold;
+
+}  
+
+a.createOne:hover,a.createOne:focus {
+color: #EF3035;
+text-decoration: none;
+outline: none;
+}
+
+/** New **/
+p.sub-text_inactive {
+text-align: center;
+font-family: sans-serif;
+letter-spacing: 0px;
+color: #000;
+opacity: 1;
+/* font-size: 16px; */
+font-weight: 400;
+line-height: 18px;
+margin:5px auto;
+}
+.sub-heading2_inactive span.do-resume {
+letter-spacing: 0px;
+color: #111111;
+
+}
+.sub-heading_inactive span.upload-res-text {
+text-align: center;
+font-family: sans-serif;
+letter-spacing: 0px;
+color: #000;
+opacity: 1;
+font-size: 16px;
+font-weight: 400;
+line-height: 18px;
+
+}
+/* .section-upload-youresume {
+margin-bottom:5vh;
+ max-width: 100%;
+} */
+
+@media only screen and (max-width: 768px) {
+  .container.upload-resume {
+    margin-top:2em;
+    max-width: 950px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1000px)  {
+  .container.upload-resume {
+    margin-top:6em;
+    max-width: 950px;
+  }
+}

@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="filter-container">
+        <!-- having two containers -->
+        <!-- (ngSubmit)="onSubmit()" -->
+        <form class="filter-form" [formGroup]="jobForm" (ngSubmit)="onSubmit()">
+            <div class="filter-container-1st-con">
+                <div class="fixed-cont-in-1st-cont">
+                    <div class="filter-cancel-con">
+                        <p class="filters-style">Filters</p>
+                        <img class="cancel-icon" (click)="onClose()" src="assets/icons/md-close@2x.svg" />
+                    </div>
+                    <mat-divider></mat-divider>
+
+                </div>
+
+                <div class="section-filters">
+                    <div class="remote-jobs-con">
+                        <mat-checkbox class="remote-jobs" formControlName="isRemote">Remote jobs only</mat-checkbox>
+                    </div>
+                    <div class="job-type-date-distance-cont">
+                        <div class="Job-type-cont">
+                            <p class="job-type-date-distance-text">Job Type</p>
+                            <!-- <div *ngFor="let option of jobtypes">
+                                <mat-checkbox class="label-text-style" [(ngModel)]="option.selected">{{ option.name }}</mat-checkbox>
+                                
+                              </div> -->
+                            <!-- <mat-checkbox class="label-text-style">All jobs type</mat-checkbox> -->
+                            <mat-checkbox class="label-text-style" formControlName="fulltime">Full-time</mat-checkbox>
+                            <mat-checkbox class="label-text-style" formControlName="parttime">Part-time</mat-checkbox>
+                            <mat-checkbox class="label-text-style" formControlName="contract">Contract</mat-checkbox>
+                            <mat-checkbox class="label-text-style"
+                                formControlName="internship">Internship</mat-checkbox>
+                            <mat-checkbox class="label-text-style" formControlName="temporary">Temporary</mat-checkbox>
+                        </div>
+
+                        <div class="date-posted-cont">
+                            <p class="job-type-date-distance-text">Date Posted</p>
+                            <mat-radio-group class="radio-group-custom" formControlName="dateposted"
+                                aria-label="Select an option">
+                                <mat-radio-button class="label-text-style" value="0">Any</mat-radio-button>
+                                <mat-radio-button class="label-text-style" value="1">Today</mat-radio-button>
+                                <mat-radio-button class="label-text-style" value="2">Last 2 days</mat-radio-button>
+                                <mat-radio-button class="label-text-style" value="7">Last week</mat-radio-button>
+                                <mat-radio-button class="label-text-style" value="14">Last 2 weeks</mat-radio-button>
+                                <mat-radio-button class="label-text-style" value="30">Last month</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+
+                        <div class="Distance-cont">
+                            <p class="job-type-date-distance-text">Distance</p>
+                            <mat-radio-group class="radio-group-custom" formControlName="distance"
+                                aria-label="Select an option">
+                                <mat-radio-button class="label-text-style" value="5">5 miles</mat-radio-button>
+                                <mat-radio-button class="label-text-style" value="10">10 miles</mat-radio-button>
+                                <mat-radio-button class="label-text-style" value="20">20 miles</mat-radio-button>
+                                <mat-radio-button class="label-text-style" value="50">50 miles</mat-radio-button>
+                                <mat-radio-button class="label-text-style" value="100">100 miles</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="filter-container-2nd-con">
+                <div class="cancel-view-results-con">
+                    <button mat-button (click)="onClose()" color="primary">Cancel</button>
+                    <button class="view-btn-style" mat-flat-button>View Results</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+<div class="employment-form pt-3 pb-3">
+    <form [formGroup]="LCFormObj">
+        <div class="row">
+                <div class="col-sm-3">
+                    <mat-form-field appearance="outline">
+                        <mat-label>License Type</mat-label> <!-- need to be implemented autocompleted-->
+                        <mat-select  name="certTypeLookupID"  formControlName="certTypeLookupID" required>
+                            <!-- <mat-option>None</mat-option> -->
+                            <mat-option *ngFor="let lctype of certTypeList" [value]="lctype.lookupId">
+                                {{lctype.lookupValue}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error></mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-4">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Issuer</mat-label>
+                            <input matInput placeholder="Issuer" formControlName="authorityName"  required>
+                            <mat-error></mat-error>
+                    </mat-form-field>
+                 </div>
+                 <div class="col-sm-5">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Name</mat-label>
+                            <input matInput placeholder="Name" formControlName="certName"  required>
+                            <mat-error></mat-error>
+                    </mat-form-field>
+                </div>
+          </div>
+          <div class="row">
+             <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Year</mat-label>
+                       <input matInput placeholder="YYYY" [matDatepicker]="datepickerA" formControlName="completedYear" id="date">
+                       <mat-datepicker-toggle matSuffix [for]="datepickerA">
+                            <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
+                       </mat-datepicker-toggle>
+                       <mat-datepicker #datepickerA
+                       startView="multi-year"
+                       (yearSelected)="chosenYearHandler($event, datepickerA)"
+                       panelClass="example-month-picker">
+                     </mat-datepicker>
+                       <!-- (monthSelected)="chosenMonthHandler($event, datepickerA)" -->
+
+                        <!-- <mat-error></mat-error> -->
+                    </mat-form-field>
+             </div>
+             <div class="col-sm-4">
+                <mat-form-field appearance="outline">
+                    <mat-label>Certificate Link or ID</mat-label>
+                        <input matInput placeholder="Certificate Link or ID" formControlName="credentialID">
+                        <mat-error></mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-5">
+                <!-- (click)="uploadFile.click()" -->
+                <div  class="lc-container">
+                    <!--  -->
+                    <!-- *ngIf="!files.length" -->
+                    <ngx-dropzone class="drop-zone-zrea" (change)="onSelectFile($event)" [multiple]="false" [accept]="'image/jpeg,image/jpg,image/png,image/gif'">
+                        <ngx-dropzone-label fxLayout="column" fxLayoutAlign="space-around center">
+                          
+                          <div  color="primary" *ngIf="!selectedFiles.length">Upload License/Credential Document
+                          </div>
+                        </ngx-dropzone-label>
+                        <div *ngFor="let f of selectedFiles" fxLayout="row" fxLayoutAlign="center center" style="width: 100%;
+                        text-align: center;" class="fileDiv">
+                          <span class="fileName" style="top: -7px;position: relative;">
+                            {{ f.name }}
+                          </span>
+                          <span (click)="removeFile($event)">
+                            <mat-icon>close</mat-icon>
+                          </span>
+                        </div>
+                      </ngx-dropzone>
+                    <!-- <button mat-raised-button color="primary">Upload License/Credential Document</button>
+                    <input  formControlName="uploadCertFile"  type='file' style="visibility: hidden;" required/> -->
+                    <!-- (change)="upload($event)" -->
+                  </div>
+                  <!-- <div class="lc-container">
+                    <button mat-raised-button color="primary" (click)="openModalWithComponent()" >Upload License/Credential Document</button>
+                  </div> -->
+
+                  
+
+            </div>
+            
+      </div>
+      <div class="row">
+        <div class="col-sm-12  mt-3 text-center">
+          <button type="button" class="btn align-middle btn-primary my-2 mx-1 my-lg-0 cusBtn" 
+                (click)="closeInnerForm()">
+                Cancel
+              </button> 
+            <button type="button" class="licsavebtn btn align-middle btn-primary my-2 mx-1 my-lg-0 cusBtn" 
+              (click)="onBlurMethod()">
+                Save
+            </button> 
+        </div>
+    </div>
+    </form>
+    
+</div>
+<mat-spinner color="warn" *ngIf="showSpinner"></mat-spinner>
+

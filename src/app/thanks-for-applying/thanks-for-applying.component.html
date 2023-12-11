@@ -1,0 +1,445 @@
+<div id="wrapper" class="dashboard-box">
+  <div class="container px-sm-0" style="max-width: 716px;">
+    <!-- welcome-->
+    <div class="card mb-3 px-2 text-center" *ngIf="isAlreadyOldUser == 'true'">
+      <!-- <div class="card-header"></div> -->
+      <div class="card-body">
+        <h3 class="card-title mb-0">Welcome Back, {{ firstName }}</h3>
+        <p class="card-text">
+          Signed In as <strong>{{ email }}</strong>
+        </p>
+      </div>
+    </div>
+
+    <!-- Thank you-->
+    <div class="card row text-center success-tab" style="margin-top: 40px;">
+      <div class="thankyoujob">
+        <div class="Thankfor-apply browseruser">
+
+
+          <div>
+            <h2 class="success mb-0">
+              <i class="fa-regular fa-check-circle"></i>
+            </h2>
+          </div>
+          <h2 class="success" *ngIf="isAlreadyOldUser == 'true'">
+            Thank you for applying for this job, {{ firstName }}.
+          </h2>
+          <P class="sub-text" *ngIf="isAlreadyOldUser == 'true'">You'll be notified with further updates on your
+            registered email address.
+          </P>
+          <h2 class="success mb-1" *ngIf="isAlreadyOldUser != 'true'">
+            <!-- Thank you for applying! -->
+            Your application has been submitted
+          </h2>
+          <P class="sub-text mb-1 mt-2" *ngIf="isAlreadyOldUser != 'true'">
+            <!-- You have successfully applied for : {{ selectedJob.jobtitle }} -->
+            for :
+            <span class="selectedJob-title" style="color: #0984e3">{{ selectedJob.title_ }}
+            </span>
+          </P>
+          <button class="return-btn-style" mat-flat-button (click)="backtoresults()">
+            <img class="left-arrow-style" src="assets/icons/arrow-left.svg" />
+            <span>Back to results</span>
+          </button>
+        </div>
+
+        <!-- <div class="job-detail row mb-3">
+          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>
+          <div
+            class="col-lg-6 col-md-6 col-sm-12 col-xs-12 job-detail-boder-box"
+          >
+            <div class="box-1 mb-3">
+              <div class="job-sub-title">{{ selectedJob.jobtitle }}</div>
+              <ul class="mb-0 jobmeta">
+                <li>
+                  <i class="fa fa-building"></i>
+                  {{ selectedJob.compname }}
+                </li>
+                <li>
+                  <i class="fa fa-map-marker"></i>
+                  {{ selectedJob.city }} - {{ selectedJob.state }}
+                </li>
+                <li>
+                  <i class="fa fa-usd"></i>
+                  <span *ngIf="selectedJob.payrange">
+                    {{ selectedJob.payrange }}
+                  </span>
+                  <span *ngIf="!selectedJob.payrange">
+                    <span *ngIf="selectedJob.payrange1"
+                      >{{ selectedJob.payrange1 }} -</span
+                    >
+                    {{ selectedJob.payrange2 }}
+                  </span>
+                  <span *ngIf="selectedJob.paytype">
+                    per {{ selectedJob.paytype }}
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <div class="box-2">
+              <div class="accordion" id="jobdetailsfaq">
+                <div class="accordion-item">
+                  <h6 class="accordion-header" id="headingOne">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne"
+                      aria-expanded="false"
+                      aria-controls="collapseOne"
+                    >
+                      Read job Description
+                    </button>
+                  </h6>
+                  <div
+                    id="collapseOne"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingOne"
+                    data-bs-parent="#jobdetailsfaq"
+                  >
+                    <div class="accordion-body">
+                      <div
+                        class="jobrief ckTxt"
+                        [innerHtml]="selectedJob.description"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>
+        </div> -->
+      </div>
+    </div>
+
+    <!-- Form -->
+    <!-- *ngIf="userGetType != 'true'" -->
+    <div class="card mb-3" style="display: none;">
+      <!-- <div class="card-header"></div> -->
+
+      <div class="row get-more-jobs">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <h5 class="card-title mt-1 mb-4">
+            Create Free account to activate 1-click apply
+          </h5>
+          <!-- <p class="card-text">
+            Create a <strong>CX</strong>Ninja account to get email updates on
+            this job and access to more great job opportunities.
+          </p> -->
+          <div class="createaccount-form">
+            <form [formGroup]="loginForm">
+              <div class="row justify-content-center">
+                <div class="col-sm-4 px-0">
+                  <mat-form-field class="full-width-input mx-2 my-0" appearance="outline">
+                    <mat-label style="color: #111">Email</mat-label>
+                    <input autofocus matInput placeholder="Email" appAutoFocusDirective formControlName="email"
+                      required />
+                    <mat-icon matSuffix>email</mat-icon>
+                    <mat-error class="errorMessage" *ngIf="
+                        (submitted && !loginForm.controls.email.touched) ||
+                        loginForm.controls.email.touched
+                      ">
+                      <span *ngIf="loginForm.controls.email.errors?.required">Please enter a valid email ID. The email
+                        ID field
+                        cannot be blank.
+                      </span>
+                      <span *ngIf="loginForm.controls.email.errors?.pattern">The Email ID format is incorrect. Please
+                        enter a valid
+                        email ID.
+                      </span>
+                    </mat-error>
+                    <!-- <div align="start" class="email-hints"  *ngIf="loginForm.controls.email.valid">Looks good!! We'll use this email to send you updates.</div> -->
+                    <mat-hint align="start" class="email-hints" *ngIf="loginForm.controls.email.valid">Looks good!!
+                      We'll use this email to send you updates.
+                    </mat-hint>
+                  </mat-form-field>
+                </div>
+                <div class="col-sm-4 px-0">
+                  <mat-form-field class="full-width-input mb-3" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'"
+                      formControlName="password" required />
+                    <mat-icon class="eye-icon" matSuffix (click)="hide = !hide">{{ hide ? "visibility_off" :
+                      "visibility" }}</mat-icon>
+                    <!-- <mat-error class="errorMessage" *ngIf=" ((submitted && !loginForm.controls.password.touched) || loginForm.controls.password.touched)">
+                            <span *ngIf="loginForm.controls.password.errors?.required">Please enter a valid Password. The Password field cannot be blank.</span>
+                        </mat-error> -->
+                  </mat-form-field>
+                  <!--- ****** password error messages *******-->
+                  <div class="error-messages mb-3" *ngIf="
+                      (submitted && !loginForm.controls.password.touched) ||
+                      loginForm.controls.password.touched ||
+                      loginForm.controls.password.value
+                    ">
+                    <p class="error-message_heading mb-2">
+                      Your password must contain:
+                    </p>
+                    <label class="col-sm-12 text-left" [ngClass]="
+                        loginForm.controls['password'].hasError('required') ||
+                        loginForm.controls['password'].hasError('minlength')
+                          ? 'text-danger'
+                          : 'text-success'
+                      ">
+                      <i class="material-icons">{{
+                        loginForm.controls["password"].hasError("required") ||
+                        loginForm.controls["password"].hasError("minlength")
+                        ? "circle"
+                        : "check"
+                        }}</i>
+                      <span>At least 8 Characters</span>
+                    </label>
+
+                    <label class="col-sm-12 text-left" [ngClass]="
+                        loginForm.controls['password'].hasError('required') ||
+                        loginForm.controls['password'].hasError('hasSmallCase')
+                          ? 'text-danger'
+                          : 'text-success'
+                      ">
+                      <i class="material-icons">{{
+                        loginForm.controls["password"].hasError("required") ||
+                        loginForm.controls["password"].hasError("hasSmallCase")
+                        ? "circle"
+                        : "check"
+                        }}</i>
+
+                      <span>Lower case letters (a-z)</span>
+                    </label>
+                    <label class="col-sm-12 col-xs-12 text-left" [ngClass]="
+                        loginForm.controls['password'].hasError('required') ||
+                        loginForm.controls['password'].hasError(
+                          'hasCapitalCase'
+                        )
+                          ? 'text-danger'
+                          : 'text-success'
+                      ">
+                      <i class="material-icons">{{
+                        loginForm.controls["password"].hasError("required") ||
+                        loginForm.controls["password"].hasError(
+                        "hasCapitalCase"
+                        )
+                        ? "circle"
+                        : "check"
+                        }}</i>
+                      <span>Upper case letters (A-Z)</span>
+                    </label>
+
+                    <label class="col-sm-12 text-left px-0" [ngClass]="
+                        loginForm.controls['password'].hasError('required') ||
+                        loginForm.controls['password'].hasError('hasNumber')
+                          ? 'text-danger'
+                          : 'text-success'
+                      ">
+                      <i class="material-icons">{{
+                        loginForm.controls["password"].hasError("required") ||
+                        loginForm.controls["password"].hasError("hasNumber")
+                        ? "circle"
+                        : "check"
+                        }}</i>
+                      <span> Numbers (0-9)</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-sm-3 px-0 pt-2 crateAccountbtn">
+                  <mat-card-actions>
+                    <button (click)="createLoginForm()" class="btn btn-primary btn-block my-1 mx-1 my-md-0 btn-md">
+                      Create Account
+                    </button>
+                  </mat-card-actions>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="row"  *ngIf="assessments.length">
+      <div class="col-10 card px-0 assess-body">
+        <section class="innerpadding my-0 assessment-section-card">
+          <div class="assessment-type text-center assess-requir">
+            <p class="assess-requir-title"><i class="fa-solid fa-triangle-exclamation"></i> Assessments Required</p>
+            <p class="resumetext">
+              This job application requires you to complete the assessments listed below to proceed further. Please start assessments to complete your application
+            </p>
+          </div>
+          <div *ngFor="let assessmentIndidlObj of assessments;let assessmentIndex = index;">
+            <section class="my-0 pb-4 pt-4 assessment-section">
+              <div class="row">
+                <div class="col-sm-9 col-xs">
+                  <div class="row">
+                    <div>
+                      <h3><span><img src="{{badgesPath + assessmentIndidlObj.badgePath }}" alt="badge" width="30" height="auto"></span><span class="assessment-name">{{assessmentIndidlObj.name}}</span></h3>
+                    </div>
+                    <p class="resumetext text-muted">{{assessmentIndidlObj.description}}</p>
+                  </div>
+                  <div class="row assessment-list-footer">
+                    <div class="col-md-5 col-6 px-0"><span><i class="fa-solid fa-hourglass"></i></span> <span class="px-1">Assessment Time: {{assessmentIndidlObj.completeTime}}</span></div>
+                    <div class="col-md-5 col-6 px-0"><span><i class="fa-solid fa-briefcase"></i></span> <span class="px-1">Required by {{assessmentIndidlObj.noOfJobs}} Jobs</span></div>
+                  </div>
+                </div>
+                <div class="col-sm-3 col-xs row align-items-center p-5" *ngIf="(assessmentIndidlObj.completionStatus == '10018000' || assessmentIndidlObj.completionStatus == '10018001' || assessmentIndidlObj.completionStatus == '0' && assessmentIndidlObj.count < 2)">
+                  <button class="btn align-items-center btn-base my-2 mx-3 my-sm-0 btn-sm" (click)="openInviteForm(assessmentIndidlObj)" *ngIf="assessmentIndidlObj.completionStatus == '10018001'">Resume</button>
+                  <button class="btn align-items-center btn-base my-2 mx-3 my-sm-0 btn-sm" (click)="openInviteForm(assessmentIndidlObj)" *ngIf="assessmentIndidlObj.completionStatus == '0'">Start</button>
+                </div>
+                <div class="col-sm-3 col-xs row align-items-center text-center" *ngIf="assessmentIndidlObj.completionStatus == '10018003'">
+                  <div>
+                    <div>
+                      <button class="btn align-items-center btn-base my-2 mx-3 my-sm-0 btn-sm" (click)="openInviteForm(assessmentIndidlObj)" *ngIf="assessmentIndidlObj.requiredBadgePath != '' &&  (assessmentIndidlObj.requiredBadgePath.toLowerCase().indexOf('gold') == '-1') && assessmentIndidlObj.count == 1">Retake</button>
+                      <p *ngIf="assessmentIndidlObj.requiredBadgePath != '' &&  (assessmentIndidlObj.requiredBadgePath.toLowerCase().indexOf('gold') == '-1') && assessmentIndidlObj.count == 1" mat-raised-button matTooltip="{{getMoreInformation()}}" aria-label="Button that displays a tooltip when focused or hovered over"><span class="retake-circle mx-1"><i class="fa fa-info-circle"></i></span><span>Why Retake?</span></p>
+                    </div>
+                    <div>
+                      <img src="assets/badge/Golden-tenkey.png" alt="badge" width="100">
+                    </div>
+                    <div class="completed-status"><span><i class="fa-solid fa-check"></i></span><span>Completed</span></div>
+                    <div class="taken-time">Taken on {{assessmentIndidlObj.date | date : 'd MMM y' }}</div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+      </div>
+    </div> -->
+    <!-- *ngIf="isMobile123" -->
+    <div style="display: none;">
+      <div class="col-12 px-0 explore-jobs">
+        <section id="smry" class="innerpadding my-0">
+          <div class="text-center">
+            <!-- <div class="card-header"></div> -->
+            <h3 class="card-title pt-3 mb-0">More Jobs for You</h3>
+            <a class="viewAlljobs mt-1 mb-2" id="viewall" (click)="goToSeeAllJobs()">View All Jobs</a>
+          </div>
+        </section>
+
+        <div class="row" *ngIf="jobsList && jobsList.length">
+          <div class="joblistDiv col-sm-12">
+            <!-- Job Card -->
+            <div class="col-12 slide-box" *ngFor="let job of jobsList; let i = index" (click)="goToJobList(job.jobid)">
+              <div class="jobox card">
+                <div class="d-flex justify-content-between">
+                  <h4 class="h4-job-title">
+                    <strong [title]="job.jobtitle">{{ job.jobtitle }}</strong>
+                  </h4>
+                </div>
+                <ul class="mb-0 jobmeta">
+                  <li><i class="fa fa-building"></i>{{ job.compname }}</li>
+                  <li>
+                    <i class="fa fa-map-marker"></i> {{ job.city }}
+                    <span *ngIf="job.city && job.state">, </span> {{ job.state }}
+                  </li>
+                  <li>
+                    <i class="fa fa-usd"></i>
+                    <span *ngIf="job.payrange">
+                      {{ job.payrange }}
+                    </span>
+                    <span *ngIf="!job.payrange">
+                      <span *ngIf="job.payrange1">{{ job.payrange1 }} -</span> {{ job.payrange2 }}
+                    </span>
+                    <span *ngIf="job.paytype"> per {{ job.paytype }} </span>
+                  </li>
+                </ul>
+                <div class="jobrief ckTxt" [innerHtml]="job.descShort"></div>
+                <!-- <span class="text-muted"
+                  ><small>
+                    {{ job.date | date : "MMM d, y" }}
+                  </small></span
+                > -->
+
+                <div>
+                  <span class="text-muted"><small>
+                      {{ job.date | date : "MMM d, y" }} 333
+                    </small></span><span class="applied-success" *ngIf="job.applied">
+                    <i class="fa-regular fa-check"></i>
+                    <span>Applied</span></span>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <a class="viewAlljobsbottom" *ngIf="showBottomViewAll" (click)="goToSeeAllJobs()">View All Jobs</a>
+        </div>
+      </div>
+    </div>
+    <!-- *ngIf="!isMobile123" -->
+    <div style="display: none;">
+      <!-- Job Carousel -->
+      <div class="col-12 card explore-jobs">
+        <section id="smry" class="innerpadding my-0">
+          <div class="text-center">
+            <!-- <div class="card-header"></div> -->
+            <div class="card-body">
+              <h3 class="card-title">More Jobs for You</h3>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <div class="row slider jobs">
+                <!-- Job Card -->
+                <div class="col-12" *ngIf="jobsList && jobsList.length">
+                  <carousel [itemsPerSlide]="itemsPerSlide" [noWrap]="noWrapSlides" [showIndicators]="showIndicator"
+                    [interval]="myInterval">
+                    <slide *ngFor="let job of jobsList" (click)="goToJobList(job.jobid)" class="slide-box">
+                      <div class="jobox">
+                        <div class="d-flex justify-content-between">
+                          <h4>
+                            <strong>{{ job.jobtitle }}</strong>
+                          </h4>
+                        </div>
+                        <ul class="mb-0 jobmeta">
+                          <li>
+                            <i class="fa fa-building"></i>{{ job.compname }}
+                          </li>
+                          <li>
+                            <i class="fa fa-map-marker"></i> {{ job.city }}, {{ job.state }}
+                          </li>
+                          <li>
+                            <i class="fa fa-usd"></i>
+                            <span *ngIf="job.payrange">
+                              {{ job.payrange }}
+                            </span>
+                            <span *ngIf="!job.payrange">
+                              <span *ngIf="job.payrange1">{{ job.payrange1 }} -</span> {{ job.payrange2 }}
+                            </span>
+                            <span *ngIf="job.paytype">
+                              per {{ job.paytype }}
+                            </span>
+                          </li>
+                        </ul>
+                        <div class="jobrief ckTxt" [innerHtml]="job.descShort"></div>
+                        <!-- <span class="text-muted"
+                          ><small>
+                            {{ job.date | date : "MMM d, y" }}
+                          </small></span
+                        > -->
+
+                        <div>
+                          <span class="text-muted"><small>
+                              {{ job.date | date : "MMM d, y" }} 777
+                            </small></span><span class="applied-success" *ngIf="job.applied">
+                            <i class="fa-regular fa-check"></i>
+                            <span>Applied</span></span>
+
+                        </div>
+                      </div>
+                    </slide>
+                  </carousel>
+                  <div class="text-center">
+                    <!-- <div class="card-header"></div> -->
+                    <div class="card-body">
+                      <button class="btn btn-outline-dark btn-capsule" (click)="goToSeeAllJobs()">
+                        See All Jobs
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

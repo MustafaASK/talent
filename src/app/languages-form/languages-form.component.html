@@ -1,0 +1,63 @@
+<div class="employment-form pt-3 pb-3">
+    <form [formGroup]="languageFormObj">
+        <div class="row">
+                <div class="col-sm-6">
+                    <!-- <mat-form-field appearance="outline">
+                        <mat-label>Languages</mat-label> 
+                        <mat-select  name="langCode"  formControlName="langCode" >
+                            <mat-option>None</mat-option>
+                            <mat-option *ngFor="let lang of languagesList" (blur)="onBlurMethod()"  [value]="lang.languageCode">
+                                {{lang.languageName}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error></mat-error>
+                    </mat-form-field> -->
+                    <mat-form-field appearance="outline">
+                        <mat-label>Language Name</mat-label> 
+                    <input type="text"
+                            matInput
+                            formControlName="langCode"
+                            required
+                            [matAutocomplete]="auto" required>
+
+                            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayLanguage">
+                                <mat-option *ngFor="let lang of filteredLanguages | async" [value]="lang">
+                                {{ lang.languageName }}
+                                </mat-option>
+                            </mat-autocomplete>
+                         </mat-form-field>
+
+                </div>
+                <div class="col-sm-6">
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Proficiency Level</mat-label>
+                        <mat-select  name="langExpertLookupID"  formControlName="langExpertLookupID" required>
+                            <!-- <mat-option>None</mat-option> -->
+                            <mat-option *ngFor="let masterLE of LanguTypeList"  [value]="masterLE.lookupId">
+                                {{masterLE.lookupValue}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error></mat-error>
+                    </mat-form-field>
+                 </div>
+            
+            
+
+        </div>
+        <div class="row">
+            <div class="col-sm-12  mt-3 text-center">
+                <button type="button" class="btn align-middle btn-primary my-2 mx-1 my-lg-0 cusBtn" 
+                (click)="closeInnerForm()">
+                Cancel
+              </button> 
+                <button type="button" class="btn align-middle btn-primary my-2 mx-1 my-lg-0 cusBtn" 
+                  (click)="onBlurMethod()">
+                    Save
+                </button> 
+            </div>
+        </div>
+    </form>
+    
+</div>
+<mat-spinner color="warn" *ngIf="showSpinner"></mat-spinner>

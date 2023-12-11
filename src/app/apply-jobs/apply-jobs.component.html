@@ -1,0 +1,182 @@
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid text-center">
+    <a class="navbar-brand" href="{{logoUrl}}">
+      <img src="assets/new/curately-logo.svg" alt="" width="180" height="50">
+    </a>
+  </div>
+</nav>
+<div id="wrapper" class="dashboard-box">
+  <div class="container px-sm-0">
+    <div class="row">
+      <div class="col-sm-1">
+
+      </div>
+      <div class="col-sm-10 cur-main">
+      	
+
+        <div id="jobsContent">
+
+          <div class="row">
+            
+            <!-- Job Description -->
+            <div class="col-sm-12" >
+              <div class="card" id="jobdesc-apply" *ngIf="selectedJob">
+                <div class="jobdesc-header mb-3">
+                  <div class="d-flex justify-content-between">
+                    <h4><strong [title]="selectedJob.jobtitle">{{selectedJob.jobtitle}}</strong></h4>
+                  </div>
+                  <ul class="mb-3 jobmeta">
+                    <li><i class="fa fa-building"></i>{{selectedJob.compname}}</li>
+                    <li><i class="fa fa-map-marker"></i> {{selectedJob.city}}<span *ngIf="selectedJob.city && selectedJob.state">, </span>
+                      {{selectedJob.state}}</li>
+                    <li>
+                      <i class="fa fa-usd"></i>
+                      <span *ngIf="selectedJob.payrange">
+                        {{selectedJob.payrange}} 
+                      </span>
+                      <span *ngIf="!selectedJob.payrange">
+                        <span *ngIf="selectedJob.payrange1">{{selectedJob.payrange1}} -</span>
+                        {{selectedJob.payrange2}}
+                      </span>
+                      <span *ngIf="selectedJob.paytype">
+                        per {{selectedJob.paytype}}
+                      </span> 
+                    </li>
+                  </ul>
+
+                <div class="row tabs-row">
+                  <div class="col-6 mt-0 mb-0 tab py-1" [ngClass]="{'active': jobsTab}" 
+                    (click)="jobsTab = true;">
+                    <p style="text-align: center;">Login</p>
+                  </div>
+                  <div class="col-6 mt-0 mb-0 tab py-1" [ngClass]="{'active': !jobsTab}"
+                    (click)="jobsTab = false;">
+                    <p style="text-align: center;">Apply as Guest </p>
+                  </div>
+                </div>
+
+                <div class="row form-tabs" *ngIf="jobsTab">
+                  <!-- <h2>Login to apply quickly</h2> -->
+            
+
+      <form [formGroup]="loginForm">
+          <mat-card >
+              <h5 class="title text-md-left mb-3 mt-2">Login to apply quickly.</h5>
+              <mat-card-content class="row">
+                  <mat-form-field class="full-width-input col-xs-12 col-sm-6 mr-2 pb-0" appearance="outline">
+                    <mat-label>Email</mat-label>
+                     <input autofocus matInput placeholder="Email" appAutoFocusDirective formControlName ="email" required >
+                      <mat-error class="errorMessage" *ngIf=" ((submitted && !loginForm.controls.email.touched) || loginForm.controls.email.touched)">
+                          <span *ngIf="loginForm.controls.email.errors?.required">Please enter a valid email ID. The email ID field cannot be blank.
+                          </span>
+                          <span *ngIf="loginForm.controls.email.errors?.pattern">The Email ID format is incorrect. Please enter a valid email ID.
+                          </span>
+                          </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="full-width-input col-xs-12 col-sm-6  mr-2 mt-2" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+                    <mat-icon class="eye-icon" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-error class="errorMessage" *ngIf=" ((submitted && !loginForm.controls.password.touched) || loginForm.controls.password.touched)">
+                        <span *ngIf="loginForm.controls.password.errors?.required">Please enter a valid Password. The Password field cannot be blank.</span>
+                    </mat-error>
+                </mat-form-field>
+                  <div mat-dialog-actions class="d-flex mt-2 keepmeSigned">
+                    <mat-checkbox formControlName ="check" [color]="color1"
+                    class="example-margin mb-3">Keep me Signed In</mat-checkbox>
+                   
+                  </div>
+
+                  <div class="row mt-3 text-xs-center text-sm-left pe-0">
+                    <div class="col-xs-12 col-sm-6 mb-4">
+                      <button (click)="createLoginForm()"
+                      mat-raised-button 
+                      [color]="color" 
+                      (mouseover)="color = 'warn'"
+                      (mouseout)="color = 'accent'">
+                       Login
+                    </button>
+                    </div>
+
+                    <!-- <div class="col-xs-12 col-sm-6">
+                      <div class="example-margin mb-1">
+                        <a routerLink="/forgot-password" mat-menu-item>Forgot Password?</a>
+                      </div>
+                    </div> -->
+
+
+                    <div class="col-xs-12 col-sm-6 pe-0 mb-3">
+                    <div class="forgot-link">
+                      <a routerLink="/forgot-password" mat-menu-item>Forgot Password?</a>
+                    </div>
+                      
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 px-3">
+                      <div class="singup-link">
+                        Don't have an account? 
+                        <a routerLink="/signup">Signup Here</a>
+                      </div>
+                        
+                      </div>
+                   
+
+                    
+
+
+                  </div>
+                
+              </mat-card-content>
+          </mat-card>
+      </form>
+                </div>
+                <div class="row form-tabs p-3" *ngIf="!jobsTab">
+                  <h5 class="mb-2 mt-2 px-0">Apply with resume (less than 1 min)</h5>
+
+              <div class="text-center">
+                <div class='resumeDiv text-center mt-2'>
+                  <button  (click)="fileInput.click()" class="btn align-middle btn-primary  btn-outline-dark btn-capsule">
+                    <i class="fa fa-cloud-upload-alt"></i> Browse Resume
+                    <input #fileInput type="file"  (change)="onSelectFile($event,fileInput)"
+                      style="display:none;" accept=".doc,.docx,.pdf" />
+                  </button>
+                  <!-- <div class='resumeText'>Supported upload formats: 2MB max in .DOC, .DOCX, or .PDF</div> -->
+                </div>
+                <div class="mt-2 mb-1 guestloginOr">OR</div>
+                <div class="resume-text">
+                  <p>Don't have a resume? Create one with <strong>CX</strong>ninja's FREE resume builder.</p>
+
+                  <a href="javascript:void(0);" (click)="goToResumeBuilder()" class="btn btn-outline-dark btn-capsule">
+                    <!-- <i class="fa fa-cloud-upload-alt"></i> -->
+                    Create Resume
+                    <!-- <input #fileInput type="file"  (change)="onSelectFile($event,fileInput)"
+                      style="display:none;" accept=".doc,.docx,.pdf" /> -->
+                  </a>
+                </div>
+              </div>
+                </div>
+                  <!-- <button href="javascript:void(0);" class="btn btn-primary mt-3 ml-0 mb-0 text-white"  (click)="applyJob()"
+                    *ngIf="!selectedJob.applied">
+                    Apply Now
+                  </button>
+                  <a href="javascript:void(0);" class="btn btn-success mt-3 ml-0 mb-0 text-white"
+                    *ngIf="selectedJob.applied">
+                    Applied
+                  </a> -->
+                </div>
+                <div class="jobdesc-body">
+                  <div class="jobrief ckTxt" [innerHtml]='selectedJob.description'>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+   </div>
+</div>
+<mat-spinner color="warn" *ngIf="showSpinner"></mat-spinner>

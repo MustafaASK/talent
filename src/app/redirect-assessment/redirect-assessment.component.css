@@ -1,0 +1,28 @@
+div{
+	font-weight: normal;
+}
+.success-page-banner{
+	background-image: url('../../assets/badge/confetti.png');
+	color: #0984E3;
+	padding: 20px 0;
+}
+.success-page-banner > div{
+	padding: 10px 0;
+}
+.success-page-banner h3{
+	color: #0984E3;
+	font-weight: bold !important;
+}
+.resumetext{
+
+}
+.sub-text{
+	width: 44%;
+	color: #000000;
+
+}
+.btn{
+	color: #ffffff;
+    background-color: #0984E3;
+    border-color: #0984E3
+}

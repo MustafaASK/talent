@@ -1,0 +1,100 @@
+<div id="wrapper" class="reset dashboard-box">
+  <section id="pdfbody">
+    <div class="container">
+      <div class="row">
+        <!-- Progress -->
+        <div class="col-12 card px-0" *ngIf="!isAssessmentList">
+          <section id="smry" class="innerpadding my-0">
+            <h3>You're Almost There.</h3>
+            <div class="row">
+              <div class="col-12">
+                <p class="resumetext text-muted">  
+                  Candidates with all the assessment badges are 94.36% more likely to get interviews. Complete all the assessments, earn badge and get matched with great opportunities!
+                </p>
+                <p class="badge-tab">
+                  <span *ngFor="let assessmentObj of assessments">
+                    <span *ngFor="let assessmentIndidlObj of assessmentObj.assessmentList;"><img  src="{{(assessmentIndidlObj.requiredBadgePath != '' &&  (assessmentIndidlObj.requiredBadgePath.toLowerCase().indexOf('gold') != '-1')) ? (badgesPath + assessmentIndidlObj.requiredBadgePath) : (badgesPath + assessmentIndidlObj.badgePath) }}" *ngIf="(assessmentIndidlObj.requiredBadgePath)" alt="badge" width="100" height="auto">
+                      <!-- <img src="{{badgesPath + assessmentIndidlObj.badgePath }}" alt="badge" width="100"   *ngIf="assessmentIndidlObj.completionStatus == '10018003'"> -->
+                    </span>
+                    
+                  </span>
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+        <!-- Progress -->
+        <div class="col-12 card px-0" *ngFor="let assessmentObj of assessments;let assessmentIndex = index;">
+          <section class="innerpadding my-0 assessment-section-card">
+            <h3 class="assessment-type">{{assessmentObj.type}}</h3>
+            <div class="row">
+              <div class="col-12">
+                <p class="resumetext text-muted">
+                  {{assessmentObj.description}}
+                </p>
+              </div>
+            </div>
+            <section class="my-0 pb-4 pt-4 assessment-section" *ngFor="let assessmentIndidlObj of assessmentObj.assessmentList;let assessmentIndidlIndex = index;">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
+                  <div class="row">
+                    <div>
+                      <h3><span><img  src="{{badgesPath + assessmentIndidlObj.badgePath }}" alt="badge" width="30" height="auto"></span><span class="assessment-name">{{assessmentIndidlObj.name}}</span> &nbsp; 
+                        <span class="passed d-inline-block" 
+                      *ngIf="assessmentIndidlObj.completionStatus == '10018003' && assessmentIndidlObj.requiredBadgePath == '' && (assessmentIndidlObj.count == 1 || assessmentIndidlObj.count == 2)"><i class="fa-thin fa-check"></i> &nbsp; Passed</span>
+
+                      <span class="top-percent passed d-inline-block" *ngIf="assessmentIndidlObj.requiredBadgePath && (assessmentIndidlObj.requiredBadgePath != '')"><i class="fa-thin fa-check"></i> &nbsp; Top
+                          Percentile</span>
+                        </h3>
+                    </div>
+                    <p class="resumetext text-muted">{{assessmentIndidlObj.description}}</p>
+                  </div>
+                  <div class="row assessment-list-footer">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 col-xl-4"><span><i class="fa-solid fa-hourglass"></i></span> <span class="px-2">Assessment Time: {{assessmentIndidlObj.completeTime}}</span></div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 col-xl-4"><span><i class="fa-solid fa-briefcase"></i></span> <span class="px-2">Required by {{assessmentIndidlObj.noOfJobs}} Jobs</span></div>
+                  </div>
+                </div>
+                <div class="col-xs-6 col-sm-8 col-md-4 col-lg-3 row align-items-center justify-content-end p-4"  *ngIf="(assessmentIndidlObj.completionStatus == '10018000' || assessmentIndidlObj.completionStatus == '10018001' || assessmentIndidlObj.completionStatus == '0' && assessmentIndidlObj.count < 2)">
+                  <button class="btn align-items-center btn-base my-2 mx-3 my-sm-0 btn-sm btn-assessment" (click)="openInviteForm(assessmentIndidlObj)"  *ngIf="assessmentIndidlObj.completionStatus == '10018001'">Resume</button>
+                  <button class="btn align-items-center btn-base my-2 mx-3 my-sm-0 btn-sm btn-assessment" (click)="openInviteForm(assessmentIndidlObj)" *ngIf="assessmentIndidlObj.completionStatus == '0'">Start</button>
+                  <!-- <div  *ngIf="assessmentIndidlObj.completionStatus == '10018003'" class="col  justify-content-between">
+                    <div><img src="assets/badge/Golden-tenkey.png" alt="badge" width="100"></div>
+                    <div class="completed-status"><span><i class="fa-solid fa-check"></i></span><span>Completed</span></div>
+                    <div class="taken-time">Taken on {{assessmentIndidlObj.date  | date : 'd MMM y' }}</div>
+                    
+                  </div> -->
+                </div>
+
+                <div class="col-sm-3 col-xs row align-items-center text-center"   *ngIf="assessmentIndidlObj.completionStatus == '10018003'">
+                  <div>
+                  <!-- <button class="btn align-items-center btn-base my-2 mx-3 my-sm-0 btn-sm" (click)="openInviteForm(assessmentIndidlObj)" >Resume</button> -->
+                  <div>
+                  <button class="btn align-items-center btn-base my-2 mx-3 my-sm-0 btn-sm" (click)="openInviteForm(assessmentIndidlObj)" *ngIf="assessmentIndidlObj.requiredBadgePath == '' && assessmentIndidlObj.count == 1">Retake</button>
+                  <p *ngIf="assessmentIndidlObj.requiredBadgePath == '' && assessmentIndidlObj.count == 1" mat-raised-button
+        matTooltip="{{getMoreInformation()}}"
+        aria-label="Button that displays a tooltip when focused or hovered over">
+        <span class="retake-circle mx-1"><i class="fa fa-info-circle"></i></span> <span>Why Retake?</span></p>
+                </div>
+                
+                  <div *ngIf="assessmentIndidlObj.requiredBadgePath != ''">
+                    <!-- <img src="assets/badge/Golden-tenkey.png" alt="badge" width="100"> -->
+                    <img src="{{badgesPath + assessmentIndidlObj.requiredBadgePath }}" alt="badge" width="100">
+                    </div>
+                    <div class="completed-status" *ngIf="assessmentIndidlObj.requiredBadgePath != ''"><span><i class="fa-solid fa-check"></i></span><span>Completed</span></div>
+                    <div class="taken-time">Taken on {{assessmentIndidlObj.date | dateconvert }}</div>
+                    
+                  </div>
+
+                </div>
+              </div>
+            </section>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- <div class="col-12 card px-0" [hidden]="loadProfile">
+        <app-show-profile (dataToParent)="pdfLoaded($event)" [dataToPass]="candData"></app-show-profile>
+    </div> -->
+</div>
+<mat-spinner color="warn" *ngIf="showSpinner"></mat-spinner>

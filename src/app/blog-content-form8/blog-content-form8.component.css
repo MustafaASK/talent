@@ -1,0 +1,68 @@
+#blogContainer, .row {
+    text-align: justify;
+    padding: 2%;
+    margin-bottom: 0px;
+}
+.row {
+    
+    display: flex;
+    
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.media {
+    display: flex;
+    align-items: flex-start;
+}
+#blogContainer .row h1, h2, h3 h4 {
+    color: black;
+    text-align: left;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Jost', sans-serif !important;
+    line-height: 1.5;
+    margin-top: 0;
+}
+.h1, h1 {
+    font-size: 2.5rem;
+}
+.h4, h4 {
+    font-size: 1.5rem;
+}
+.h3, h3 {
+    font-size: 1.75rem;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: .5rem;
+    font-weight: 500;
+}
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+
+.header-img{
+    max-width: none;
+    height: 250px;
+    margin-bottom: 30px;
+}
+.num-img{
+    width: none;
+    height: 110px;
+}
+.footer-img{
+    max-width: 100%;
+
+}
+ .card { 
+    border-color: black;
+    padding: 16px;
+    text-align: center;
+    height: auto;
+    margin-top: 35px;
+    margin-bottom: 10px;
+    
+  }
+ 

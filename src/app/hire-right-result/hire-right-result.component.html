@@ -1,0 +1,23 @@
+<div class="hire-right">
+    <div class="d-flex justify-content-between align-content-center">
+        <h2 mat-dialog-title>Candidate Result</h2>
+        <!-- <span class='close' [mat-dialog-close]>&#215;</span> -->
+        <span class='close' (click)="onClose()" style="cursor:pointer;">&#215;</span>
+    </div>
+    <div mat-dialog-content>
+        <!-- {{score.reportUrl | json}} -->
+        <div><p>Result : <span><b>{{status}}</b></span></p></div>
+        
+        <div *ngIf="status === 'complete'">
+        <iframe [src]="resultpdf" width="780px" height="400"></iframe>
+        </div>
+    </div>
+   
+ 
+
+</div>
+
+
+
+
+<!-- <mat-spinner color="warn" *ngIf="showSpinner"></mat-spinner> -->

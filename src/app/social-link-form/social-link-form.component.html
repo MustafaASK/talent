@@ -1,0 +1,41 @@
+<div class="employment-form pt-3 pb-3">
+    <form [formGroup]="socailLinkFormObj">
+        <div class="row">
+            <div class="col-sm-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Add Social Links </mat-label>
+                    <mat-select  name="socialTypeLookupID"  formControlName="socialTypeLookupID" required>
+                        <!-- <mat-option>None</mat-option> -->
+                        <mat-option *ngFor="let masterSL of MasterSocialLinks"  [value]="masterSL.lookupId">
+                            {{masterSL.lookupValue}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error></mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Enter URL</mat-label>
+                        <input matInput placeholder="Enter URL"  formControlName="socialURL" required>
+                    <mat-error></mat-error>
+                </mat-form-field>
+            </div>
+            
+
+        </div>
+        <div class="row">
+            <div class="col-sm-12  mt-3 text-center">
+                <button type="button" class="btn align-middle btn-primary my-2 mx-1 my-lg-0 cusBtn" 
+                (click)="closeInnerForm()">
+                Cancel
+              </button> 
+                <button type="button" class="btn align-middle btn-primary my-2 mx-1 my-lg-0 cusBtn" 
+                  (click)="onBlurMethod()">
+                    Save
+                </button> 
+            </div>
+        </div>
+    </form>
+    
+</div>
+<mat-spinner color="warn" *ngIf="showSpinner"></mat-spinner>

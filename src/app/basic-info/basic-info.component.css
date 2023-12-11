@@ -1,0 +1,181 @@
+.emp-status-1 {
+
+  margin: 5px;
+  border: 1px solid grey;
+  min-height: 100px;
+  cursor: pointer;
+}
+
+.side-text {
+  font-size: medium;
+  font-weight: 500;
+  color: grey;
+}
+
+.right {
+  text-align: right;
+  font-size: 20px;
+  color: #111111;
+}
+
+.sub-text {
+  font-size: small;
+  letter-spacing: 0px;
+  color: #6472A1;
+  opacity: 1;
+}
+
+.sub-heading {
+  letter-spacing: 0px;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.cur-title {
+  margin: 0 0 15px 0;
+  text-align: left;
+  font-weight: bold;
+  /* font-family: Roboto, "Helvetica Neue", sans-serif; */
+}
+
+.cur-main>div {
+  margin-bottom: 40px;
+}
+
+.save-button-row {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  width: 250px;
+  margin: 75px 0px 0px 445px
+}
+
+.selected,
+.selected .mat-card-subtitle {
+  background-color: green;
+  color: #fff;
+}
+
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  /* border: 1px solid rgba(0,0,0,.125); */
+  border-radius: 10px;
+  /* box-shadow: 0 0 15px rgba(0,0,0,.1); */
+}
+
+.group-input span[matprefix],
+.group-input span[matsuffix] {
+  /* color: #000; */
+  font-size: 20px;
+  color: #111111;
+
+}
+
+.group-input span[matprefix] {
+  font-size: 24px;
+}
+
+/* mat-card {
+  height: 7em !important;
+
+} */
+
+
+@media screen and (min-width: 1400px) {
+  .container {
+    max-width: 100%;
+  }
+
+}
+
+
+@media only screen and (min-width:300px) and (max-width:350px) {
+  mat-card {
+    padding: 9px 0px 8px 0px;
+    width: 100%;
+  }
+
+  .mat-form-field {
+    display: block !important;
+  }
+
+}
+
+
+@media only screen and (min-width:351px) and (max-width:767px) {
+  mat-card {
+    padding: 5px !important;
+    max-width: 700px;
+    width: 100%;
+  }
+
+  .mat-form-field {
+    display: block !important;
+  }
+
+}
+
+@media only screen and (min-width:768px) and (max-width:992px) {
+  mat-card {
+    padding: 8px;
+    width: 100%;
+  }
+
+  mat-card {
+    height: 8em !important;
+
+  }
+
+}
+
+@media only screen and (min-width:992px) and (max-width:1200px) {
+
+  mat-card {
+    height: 8em !important;
+  }
+
+}
+
+@media only screen and (min-width:1201px) {
+
+  mat-card {
+    height: 7em !important;
+  }
+
+}
+
+
+/*
+@media only screen and (min-width: 502px) {
+  mat-card {
+    padding: 10px !important;
+    max-width: 400px;
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 991px) {
+  mat-card {
+    padding: 12px !important;
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  mat-card {
+    padding: 14px !important;
+    max-width: 600px;
+    width: 100%;
+  }
+}  */

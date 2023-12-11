@@ -1,0 +1,184 @@
+<div class="container">
+  <div class="signup-main-box red-shadow">
+    <div *ngIf="!showForm" style="height: 100px; text-align: center">
+      <h2>Success</h2>
+    </div>
+    <div class="row" *ngIf="showForm">
+      <div class="col-sm-5 left-side-box">
+        <!-- <p><img src="/assets/Sign_Up.svg" alt=""></p> -->
+        <!-- <p><img src="assets/new/compressed/csninja-signup.png" alt=""></p> -->
+        <div class="isMobile11 d-none d-md-block">
+          <!-- <div>
+          <button style="background-color: #003a9b; border-color: #003a9b; color:#fff; " type="button" (click)="openIndeed()" class="social-button"><img src="assets/indeed.png" alt="">Sign in with Indeed</button>
+        </div> -->
+          <!-- indeed commented -->
+          <!-- <a class="social-button1 sociallink" id="indeed-connect1" (click)="openIndeed()">
+            <span class="indeed-button-label"><img src="assets/social/CSNINJA-text-indeed.png" /></span>
+          </a> -->
+          <a (click)="openWindow('facebook')" class="social-button1 sociallink" id="facebook-connect1">
+            <span><img src="assets/social/CSNINJA-text-facebook.png" /></span></a>
+          <a (click)="openWindow('google')" class="social-button1 sociallink" id="google-connect1">
+            <span><img src="assets/social/CSNINJA-text-google.png" /> </span></a>
+          <!-- <a href="#" class="social-button" id="twitter-connect"> <span>Connect with Twitter</span></a> -->
+          <a (click)="openWindow('linkedin')" class="social-button1 sociallink" id="linkedin-connect1">
+            <span><img src="assets/social/CSNINJA-text-linkedin.png" /></span></a>
+        </div>
+      </div>
+      <div class="col-sm-1 hr-line">
+        <span class="or-box">
+          <img src="assets/social/CSNINJA-text-or.png" />
+        </span>
+      </div>
+      <div class="col-sm-6 signup-right-content">
+        <form [formGroup]="loginForm">
+          <mat-card>
+            <!-- <h5 class="title-1 mt-3">
+            <img class="logo-login-img" src="assets/new/curately-logo.svg" alt="">
+
+            </h5> -->
+            <h5 class="title mt-4">Login to your account</h5>
+            <mat-card-content>
+              <!-- mobile and Tb device -->
+              <mat-form-field class="full-width-input mb-3 d-xl-none" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" formControlName="email" required />
+                <mat-error class="errorMessage" *ngIf="
+                    (submitted && !loginForm.controls.email.touched) ||
+                    loginForm.controls.email.touched
+                  ">
+                  <span *ngIf="loginForm.controls.email.errors?.required">Please enter a valid email ID. The email ID
+                    field cannot be
+                    blank.
+                  </span>
+                  <span *ngIf="loginForm.controls.email.errors?.pattern">The Email ID format is incorrect. Please enter
+                    a valid
+                    email ID.
+                  </span>
+                </mat-error>
+              </mat-form-field>
+
+              <!-- Desktop device -->
+              <mat-form-field class="full-width-input mb-3 d-none d-xl-block" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" appAutoFocusDirective formControlName="email" required />
+                <mat-error class="errorMessage" *ngIf="
+                    (submitted && !loginForm.controls.email.touched) ||
+                    loginForm.controls.email.touched
+                  ">
+                  <span *ngIf="loginForm.controls.email.errors?.required">Please enter a valid email ID. The email ID
+                    field cannot be
+                    blank.
+                  </span>
+                  <span *ngIf="loginForm.controls.email.errors?.pattern">The Email ID format is incorrect. Please enter
+                    a valid
+                    email ID.
+                  </span>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="full-width-input mb-0" appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password"
+                  required />
+                <mat-icon class="eye-icon" matSuffix (click)="hide = !hide">{{
+                  hide ? "visibility_off" : "visibility"
+                  }}</mat-icon>
+                <mat-error class="errorMessage" *ngIf="
+                    (submitted && !loginForm.controls.password.touched) ||
+                    loginForm.controls.password.touched
+                  ">
+                  <span *ngIf="loginForm.controls.password.errors?.required">Please enter a valid Password. The Password
+                    field cannot be
+                    blank.</span>
+                </mat-error>
+              </mat-form-field>
+              <div mat-dialog-actions class="d-flex justify-content-between">
+                <mat-checkbox formControlName="check" [color]="color1" class="example-margin mb-3">Keep me Signed
+                  In</mat-checkbox>
+                <div class="example-margin mb-3">
+                  <a routerLink="/forgot-password" mat-menu-item>Forgot Password?</a>
+                </div>
+              </div>
+              <!--*****-->
+              <mat-card-actions>
+                <button (click)="createLoginForm()" mat-raised-button [color]="color" [disabled]="formInProgress"
+                  (mouseover)="color = 'warn'" (mouseout)="color = 'accent'">
+                  Login
+                  <span class="spinner-border spinner-border-sm text-light" role="status" aria-hidden="true"
+                    *ngIf="formInProgress"></span>
+                </button>
+                <h5 class="forgot-link">
+                  Don't have an account?
+                  <a routerLink="/signup">Signup Here</a>
+                </h5>
+              </mat-card-actions>
+              <div class="alternate-signin-container isDisplay d-md-none d-lg-none">
+                <div id="or-separator" class="or-separator my-3">
+                  <span class="or-text text-center img-or">
+                    <img src="assets/social/CSNINJA-text-or.png" />
+                  </span>
+                </div>
+              </div>
+              <div class="isDisplay11 mt-1 justify-content-center text-center d-md-none d-lg-none">
+                <!-- <div>
+            <button style="background-color: #003a9b; border-color: #003a9b; color:#fff; " type="button" (click)="openIndeed()" class="social-button"><img src="assets/indeed.png" alt="">Sign in with Indeed</button>
+          </div> -->
+                <!-- indeed commented -->
+                <!-- <a class="social-button1 sociallink" id="indeed-connect1" (click)="openIndeed()">
+                  <span class="indeed-button-label"><img src="assets/social/CSNINJA-text-indeed.png" /></span>
+                </a> -->
+                <a (click)="openWindow('facebook')" class="social-button1 sociallink" id="facebook-connect1">
+                  <span><img src="assets/social/CSNINJA-text-facebook.png" /></span></a>
+                <a (click)="openWindow('google')" class="social-button1 sociallink" id="google-connect1">
+                  <span><img src="assets/social/CSNINJA-text-google.png" /> </span></a>
+                <!-- <a href="#" class="social-button" id="twitter-connect"> <span>Connect with Twitter</span></a> -->
+                <a (click)="openWindow('linkedin')" class="social-button1 sociallink" id="linkedin-connect1">
+                  <span><img src="assets/social/CSNINJA-text-linkedin.png" /></span></a>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<mat-spinner color="warn" *ngIf="showSpinner"></mat-spinner>
+<!-- <div class="container" style="max-width: 550px; margin-top: 20px;">
+  <h2 class="text-center mb-5">Login with Google / Facebook / LinkedIn / Indeed</h2>
+  <div *ngIf="isLoggedin === false" class="text-center mb-3">
+    <div>
+      <button style=" width:240px;" type="button" (click)="signInWithGoogle()" class="btn btn-danger">Sign in with Google</button>
+    </div>
+  </div>
+  <div *ngIf="!isLoggedin" class="text-center mb-3">
+    <button  style="width:240px;" type="button" (click)="loginWithFacebook()" class="btn btn-primary btn-block">Sign in with Facebook</button>
+  </div>
+  <div *ngIf="isLoggedin === false" class="text-center mb-3">
+    <div>
+      <button style="background-color: #0a66c2; border-color: #0a66c2; color:#fff; width: 240px;" type="button"  onclick="window.open('https://www.linkedin.com/oauth/v2/authorization?response_type=code&state=987654321&scope=r_emailaddress&client_id=86xsmltotkq5gd&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Flogin', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" class="btn btn-danger">Sign in with LinkedIn</button>
+    </div>
+  </div>
+  <div *ngIf="isLoggedin === false" class="text-center mb-3">
+    <div>
+      <button style="background-color: #003a9b; border-color: #003a9b; color:#fff; width:240px;" type="button" onclick="window.open('https://secure.indeed.com/oauth/v2/authorize?client_id=86f1cae0476ea42c5909b743730bdd4ad11b63f55eb8ac4e48f2a776595a1d2d&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Flogin&response_type=code&state=employer1234&scope=email+offline_access+employer_access', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" class="btn btn-danger">Sign in with Indeed</button>
+    </div>
+  </div>
+  <div *ngIf="isLoggedin === true">
+    <button type="button" (click)="signOut()" class="btn btn-primary">Log Out</button>
+    <ul>
+      <li>Welcome <b>{{socialUser.firstName}} {{socialUser.lastName}}</b></li>
+      <li>Email Id : <b>{{socialUser.email}}</b></li>
+    </ul>
+  </div>
+</div> -->
+<!-- <div class="container" style="max-width: 550px">
+  <h2 class="text-center mb-5">Login with LinkedIn</h2>
+  <a style="cursor:pointer" onclick="window.open('https://www.linkedin.com/oauth/v2/authorization?response_type=code&state=987654321&scope=r_emailaddress&client_id=86xsmltotkq5gd&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Flogin', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');">
+    <img src="assets/Sign-In-Small---Default.png">
+  </a>
+  <br />
+  <br />
+  <a style="cursor:pointer" onclick="window.open('https://secure.indeed.com/oauth/v2/authorize?client_id=86f1cae0476ea42c5909b743730bdd4ad11b63f55eb8ac4e48f2a776595a1d2d&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Flogin&response_type=code&state=employer1234&scope=email+offline_access+employer_access', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');">
+    <img src="assets/button-light-bg_final.png" alt="default light" />
+  </a>
+</div> -->

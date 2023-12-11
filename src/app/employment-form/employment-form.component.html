@@ -1,0 +1,104 @@
+<div class="employment-form pt-3 pb-3">
+<form [formGroup]="empFormObj" >
+<div class="row">
+    <div class="col-sm-12">
+        <mat-checkbox  style="float: right;" formControlName ="currentCompany" (change)="checkValue()" class="example-margin mb-3">Is this a current employer?</mat-checkbox>
+
+    </div>
+  
+    <div class="col-sm-6">
+        <mat-form-field appearance="outline">
+            <mat-label>JobTitle</mat-label>
+                <input matInput placeholder="JobTitle" formControlName="jobtitle" autofocus  required>
+                <mat-error></mat-error>
+            </mat-form-field>
+    </div>
+    <div class="col-sm-6">
+        <mat-form-field appearance="outline">
+            <mat-label>Employer</mat-label>
+                <input matInput placeholder="Employer" formControlName="employer"  required>
+            <mat-error></mat-error>
+        </mat-form-field>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        <mat-form-field appearance="outline">
+            <mat-label>Start Date</mat-label>
+               <input matInput placeholder="MM/YYYY" [matDatepicker]="datepickerA"  formControlName="startDate" id="date" required>
+               <mat-datepicker-toggle matSuffix [for]="datepickerA">
+                    <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
+               </mat-datepicker-toggle>
+                <!-- <mat-datepicker #datepickerA></mat-datepicker> -->
+                <mat-datepicker #datepickerA
+                  startView="multi-year"
+                  (yearSelected)="chosenYearHandler($event)"
+                  (monthSelected)="chosenMonthHandler($event, datepickerA)"
+                  panelClass="example-month-picker">
+                </mat-datepicker>
+                <mat-error></mat-error>
+            </mat-form-field>
+    </div>
+    <div class="col-sm-3 enddate">
+        <mat-form-field appearance="outline"  *ngIf="!isEditable">
+            <mat-label>End Date</mat-label>
+                <input matInput placeholder="MM/YYYY" [matDatepicker]="datepickerB"  [min]="dateMinEndDate"  formControlName="endDate" id="date" required>
+                <mat-datepicker-toggle matSuffix [for]="datepickerB">
+                    <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
+                </mat-datepicker-toggle>
+                <!-- <mat-datepicker #datepickerB></mat-datepicker>   -->
+                <mat-datepicker #datepickerB
+                  startView="multi-year"
+                  (yearSelected)="chosenYearHandler2($event)"
+                  (monthSelected)="chosenMonthHandler2($event, datepickerB)"
+                  panelClass="example-month-picker">
+                </mat-datepicker>
+            <mat-error></mat-error>
+        </mat-form-field>
+    
+    <!-- <div class="col-sm-3"  *ngIf="isEditable"> -->
+        <mat-form-field appearance="outline"  *ngIf="isEditable" >
+            <mat-label>End Date</mat-label>
+                <input matInput placeholder="" readonly formControlName="endDate"   required>
+                <mat-error></mat-error>
+            </mat-form-field>
+    <!-- </div> -->
+  
+    </div>
+    
+    <div class="col-sm-6">
+       
+        <mat-form-field appearance="outline">
+            <mat-label>City</mat-label>
+                <input matInput placeholder="City"  formControlName="city" >
+            <mat-error></mat-error>
+        </mat-form-field>
+    </div>
+</div>
+
+<div class="row emp_summary">
+    <div class="col-sm-12">
+        <!-- <ckeditor [editor]="Editor" formControlName="emp_summary"  ></ckeditor> -->
+        <quill-editor formControlName="emp_summary"></quill-editor>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-sm-12  mt-3 text-center">
+        <button type="button" class="btn align-middle btn-primary my-2 mx-3 my-lg-0 cusBtn" 
+        (click)="closeInnerForm()">
+        Cancel
+      </button> 
+        <button type="button" class="btn align-middle btn-primary my-2 mx-3 my-lg-0 cusBtn" 
+          (click)="onBlurMethod()">
+            Save
+        </button> 
+    </div>
+</div>
+    <!-- <button mat-raised-button (click)="onBlurMethod()">Save</button> -->
+   
+</form>
+</div>
+<mat-spinner color="warn" *ngIf="showSpinner"></mat-spinner>

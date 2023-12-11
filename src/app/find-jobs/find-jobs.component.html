@@ -1,0 +1,841 @@
+<div *ngIf="!showDetailDescription">
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light navbar-custom">
+        <div class="container-fluid ">
+            <a class="navbar-brand cxninja-logo" href="https://www.askconsulting.com/">
+                <img class="logo-img" src="assets/icons/logo.png" alt="">
+            </a>
+            <button class="navbar-toggler navbar-menu" *ngIf="!userTypeToken" type="button"
+                aria-controls="navbarSupportedContent" (click)="isCollapsed = !isCollapsed"
+                [attr.aria-expanded]="!isCollapsed" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">
+                    <i class="fas fa-bars"></i>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse menu-items-cont " id="navbarSupportedContent"
+                [ngbCollapse]="isCollapsed">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 menu-items-card ">
+
+                    <li class="nav-item" *ngIf="!userTypeToken">
+                        <a class="nav-link" routerLink="/login">Login</a>
+                    </li>
+                    <li class="nav-item" *ngIf="!userTypeToken">
+                        <a class="nav-link" routerLink="/signup">Join Talent
+                            Community</a>
+                    </li>
+                    <!-- <li class="nav-item" *ngIf="userLoggedIn">
+                        <a class="nav-link" (click)="logout()">Logout</a>
+                    </li> -->
+                </ul>
+            </div>
+
+
+            <div class="navbar-buttons-con" *ngIf="!userTypeToken">
+                <button *ngIf="!userTypeToken" class="login-btn-style" routerLink="/login"
+                    mat-flat-button>Login</button>
+                <button *ngIf="!userTypeToken" class="join-talent-community-button" routerLink="/signup"
+                    mat-stroked-button color="primary">Join Talent
+                    Community</button>
+                <!-- <button *ngIf="userLoggedIn" class="join-talent-community-button" (click)="logout()" mat-stroked-button
+                    color="primary">Logout</button> -->
+            </div>
+
+            <div class=" profile-menu-cont" aria-controls="navbarSupportLoginMenuedContent"
+                (click)="isLoginMenuCollapsed = !isLoginMenuCollapsed" [attr.aria-expanded]="!isLoginMenuCollapsed"
+                aria-label="Toggle navigation" *ngIf="userTypeToken &&  hideMenuInMobile">
+                <!-- <div class="profile-img-cont">
+                    <img class="user-img-size" src="assets/icons/user-solid.svg" />
+                </div> -->
+                <div class="profile-name-cont-mobile">
+                    <p class="profile-name-style-mobile">
+                        {{(this.firstName?this.firstName[0].toUpperCase():'')+(this.lastName?this.lastName[0].toUpperCase():'')}}
+                        <!-- {{this.lastName?this.lastName[0]:''}} -->
+                    </p>
+                </div>
+                <!-- <img class="drop-down-size" src="assets/icons/caret-down-solid.svg" /> -->
+            </div>
+            <div class="collapse navbar-collapse menu-items-cont " id="navbarSupportedContent"
+                [ngbCollapse]="isLoginMenuCollapsed" *ngIf="userTypeToken &&  hideMenuInMobile">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 menu-items-card ">
+
+                    <li class="nav-item" *ngIf="userTypeToken">
+                        <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item" *ngIf="userTypeToken">
+                        <a class="nav-link" routerLink="/profile">Profile</a>
+                    </li>
+                    <li class="nav-item" *ngIf="userTypeToken">
+                        <a class="nav-link" routerLink="/preference">Preference</a>
+                    </li>
+                    <li class="nav-item" *ngIf="userTypeToken">
+                        <a class="nav-link" routerLink="/jobs">Jobs</a>
+                    </li>
+                    <li class="nav-item" *ngIf="userTypeToken">
+                        <a class="nav-link" routerLink="/settings">Settings</a>
+                    </li>
+                    <li class="nav-item" *ngIf="userTypeToken">
+                        <a class="nav-link" (click)="logout()">Logout</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div mat-button [matMenuTriggerFor]="menu" class="profile-menu-cont"
+                *ngIf="userTypeToken && !hideMenuInMobile">
+                <div class="profile-img-cont">
+                    <img class="user-img-size" src="assets/icons/user-solid.svg" />
+                </div>
+                <div class="profile-name-cont">
+                    <p class="profile-name-style">{{this.firstName?this.firstName:''}}
+                        {{this.lastName?this.lastName:''}}</p>
+                </div>
+                <img class="drop-down-size" src="assets/icons/caret-down-solid.svg" />
+            </div>
+            <mat-menu #menu="matMenu">
+                <a mat-menu-item routerLink="/dashboard">
+                    <div class="menu-item-cont">
+                        <img class="menu-item-img-size" src="assets/icons/house-solid.svg" />
+                        <p class="menu-item-text">Dashboard</p>
+                    </div>
+                </a>
+                <a mat-menu-item routerLink="/profile">
+                    <div class="menu-item-cont">
+                        <img class="menu-item-img-size" src="assets/icons/user-solid.svg" />
+                        <p class="menu-item-text">Profile</p>
+                    </div>
+                </a>
+                <a mat-menu-item routerLink="/preference">
+                    <div class="menu-item-cont">
+                        <img class="menu-item-img-size" src="assets/icons/gear-solid.svg" />
+                        <p class="menu-item-text">Preferences</p>
+                    </div>
+                </a>
+                <a mat-menu-item routerLink="/jobs">
+                    <div class="menu-item-cont">
+                        <img class="menu-item-img-size" src="assets/icons/users-solid.svg" />
+                        <p class="menu-item-text">Jobs</p>
+                    </div>
+                </a>
+                <a mat-menu-item routerLink="/settings">
+                    <div class="menu-item-cont">
+                        <img class="menu-item-img-size" src="assets/icons/gear-solid.svg" />
+                        <p class="menu-item-text">Settings</p>
+                    </div>
+                </a>
+                <button mat-menu-item (click)="logout()">
+                    <div class="menu-item-cont">
+                        <img class="menu-item-img-size" src="assets/icons/power-off-solid.svg" />
+                        <p class="menu-item-text">Logout</p>
+                    </div>
+                </button>
+            </mat-menu>
+
+        </div>
+    </nav>
+
+
+
+    <!-- <ngx-slick-carousel class="carousel custom-carousel" #slickModal="slick-carousel" [config]="slideConfig">
+        <div ngxSlickItem *ngFor="let slide of slides" class="slide ">
+            
+            <video style="height: 100%; width: 100%;" loop muted autoplay oncanplay="this.play()"
+                onloadedmetadata="this.muted = true">
+                <source src="{{ slide.img }}" type="video/mp4">
+
+            </video>
+            <div class="gradient-overlay"></div>
+        </div>
+    </ngx-slick-carousel> -->
+
+    <div class="d-flex flex-column justify-content-center">
+
+        <ngx-slick-carousel class="carousel custom-carousel" #slickModal="slick-carousel" [config]="slideConfig">
+            <div ngxSlickItem *ngFor="let slide of slides" class="slide custom-slide">
+                <!-- <div class="custom-video"> -->
+                <video class="custom-video" loop muted autoplay oncanplay=" this.play()"
+                    onloadedmetadata="this.muted = true" playsinline>
+                    <source src="{{ slide.img }}" type="video/mp4">
+                </video>
+                <!-- </div> -->
+                <div class="gradient-overlay">
+                </div>
+
+            </div>
+        </ngx-slick-carousel>
+
+        <form class=" custom-form d-block " [formGroup]='myForm'>
+
+            <div class="find-jobs-button-outer-component">
+                <div class="find-jobs-button-inner-component">
+                    <div class="what-cont">
+                        <p class="text1-style">What</p>
+                        <img class="what-clear-icon" *ngIf="myForm.value.control" (click)="clickWhatClear()"
+                            src="assets/icons/md-close@2x.svg" />
+                        <input type="text" (keydown)="searchTitle()" class="input1-style"
+                            placeholder="Job title, Keywords or Company" value="control" formControlName="control"
+                            [matAutocomplete]="auto" />
+                        <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option class="mat-option-con" *ngFor="let street of filteredStreets"
+                                [value]="street.title">
+                                {{street.title}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </div>
+                    <div class="location-parent">
+                        <p class="text1-style">Where</p>
+                        <span class="location-icons">
+                            <img class="loc-icon" src="assets/icons/my-location@2x.svg" /> |
+                            <img class="bus-icon" (click)="openEditCommute()" src="assets/icons/Vector@2x.svg" />
+
+                        </span>
+                        <img (click)="clearAddress()" *ngIf="myForm.value.where" class="close-icon-position"
+                            src="assets/icons/md-close@2x.svg" />
+                        <input *ngIf="isApiLoaded" #whereFilter type="text" id="where" [options]="placeOptions"
+                            formControlName="where" class="input1-style location-input"
+                            placeholder="City, state or Pin code" ngx-google-places-autocomplete
+                            (onAddressChange)="handleAddressChange($event)" />
+
+
+                    </div>
+                    <button class="find-job-button" mat-flat-button (click)="findJobs()">Find Jobs</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+
+
+
+
+
+
+
+    <!-- <input type="text" id="where"placeholder="City, state or Pin code" #trigger="matAutocompleteTrigger" class="input1-style location-input" [matAutocomplete]="wewewe" matInput (keypress)="onAutocompleteSelected($event)" formControlName="where" >
+                                                <mat-autocomplete (optionSelected)="placeSelected($event, $event.option.value, trigger)" #wewewe="matAutocomplete" >
+                                              <mat-option *ngFor="let option of options" [value]="option">
+                                                {{option.name}}
+                                              </mat-option>
+                                            </mat-autocomplete> -->
+
+    <div #fromFindJobs class="All-results-filter-con">
+        <p class="All-results-style">All Results</p>
+        <!-- <mat-spinner color="warn" class="findloader" *ngIf="showLoader"></mat-spinner> -->
+        <!-- <button mat-flat-button color="primary" (click)="openFitler()">Filters</button> -->
+        <button class="filters-btn-style" mat-flat-button (click)="openFitler()">
+            <img style="margin-right: 5px;" src="assets/icons/settings-horizontal_duotone@2x.svg" />
+            <span>Filters</span>
+        </button>
+    </div>
+
+    <div class="filter-outer-con">
+        <div class="fliters-container"
+            *ngIf="editCommuteObj.preferredTransportation  || editCommuteObj.maximumTimeInMinutes || filterObject.isRemote || (filterObject.jobType != '' && filterObject.jobType != 'All Job Types') || (filterObject.dateposted && filterObject.dateposted != '0') || (filterObject.distance && filterObject.distance != '0')">
+            <div class="filters-left-con">
+                <!-- <div *ngIf="editCommuteObj.includeTrafficEstimate">
+                            <p class="filter-type-head">Road Traffic</p>
+                            <div class="filter-container-items">
+                                <div class="filter-item-con">
+                                    <p class="filter-item-text">{{editCommuteObj.includeTrafficEstimate}}</p>
+                                    <img class="cross-icon" src="assets/icons/md-close@2x.svg"
+                                        (click)="filterObject.isRemote=false;jobsearch()" />
+                                </div>
+                            </div>
+    
+                        </div> -->
+                <div *ngIf="editCommuteObj.preferredTransportation">
+                    <p class="filter-type-head">Transportation</p>
+                    <div class="filter-container-items">
+                        <div class="filter-item-con">
+                            <p class="filter-item-text">{{editCommuteObj.preferredTransportation}}</p>
+                            <img class="cross-icon" src="assets/icons/md-close@2x.svg"
+                                (click)="editCommuteObj.preferredTransportation='';totalData = [];jobsearch()" />
+                        </div>
+                    </div>
+
+                </div>
+                <div *ngIf="editCommuteObj.maximumTimeInMinutes">
+                    <p class="filter-type-head">Maximum Time (In Minutes)</p>
+                    <div class="filter-container-items">
+                        <div class="filter-item-con">
+                            <p class="filter-item-text">{{editCommuteObj.maximumTimeInMinutes}}</p>
+                            <img class="cross-icon" src="assets/icons/md-close@2x.svg"
+                                (click)="editCommuteObj.maximumTimeInMinutes='';totalData = [];jobsearch()" />
+                        </div>
+                    </div>
+
+                </div>
+                <div *ngIf="filterObject.isRemote">
+                    <p class="filter-type-head">Remote</p>
+                    <div class="filter-container-items">
+                        <div class="filter-item-con">
+                            <p class="filter-item-text">Yes</p>
+                            <img class="cross-icon" src="assets/icons/md-close@2x.svg"
+                                (click)="filterObject.isRemote=false;totalData = [];jobsearch()" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="job-type-cont"
+                    *ngIf="filterObject.jobType != '' && filterObject.jobType != 'All Job Types'">
+                    <p class="filter-type-head">Job Type</p>
+                    <div class="filter-container-items">
+                        <div *ngFor="let jobtitleObj of (filterObject.jobType.split(',')); index as ind">
+                            <div class="filter-item-con">
+                                <p class="filter-item-text">{{jobtitleObj}}</p>
+                                <img class="cross-icon" (click)="removeJobTileFilter(jobtitleObj,ind)"
+                                    src="assets/icons/md-close@2x.svg" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="filterObject.dateposted && filterObject.dateposted != '0'">
+                    <p class="filter-type-head">Date Posted</p>
+                    <div class="filter-container-items">
+                        <div class="filter-item-con">
+                            <p class="filter-item-text">{{filterObject.dateposted}} day(s) ago</p>
+                            <img class="cross-icon" src="assets/icons/md-close@2x.svg"
+                                (click)="filterObject.dateposted='0';totalData = [];jobsearch()" />
+                        </div>
+
+                    </div>
+                </div>
+
+                <div *ngIf="filterObject.distance && filterObject.distance != '0'">
+                    <p class="filter-type-head">Distance</p>
+                    <div class="filter-container-items">
+                        <div class="filter-item-con">
+                            <p class="filter-item-text">{{filterObject.distance}} Miles</p>
+                            <img class="cross-icon" src="assets/icons/md-close@2x.svg"
+                                (click)="filterObject.distance='0';totalData = [];jobsearch()" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="filters-right-con">
+                <img class="cross-in-blue" src="assets/icons/md-close@2x.svg"
+                    (click)="filterObject.jobType='';filterObject.dateposted='0';filterObject.isRemote=false;filterObject.distance='0';totalData = [];jobsearch()" />
+                <p class="clear-filters-text" style="cursor: pointer;"
+                    (click)="editCommuteObj.maximumTimeInMinutes='';editCommuteObj.preferredTransportation='';filterObject.jobType='';filterObject.dateposted='0';filterObject.isRemote=false;filterObject.distance='0';jobsearch()">
+                    Clear All Filters</p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="find-jobs-middle1-outer-container">
+        <mat-spinner color="warn" class="findloader" *ngIf="showLoader && totalData.length === 0"></mat-spinner>
+
+        <div class="find-jobs-middle1-inner-container">
+
+
+            <!-- *ngIf="editCommuteObj.preferredTransportation || editCommuteObj.includeTrafficEstimate || editCommuteObj.maximumTimeInMinutes || filterObject.isRemote || (filterObject.jobType != '' && filterObject.jobType != 'All Job Types') || (filterObject.dateposted && filterObject.dateposted != '0') || (filterObject.distance && filterObject.distance != '0')" -->
+            <!-- || editCommuteObj.includeTrafficEstimate -->
+
+
+            <div class="Job-cards-outer-most-con" *ngIf="totalData.length">
+                <div class="job-cards-con">
+
+
+                    <mat-card *ngFor="let job of totalData; let i = index;" class="job-outer-card"
+                        (click)="showJobDesc(i)">
+                        <mat-card-content class="job-card">
+                            <p class="job-title-text">{{job.job_.title_}}</p>
+                            <p class="location-text">{{checkZipZeros(job.job_.addresses_)}}</p>
+                            <div class="location-day-con">
+                                <p class="location-text day">
+                                    <!-- {{job.job_.postingUpdateTime_.seconds_ * 1000 |
+                                    date:'MM/dd/yyyy'}} -->
+                                    {{(checkDaysDiff(job.job_.postingUpdateTime_.seconds_ * 1000))}}
+                                </p>
+                            </div>
+                            <div class="full-time-con">
+                                <img src="assets/icons/briefcase@2x.svg" />
+                                <!-- <p class="full-time-text">Full time</p> -->
+
+                                <p class="full-time-text">
+                                    <span *ngFor="let empType of job.job_.employmentTypes_;  index as ind">
+                                        {{jobTypesList[empType]}}{{ind < job.job_.employmentTypes_.length - 1 ? ', '
+                                            : '' }} </span>
+                                            <!-- Full time {{job.job_.employmentTypes_ | json}} -->
+                                </p>
+                            </div>
+                            <button class="apply-button" (click)="applyJobFromMobile(job.job_)" mat-flat-button
+                                color="primary">
+                                <img style="margin-right: 5px;" src="assets/icons/Group@2x.svg" />
+                                <span>Apply</span>
+                            </button>
+
+                        </mat-card-content>
+                    </mat-card>
+
+                </div>
+
+
+
+                <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500"
+                    (scrolled)="onScroll()" [scrollWindow]="false">
+                    <!-- <div class="data-card" *ngFor="let item of items">
+                        {{item}}
+                    </div> -->
+
+                    <mat-card *ngFor="let job of totalData; let i = index;"
+                        [ngClass]="{'job-outer-card': true, 'job-outer-card-selected': job.job_.requisitionId_ === selectedRecord.job_.requisitionId_}"
+                        (click)="showJobDesc(i)">
+                        <mat-card-content class="job-card">
+                            <p class="job-title-text" [innerHtml]="job.job_.title_"></p>
+                            <p class="location-text">{{checkZipZeros(job.job_.addresses_)}}</p>
+                            <div class="location-day-con">
+                                <p class="location-day-text">{{(checkDaysDiff(job.job_.postingUpdateTime_.seconds_ *
+                                    1000))}}
+                                </p>
+                                <!-- <p class="location-text day">{{((checkDaysDiff(job.job_.postingUpdateTime_.seconds_ *
+                                    1000)) <= 10) ? (checkDaysDiff(job.job_.postingUpdateTime_.seconds_ * 1000))
+                                        + ' day(s) ago' : job.job_.postingUpdateTime_.seconds_ * 1000 |
+                                        date:'MM/dd/yyyy' }}</p> -->
+                                <!-- ? job.job_.postingUpdateTime_.seconds_ * 1000 |
+                                date:'MM/dd/yyyy' : '' -->
+                                <div class="d-flex"
+                                    *ngIf="job.job_.customAttributes_.mapData.isRemote.stringValues_ == 'true'">
+                                    <img class="location-icon-style" src="assets/icons/wifi-solid.svg" />
+                                    <p class="location-text">Remote</p>
+                                </div>
+                            </div>
+                            <div class="full-time-con">
+                                <img src="assets/icons/briefcase@2x.svg" />
+                                <p class="full-time-text">
+                                    <span *ngFor="let empType of job.job_.employmentTypes_;  index as ind">
+                                        {{jobTypesList[empType]}}{{ind < job.job_.employmentTypes_.length - 1 ? ', '
+                                            : '' }} </span>
+                                            <!-- Full time {{job.job_.employmentTypes_ | json}} -->
+                                </p>
+                            </div>
+                            <button class="apply-button" (click)="applyForJob(job.job_)" mat-flat-button
+                                color="primary">
+                                <img style="margin-right: 5px;" src="assets/icons/Group@2x.svg" />
+                                <span>Apply</span>
+                            </button>
+
+                        </mat-card-content>
+                    </mat-card>
+
+                    <div class="d-flex flex-row justify-content-center w-100">
+                        <mat-spinner style="align-self: 'center';" color="warn" class="findloader"
+                            *ngIf="showLoader"></mat-spinner>
+                    </div>
+
+
+
+                    <div *ngIf="isLoading">Loading...</div>
+                </div>
+
+
+                <div class="detailed-job-con">
+                    <mat-card class="detailed-job-outer-card">
+                        <mat-card-content>
+                            <mat-card class="detailed-job-header-card">
+                                <mat-card-content>
+                                    <div class="detailed-job-header-card-content">
+                                        <div class="logo-title-location-cont">
+                                            <div class="logo-cont">
+                                                <p class="logo-style">C</p>
+                                            </div>
+                                            <div class="job-title-location-cont">
+
+                                                <p class="job-title-text" *ngIf="selectedRecord.job_.title_"
+                                                    [innerHtml]="selectedRecord.job_.title_"></p>
+                                                <!-- <p class="job-title-text">Customer Support Associate - Mumbai
+                                                (Remote)</p> -->
+                                                <p class="location-text detailed-location-text"
+                                                    *ngIf="selectedRecord.job_.addresses_">
+                                                    {{checkZipZeros(selectedRecord.job_.addresses_)}}</p>
+                                                <!-- <p class="location-text detailed-location-text">Maharastra, Mumbai</p> -->
+
+
+                                            </div>
+                                        </div>
+                                        <button (click)="applyForJob(selectedRecord.job_)" class="detailed-apply-button"
+                                            mat-flat-button color="primary">
+                                            <img style="margin-right: 5px;" src="assets/icons/Group@2x.svg" />
+                                            <span>Apply</span>
+                                        </button>
+                                        <!-- <button class="detailed-apply-button" mat-flat-button color="primary">Apply</button> -->
+
+                                    </div>
+                                </mat-card-content>
+                            </mat-card>
+
+                            <div class="detailed-job-bottom-cont">
+                                <div class="job-properties-con">
+                                    <p class="job-property">JOB TYPE</p>
+                                    <!-- <p class="job-value">Full-Time</p> -->
+
+
+                                    <p class="job-value">
+                                        <span
+                                            *ngFor="let empType of selectedRecord.job_.employmentTypes_;  index as ind">
+                                            {{jobTypesList[empType]}}{{ind < selectedRecord.job_.employmentTypes_.length
+                                                - 1 ? ', ' : '' }} </span>
+                                                <!-- Full time {{job.job_.employmentTypes_ | json}} -->
+                                    </p>
+                                </div>
+                                <div class="job-properties-con">
+                                    <p class="job-property">LOCATION</p>
+                                    <p class="job-value">{{checkZipZeros(selectedRecord.job_.addresses_)}}</p>
+                                </div>
+                                <div class="job-properties-con">
+                                    <p class="job-property">POSTED</p>
+                                    <p class="job-value" *ngIf="selectedRecord.job_.postingUpdateTime_.seconds_">
+                                        <!-- {{selectedRecord.job_.postingUpdateTime_.seconds_ * 1000 | date:'MM/dd/yyyy'}} -->
+                                        {{(checkDaysDiff(selectedRecord.job_.postingUpdateTime_.seconds_ * 1000))}}
+                                    </p>
+                                </div>
+                                <div class="description-con">
+                                    <p class="description-text">Description</p>
+                                    <p class="description-text-para" *ngIf="selectedRecord.job_.description_"
+                                        [innerHtml]="selectedRecord.job_.description_"></p>
+                                    <!-- <ul>
+                                        <li class="description-list-item">
+                                            <p class="dot">.</p>
+                                            <p class="description-text-para">
+                                                Designation: Customer Support Associate (Remote)
+
+                                            </p>
+                                        </li>
+                                        <li class="description-list-item">
+                                            <p class="dot">.</p>
+                                            <p class="description-text-para">
+                                                Location: Mumbai (Remote/Work from home)
+
+                                            </p>
+                                        </li>
+                                        <li class="description-list-item">
+                                            <p class="dot">.</p>
+                                            <p class="description-text-para">
+                                                Shift Timing: 6:00 pm - 3:00 am (9 hours)
+
+                                            </p>
+                                        </li>
+                                    </ul>
+                                    <p class="description-text-para">
+                                        Nivoda is looking for a Mumbai based, enthusiastic and customer centric Customer
+                                        Support
+                                        Associate. You will be responsible for ensuring that Nivoda’s customer support
+                                        remains
+                                        best in class by clearly and effectively responding to customer requests in a
+                                        timely
+                                        manner through our care channels (phone, email, live chat, etc).
+                                    </p>
+
+                                    <p class="description-text-para">
+                                        Do you have the experience, drive, energy, and passion for delivering
+                                        world-class
+                                        customer service? We want to meet you!
+                                    </p>
+
+                                    <p class="description-text">About Novida</p>
+
+                                    <p class="description-text-para">
+                                        Nivoda is an extremely fast-growing B2B marketplace changing how the global
+                                        jewelry
+                                        industry operates. We connect buyers and sellers of jewelry on our online
+                                        platform
+                                        and facilitate the most transparent, efficient and cost-effective way to sell
+                                        and
+                                        buy jewelry.
+                                    </p>
+
+                                    <p class="description-text-para">
+                                        Nivoda has a rapidly growing workforce expanding into new countries with a
+                                        dynamic,
+                                        supportive and collaborative culture.
+                                    </p>
+
+                                    <p class="description-text-para">
+                                        The company's sales have grown over 250% in the last 12 months, and the team has
+                                        grown from 30 to 200+ internationally. We are a global team of big thinkers,
+                                        risk
+                                        takers and hard workers.
+                                    </p>
+
+                                    <p class="description-text">
+                                        What you'll do:
+                                    </p>
+
+                                    <ul>
+                                        <li class="description-list-item">
+                                            <p class="dot">.</p>
+                                            <p class="description-text-para">
+                                                Ensure customer care channels, including email inbox, live chat and
+                                                phone
+                                                calls, are
+                                                monitored, and responses are quick, friendly, professional and helpful
+                                            </p>
+                                        </li>
+                                        <li class="description-list-item">
+                                            <p class="dot">.</p>
+                                            <p class="description-text-para">
+                                                Take care of all Global Suppliers who are already listing their stock on
+                                                Nivoda
+
+                                            </p>
+                                        </li>
+                                        <li class="description-list-item">
+                                            <p class="dot">.</p>
+                                            <p class="description-text-para">
+                                                Supporting suppliers by providing quick, honest advice and confident and
+                                                clear
+                                                responses
+                                            </p>
+                                        </li>
+                                        <li class="description-list-item">
+                                            <p class="dot">.</p>
+                                            <p class="description-text-para">
+                                                Supporting global operations team by getting quick answers from the
+                                                suppliers by
+                                                following up with them
+                                            </p>
+                                        </li>
+                                        <li class="description-list-item">
+                                            <p class="dot">.</p>
+                                            <p class="description-text-para">
+                                                Confidently answer any questions asked about Nivoda, and its offering,
+                                                and
+                                                who best
+                                                to redirect an enquiry to
+                                            </p>
+
+                                        </li>
+                                        <li class="description-list-item">
+                                            <p class="dot">.</p>
+                                            <p class="description-text-para">
+                                                Continuously contribute ideas on how Nivoda’s service, process and
+                                                systems
+                                                can be
+                                                improved
+                                            </p>
+
+                                        </li>
+                                        <li class="description-list-item">
+                                            <p class="dot">.</p>
+                                            <p class="description-text-para">
+                                                Welcome new enquiries to Nivoda, inform them of our processes, policies,
+                                                brand,
+                                                background.
+                                            </p>
+                                        </li>
+                                        <li class="description-list-item">
+                                            <p class="dot">.</p>
+                                            <p class="description-text-para">
+                                                Develop an in-depth knowledge of our products & the brand and convey
+                                                this
+                                                with pride
+                                                & enthusiasm to customers
+
+                                            </p>
+                                        </li>
+                                        <li class="description-list-item">
+                                            <p class="dot">.</p>
+                                            <p class="description-text-para">
+                                                Build a strong internal network in order to efficiently communicate and
+                                                coordinate
+                                                with other functions, such as Fulfillment, Sales, Operations, Tech,
+                                                Finance
+                                                and
+                                                Product
+                                            </p>
+                                        </li>
+                                        <li class="description-list-item">
+                                            <p class="dot">.</p>
+                                            <p class="description-text-para">
+                                                Keep Suppliers well informed of changes to their orders, deliveries,
+                                                returns
+                                            </p>
+                                        </li>
+                                        <li class="description-list-item">
+                                            <p class="dot">.</p>
+                                            <p class="description-text-para">
+
+                                                Completing tasks at a quick pace with effective management
+                                            </p>
+
+                                        </li>
+                                        <li class="description-list-item">
+                                            <p class="dot">.</p>
+                                            <p class="description-text-para">
+                                                Record issues and work with other teams to improve customer experience
+                                            </p>
+
+                                        </li>
+                                    </ul> -->
+
+                                </div>
+
+
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+
+                </div>
+            </div>
+
+            <div class="empty-jobs-card" *ngIf="totalData.length === 0 && showLoader === false">
+                <div class="empty-jobs-card-inner-con">
+                    <img class="mt-4 mb-4" src="assets/icons/Exclamation mark@2x.svg" />
+                    <p class="sorry-text">Sorry, no matching results found for that search.</p>
+                    <p class="suggestion-text">Try these Suggestions:</p>
+                    <div class="Suggestions-cont">
+                        <ul class="Suggestions-inner-cont">
+                            <li class="list-item-suggestion" *ngFor="let suggestion of SuggestionsList">
+                                <!-- <img class="dot-style" src="assets/icons/circle-solid.svg" /> -->
+                                <p class="suggestion-item-text">
+                                    {{suggestion}}
+                                </p>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="find-jobs-middle2-outer-container" *ngIf="totalData.length">
+        <div class="find-jobs-middle2-inner-container">
+            <div class="hiring-para-con">
+                <div>
+                    <p class="hiring-header-text">Hiring Individuals with Disabilities</p>
+                    <p class="hiring-para-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+                        repellendus culpa ut commodi ipsa aperiam illo voluptatem quos rem perspiciatis saepe nostrum
+                        quaerat magnam, magni
+                    </p>
+                </div>
+                <div class="link-button">
+                    <p class="click-here-text">Click here to learn more</p>
+                    <img src="assets/icons/chevron-right@2x.png" class="right-arrow" />
+                    <!-- <img src="assets/icons/chevron-right@2x.png" class="right-arrow" /> -->
+                </div>
+            </div>
+
+            <div class="hiring-para-con">
+                <div>
+                    <p class="hiring-header-text">Hiring Our Nation's Heroes</p>
+                    <p class="hiring-para-text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime asperiores harum officiis
+                        obcaecati. Iusto atque eos enim maiores ipsam sequi deserunt aut rerum vero nobis?
+                        Necessitatibus nihil est laudantium perspiciatis.
+                    </p>
+                </div>
+                <div class="link-button">
+                    <p class="click-here-text">Click here to learn more</p>
+                    <img src="assets/icons/chevron-right@2x.png" class="right-arrow" />
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="find-jobs-footer-outer-container">
+        <div class="find-jobs-footer-inner-container">
+            <div>
+                <p class="powered-by-text">Powered by</p>
+                <p class="Powered-by-company">Curately.ai</p>
+            </div>
+            <p class="privacy-text">Privacy Policy | Terms of Usage</p>
+        </div>
+    </div>
+</div>
+<div class="detail-description" *ngIf="showDetailDescription">
+
+    <div class=" detailed-job-con-mobile">
+        <mat-card class="detailed-job-outer-card">
+            <mat-card-content class="mat-card-content">
+                <mat-card class="detailed-job-header-card">
+                    <mat-card-content>
+                        <div class="detailed-job-header-card-content">
+                            <div class="logo-cont">
+                                <p class="logo-style">C</p>
+                            </div>
+                            <div class="job-title-location-cont">
+
+                                <p class="job-title-text" *ngIf="selectedRecord.job_.title_"
+                                    [innerHtml]="selectedRecord.job_.title_"></p>
+
+                                <p class="location-text detailed-location-text" *ngIf="selectedRecord.job_.addresses_">
+                                    {{checkZipZeros(selectedRecord.job_.addresses_)}}</p>
+                                <!-- <p class="job-title-text">Customer Support Associate - Mumbai 
+                                    (Remote)</p>
+                                <p class="location-text detailed-location-text">Novida</p>
+                                <p class="location-text detailed-location-text">Maharastra, Mumbai</p> -->
+
+                            </div>
+                            <button (click)="applyForJob(selectedRecord.job_)" class="detailed-apply-button"
+                                mat-flat-button color="primary">Apply</button>
+
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+
+                <div class="detailed-job-bottom-cont">
+                    <!-- <div class="detailed-bottom-fixed"> -->
+                    <div class="job-properties-con">
+                        <p class="job-property">JOB TYPE</p>
+                        <!-- <p class="job-value">Full-Time</p> -->
+
+
+                        <p class="job-value">
+                            <span *ngFor="let empType of selectedRecord.job_.employmentTypes_;  index as ind">
+                                {{jobTypesList[empType]}}{{ind < selectedRecord.job_.employmentTypes_.length - 1 ? ', '
+                                    : '' }} </span>
+                                    <!-- Full time {{job.job_.employmentTypes_ | json}} -->
+                        </p>
+                    </div>
+
+                    <div class="job-properties-con">
+                        <p class="job-property">LOCATION</p>
+                        <p class="job-value">{{checkZipZeros(selectedRecord.job_.addresses_)}}</p>
+                    </div>
+                    <div class="job-properties-con">
+                        <p class="job-property">POSTED</p>
+                        <p class="job-value">
+                            <!-- {{selectedRecord.job_.postingUpdateTime_.seconds_ * 1000 |
+                            date:'MM/dd/yyyy'}} -->
+                            {{(checkDaysDiff(selectedRecord.job_.postingUpdateTime_.seconds_ * 1000))}}
+                        </p>
+                    </div>
+                    <!-- </div> -->
+                    <div class="description-con">
+                        <p class="description-text">Description</p>
+
+                        <p class="description-text-para" *ngIf="selectedRecord.job_.description_"
+                            [innerHtml]="selectedRecord.job_.description_"></p>
+
+                    </div>
+
+
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+
+    <div class="back-apply-buttons-con">
+        <!-- <button mat-button color="primary" (click)="showJobDesc()">Back to Results</button>
+        <button class="apply-button-at-back" mat-flat-button color="primary">Apply</button> -->
+        <!-- <button mat-button color="primary" (click)="closeJobDetail()">Back to Results</button> -->
+        <div class="back-to-result-con" (click)="closeJobDetail()">
+            <img src="assets/icons/chevron-left.svg" />
+            <p class="back-to-res-text-style">Back to Results</p>
+        </div>
+        <button class="apply-button-at-back" (click)="applyJobFromMobile(selectedRecord.job_)" mat-flat-button
+            color="primary">
+            <img style="margin-right: 5px;" src="assets/icons/Group@2x.svg" />
+            <span>Apply</span>
+        </button>
+
+    </div>
+</div>
+<!-- <mat-spinner color="warn" *ngIf="showSpinner"></mat-spinner> -->

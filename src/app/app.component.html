@@ -1,0 +1,69 @@
+<!-- <app-find-jobs></app-find-jobs> -->
+<!-- 
+    <div class="increMe-header" *ngIf="!dashboardReached">
+      <app-header></app-header>
+    </div>  
+    <div class="increMe-header" *ngIf="dashboardReached">
+    </div>
+
+    <div class="increMe-content" *ngIf="!dashboardReached">
+      <router-outlet></router-outlet>
+    </div>
+
+    <div class="increMe-footer" *ngIf="!dashboardReached">
+      <app-footer></app-footer>
+    </div> -->
+<ng-container *ngIf="dashboardReached; then dashboard; else notdashboard">
+</ng-container>
+
+<ng-template #notdashboard>
+    <!-- {{profilePreview}} == {{assessmentPreview}} == {{findJobs}} -->
+    <div class="increMe-header" *ngIf="!profilePreview && !assessmentPreview && !findJobs">
+        <app-header></app-header>
+    </div>
+    <div class="increMe-content assess-preview" *ngIf="!profilePreview">
+        <router-outlet (activate)="onActivate($event, outlet)" #outlet></router-outlet>
+    </div>
+    <!-- <div class="increMe-footer" *ngIf="footerDisplay">
+        <app-footer></app-footer>
+    </div> -->
+    <div class="increMe-content" *ngIf="profilePreview">
+        <router-outlet (activate)="onActivate($event, outlet)" #outlet></router-outlet>
+    </div>
+</ng-template>
+
+<ng-template #dashboard>
+
+    <div class="increMe-header">
+        <app-dashboard-header [showLeftMenuForThanksApply]="showLeftMenuForThanksApply" [showLeftMenuForJoining]="showLeftMenuForJoining" [currentUrl]="currentUrl"></app-dashboard-header>
+    </div>
+    <div class="container-fluid" style="height: 88%;">
+        <div class="row mainRow" style="height: 100%;">
+            <div class="col-2 d-none d-lg-block bg-vingrey" *ngIf="!viewprofile && showLeftMenuForThanksApply">
+
+                <app-dashboard-left-menu class="col-20"></app-dashboard-left-menu>
+              </div>
+              <div class="col-12 bg-vingrey" [ngClass]="{'col-lg-10': !viewprofile, 'col-md-12': (viewprofile || showLeftMenuForThanksApply), 'col-md-8 col-xs-12 margin-auto': !showLeftMenuForThanksApply }">
+        
+                <router-outlet (activate)="onActivate($event, outlet)" #outlet></router-outlet>
+              </div>
+            <!-- <div class="col-2 d-none d-lg-block bg-vingrey" *ngIf="!viewprofile && showLeftMenuForThanksApply">
+
+                <app-dashboard-left-menu class="col-20"></app-dashboard-left-menu>
+            </div> -->
+            <!-- [ngClass]="{'col-lg-10': !viewprofile, 'col-md-12': (viewprofile || showLeftMenuForThanksApply), 'col-md-8 col-xs-12 margin-auto': !showLeftMenuForThanksApply }" -->
+            <!-- <div class="col-12 bg-vingrey123">
+
+                <router-outlet (activate)="onActivate($event, outlet)" #outlet></router-outlet>
+            </div> -->
+            <!-- <div class="col-12 bg-vingrey" *ngIf="showLeftMenuForThanksApply" [ngClass]="{'col-lg-10': !viewprofile, 'col-md-12' : (viewprofile || showLeftMenuForThanksApply) }">
+    
+            <router-outlet (activate)="onActivate($event, outlet)" #outlet></router-outlet>
+          </div>
+          <div class="col-md-8 col-xs-12 bg-vingrey" style="margin: 0 auto;" *ngIf="!showLeftMenuForThanksApply">
+    
+            <router-outlet (activate)="onActivate($event, outlet)" #outlet></router-outlet>
+          </div> -->
+        </div>
+    </div>
+</ng-template>

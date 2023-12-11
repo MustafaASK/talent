@@ -1,0 +1,217 @@
+.edit-commute-container {
+    width: 100%;
+    height: 85%;
+    padding: 20px;
+    padding-bottom: 0px;
+}
+
+.cancel-icon {
+    cursor: pointer;
+    align-self: center;
+}
+
+.edit-commute-container-1st-con {
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #CACACC;
+}
+
+.scroll-con {
+    height: 85%;
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    /* Remove scrollbar space */
+    background: transparent;
+    /* Optional: just make scrollbar invisible */
+}
+
+.edit-commute-cancel-con {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 16px 0px;
+}
+
+.edit-commute-style {
+    font-family: segoe UI !important;
+    font-size: 21px;
+    font-weight: 600;
+    color: #212121;
+}
+
+.small-heading-text {
+    font-family: Segoe UI !important;
+    font-size: 14px;
+    font-weight: 400;
+    color: #212121;
+}
+
+.input1-style {
+    height: 30px;
+    width: 100%;
+    padding: 10px 20px 10px 10px;
+    font-family: Segoe UI !important;
+    border: 1px solid #CACACC;
+    border-radius: 3px;
+    margin-top: 4px;
+}
+
+.edit-commute-container-2nd-con {
+    padding: 10px 0px 20px 0px;
+    position: relative;
+    height: 100px;
+}
+
+.edit-commute-container-2nd-con .close-icon-cont {
+    position: absolute;
+    right: 0;
+    top: 40px;
+    /* top: 20px;
+    right: 20px; */
+}
+
+.loc-close-icon {
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+}
+
+.edit-commute-container-3rd-con {
+    padding: 10px 0px 20px 0px;
+
+}
+
+.times-cont {
+    height: 37px;
+    width: 252px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 4px;
+}
+
+.time-box {
+    height: 37px;
+    width: 48px;
+    padding: 10px;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.time-box-thick {
+    background-color: #E6E6E6;
+}
+
+.time-text {
+    font-family: Segoe UI !important;
+    font-size: 24px;
+    font-weight: 400;
+    color: #999999;
+    line-height: 17px;
+}
+
+.time-text-thick {
+    color: #146EF6;
+    font-weight: 700;
+}
+
+.edit-commute-container-4th-con {
+    padding: 10px 0px 20px 0px;
+
+}
+
+
+.logos-cont {
+    height: 37px;
+    width: 252px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 4px;
+
+}
+
+.logo-box {
+    height: 37px;
+    width: 48px;
+    padding: 10px;
+    gap: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.logo-box-thick {
+    background-color: #E6E6E6;
+}
+
+.logo-custom {
+    max-width: 180px !important;
+    height: 50px !important;
+    width: 50px !important;
+}
+
+/* .logo-custom-background {
+    
+} */
+
+.edit-commute-container-5th-con {
+    padding: 10px 0px 20px 0px;
+
+}
+
+.radio-group {
+    margin-top: 4px;
+}
+
+.radio-btn {
+    margin-right: 16px;
+}
+
+.footer-container {
+    height: 15%;
+    /* height: 80px; */
+    background-color: #F2F2F2;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
+.cancel-view-results-con {
+    display: flex;
+    flex-direction: row;
+    /* gap: 8px; */
+}
+
+.update-btn-style {
+    background-color: #146EF6;
+    color: #FFFFFF;
+    transition: background-color 0.3s;
+    margin-left: 8px;
+}
+
+.update-btn-style:hover {
+    background-color: #0c5acf;
+}
+
+
+@media screen and (min-width : 320px) and (max-width : 414px) {
+    .edit-commute-container-1st-con {
+        height: 10%;
+    }
+
+    .scroll-con {
+        height: 90%;
+    }
+
+}

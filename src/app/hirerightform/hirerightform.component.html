@@ -1,0 +1,59 @@
+<div class="hire-right">
+    <div class="d-flex justify-content-between align-content-center">
+        <h2 mat-dialog-title>Invite Candidate</h2>
+        <!-- <span class='close' [mat-dialog-close]>&#215;</span> -->
+        <span class='close' (click)="onClose()">&#215;</span>
+    </div>
+    <div mat-dialog-content>
+        <form [formGroup]="educationForm">
+            <div class="row">
+                <div class="col-sm-10">
+                    <mat-form-field appearance="outline">
+                        <mat-label>First Name</mat-label>
+                        <input matInput placeholder="First Name" formControlName="first" required>
+                        <mat-error></mat-error>
+                    </mat-form-field>
+                 </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput placeholder="Last Name" formControlName="last" required>
+                        <mat-error></mat-error>
+                    </mat-form-field>
+                 </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="Email" formControlName="email" required>
+                        <mat-error></mat-error>
+                    </mat-form-field>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div mat-dialog-actions class="d-flex justify-content-center">
+                      <button class="btn align-middle btn-primary my-2 mx-2 my-lg-0" 
+                      [ngClass]="[educationForm.valid ? 'valid' : 'inValid']"
+                      [disabled]='educationForm.invalid || !educationForm.dirty'
+                      (click)="update()">Invite</button>
+                    </div>
+        
+                 </div>
+             </div>
+
+        </form>
+    </div>
+   
+ 
+
+</div>
+
+
+
+
+<mat-spinner color="warn" *ngIf="showSpinner"></mat-spinner>

@@ -1,0 +1,788 @@
+.pref,
+.jobsmry {
+    page-break-inside: auto;
+}
+
+.bg-grey {
+    background-color: rgb(243, 245, 247);
+}
+
+.pdfdownbtn {
+    margin: 0;
+    color: white;
+}
+
+.pr-0 {
+    padding-right: 0 !important;
+}
+
+#downDiv {
+    margin: 0px auto !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    background-color: #E1EEF8;
+    padding: 20px;
+}
+
+body,
+html {
+    background: #F3F5F7 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Jost', sans-serif !important;
+    font-weight: bold !important;
+}
+
+h4 {
+    font-weight: normal !important;
+    font-size: 22px !important;
+    margin-bottom: 5px !important;
+}
+
+.companydata h4 {
+    font-size: 18px !important;
+    text-transform: capitalize !important;
+}
+
+h4+span {
+    color: #969EB5 !important;
+}
+
+a {
+    color: #4169E3 !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    margin-left: 10px !important;
+}
+
+.text-muted {
+    color: #111111 !important;
+}
+
+ul,
+p,
+span {
+    font-family: Segoe UI !important;
+}
+
+i {
+    color: #969EB5 !important;
+}
+
+i.active {
+    color: #4A7AFF !important;
+}
+
+.ul-aside li {
+    line-height: 35px !important;
+}
+
+p {
+    line-height: 30px !important;
+}
+
+li {
+    line-height: 26px !important;
+}
+
+h3 {
+    text-align: left !important;
+    margin-bottom: 15px !important;
+}
+
+#wrapperDivPdf {
+    margin: 0px auto !important;
+    max-width: 98% !important;
+    overflow: hidden !important;
+    padding-top: 50px !important;
+    padding-bottom: 20px !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+}
+
+section {
+    margin-bottom: 30px !important;
+    margin-top: 30px !important;
+}
+
+#pdfbody {
+    margin-top: 10px !important;
+}
+
+#pdfheader {
+    margin-bottom: 10px !important;
+}
+
+.card {
+    border-radius: 10px !important;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1) !important;
+    margin: 10px auto !important;
+    box-sizing: border-box !important;
+    /* padding: 0 30px !important; */
+}
+
+ul {
+    list-style-type: none !important;
+    padding: 0 !important;
+}
+
+/* ul.stripe>li:nth-child(even) {
+    background: #fff !important;
+    margin: 15px 0 !important;
+    padding: 15px 30px !important;
+} */
+
+.jobsmry {
+    margin: 10px auto 30px !important;
+}
+
+.jobsmry li {
+    margin: 20px 0 0 !important;
+}
+
+.innerpadding {
+    padding: 0 30px !important;
+}
+
+.years {
+    font-size: 16px !important;
+    color: #969EB5 !important;
+}
+
+.tag {
+    color: #777981 !important;
+    border: 1px solid #D8DDE8 !important;
+    border-radius: 30px !important;
+    font-size: 14px !important;
+    padding: 0px 15px !important;
+    line-height: 22px !important;
+    margin: 5px 0px !important;
+    height: 25px !important;
+    overflow: hidden !important;
+}
+
+.langlist li {
+    display: flex !important;
+    justify-content: space-between !important;
+}
+
+.prefname {
+    font-size: 14px !important;
+    color: #969EB5 !important;
+}
+
+.pref {
+    margin-bottom: 25px !important;
+}
+
+.aside .card {
+    margin-bottom: 20px !important;
+}
+
+.avatar {
+    width: 150px !important;
+    height: 150px !important;
+    min-width: 120px !important;
+    min-height: 120px !important;
+    border: 1px solid #D1D5E1 !important;
+    /*overflow: hidden !important;*/
+    border-radius: 100% !important;
+}
+
+.avatar img {
+    max-width: 100% !important;
+}
+
+.candata ul li,
+ul.contactinfo li {
+    line-height: 30px !important;
+}
+
+
+.hire.tag {
+    background-color: #E5F9E7 !important;
+    border: none !important;
+    color: #111 !important;
+    padding: 5px 15px !important;
+    margin-top: 5px !important;
+    display: inline-block !important;
+    line-height: 15px !important;
+}
+
+.hire.tag i {
+    font-size: 12px !important;
+    color: #54C75F !important;
+}
+
+ul.emplist {
+    border-left: 1px dashed #969EB5 !important;
+    margin-left: 30px !important;
+}
+
+li.innerpadding.emprecord:before {
+    /* content: "â€¢" !important; */
+    font-size: 66px !important;
+    position: absolute !important;
+    left: 19px !important;
+    color: #969EB5 !important;
+}
+
+.card-head {
+    margin-bottom: 25px !important;
+}
+
+.link-primary {
+    color: #ED1C94 !important;
+}
+
+button#dropdownMenuButton {
+    background: #fff !important;
+    border: none !important;
+    color: #111 !important;
+}
+
+button#dropdownMenuButton {
+    box-shadow: none !important;
+}
+
+a.dropdown-item {
+    margin-left: 0 !important;
+}
+
+.card-head+ul>li {
+    margin-top: 25px !important;
+}
+
+ul.socialinks>li {
+    margin-top: 5px !important;
+}
+
+a.btn-capsule {
+    border-radius: 40px !important;
+    padding: 0 30px !important;
+    height: 50px !important;
+    line-height: 50px !important;
+    color: #0984E3 !important;
+}
+
+a.btn-capsule i {
+    color: #0984E3 !important;
+}
+
+a.btn-capsule:hover {
+    background-color: #fff !important;
+    color: #4169E3 !important;
+    border-color: #4169E3 !important;
+}
+
+a.btn-capsule:hover i {
+    color: #4169E3 !important;
+}
+
+a.btn-capsule:focus,
+a.btn-capsule:active {
+    box-shadow: none !important;
+    background-color: #fff !important;
+}
+
+.btn-outline-dark {
+    border-color: #4169E3;
+}
+
+a.viewprofile,
+a.viewprofile i,
+a.link-blu,
+a.link-blu i {
+    color: #4169E3 !important;
+}
+
+a.link-blu {
+    margin-left: 0 !important;
+}
+
+i.fa-pencil:hover {
+    color: #DEA712 !important;
+}
+
+i.fa-trash:hover {
+    color: #FF4040 !important;
+}
+
+/* Dashboard and Job box */
+.jobox {
+    border: 1px solid #aaa !important;
+    box-sizing: border-box !important;
+    padding: 20px !important;
+    border-radius: 20px !important;
+}
+
+ul.jobmeta i {
+    margin-right: 5px !important;
+    font-size: 14px !important;
+}
+
+ul.jobmeta {
+    font-size: 14px !important;
+}
+
+ul.jobrief li {
+    line-height: 20px !important;
+    margin-bottom: 10px !important;
+}
+
+ul.jobrief {
+    font-size: 13px !important;
+    list-style: disc !important;
+    padding-left: 15px !important;
+    padding-top: 10px !important;
+}
+
+button#dropdownMenuButton {
+    width: 25px !important;
+}
+
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+#pdfheader .dropdown-toggle::after {
+    display: inline-block !important;
+}
+
+.progress {
+    display: -ms-flexbox !important;
+    display: flex !important;
+    height: 1.5rem !important;
+    overflow: hidden !important;
+    line-height: 0 !important;
+    font-size: .75rem !important;
+    background-color: #e9ecef !important;
+    border-radius: 1rem !important;
+}
+
+p.resumetext.text-muted {
+    line-height: 25px !important;
+    font-size: 14px !important;
+}
+
+.slick-arrow {
+    position: absolute !important;
+    top: 45% !important;
+    cursor: pointer !important;
+    z-index: 999 !important;
+    transition: all 0.2s ease !important;
+}
+
+
+.slick-arrow.nextArrow {
+    right: 0 !important;
+}
+
+.slick-arrow i {
+    color: #969EB5 !important;
+    font-size: 2.5em !important;
+}
+
+.slick-arrow:hover i {
+    color: #981DF0 !important;
+    transform: scale(1.05) !important;
+    transition: all 0.2s ease !important;
+}
+
+@media screen and (max-width:640px) {
+    .link-primary {
+        margin-left: 0 !important;
+    }
+
+    h4 {
+        font-size: 1.2rem !important;
+    }
+
+    .innerpadding {
+        padding: 0 15px !important;
+    }
+
+    .dataction {
+        text-align: right !important;
+    }
+
+    .dataction a {
+        margin-bottom: 15px !important;
+    }
+
+    span.subheading {
+        font-size: 14px !important;
+    }
+
+    .btn-capsule {
+        margin-left: 0 !important;
+        margin-right: 15px !important;
+    }
+}
+
+@media screen and (min-width:990px) and (max-width:1200px) {
+    .avatar {
+        width: 120px !important;
+        height: 120px !important;
+    }
+}
+
+.close {
+    cursor: pointer !important;
+    float: right !important;
+    font-size: 30px !important;
+}
+
+h2 {
+    display: inline-block !important;
+    margin: auto 0 !important;
+}
+
+[mat-dialog-content] {
+    max-height: 50vh !important;
+    min-height: 400px;
+}
+
+/* .aside ul {
+    margin-left: 15px;
+} */
+
+.aside .card {
+    padding: 10px 30px !important;
+}
+
+i {
+    font-style: normal;
+}
+
+#pdfheader .container {
+    padding: 16px ​12px !important;
+}
+
+.socialinks a {
+    max-width: 100%;
+    margin-left: 0px !important;
+}
+
+.langlist tag {
+    float: right;
+}
+
+.skillname {
+    text-transform: capitalize;
+}
+
+.float-right {
+    float: right;
+}
+
+.dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background-color: #969EB5;
+    position: relative;
+    left: -36px;
+    top: 18px;
+}
+
+.skillDot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background-color: #969EB5;
+    display: inline-block;
+    margin-left: 4px;
+}
+
+.blueDot {
+    background-color: #557efc !important;
+}
+
+.mx-2 {
+    margin-right: 10px !important;
+    margin-left: 10px !important;
+}
+
+.html2pdf__page-break {
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width: 220px) and (max-width: 680px) {
+    #pdfheader li {
+        text-align: left !important;
+    }
+
+    .dot {
+        left: -20px !important;
+    }
+
+    .contactinfo {
+        padding-left: 8px !important;
+    }
+}
+
+@media screen and (min-width: 220px) and (max-width: 680px) {
+    #pdfheader li {
+        text-align: left !important;
+    }
+
+    .dot {
+        left: -20px !important;
+    }
+
+    .contactinfo {
+        padding-left: 8px !important;
+    }
+
+    .years {
+        display: block;
+    }
+
+    .aside {
+        padding-left: 0;
+    }
+
+    .skillrating {
+        display: block;
+        width: 100%;
+        padding-bottom: 12px;
+    }
+
+    .stripe .innerpadding {
+        padding-bottom: 20px !important;
+    }
+
+    .companydata {
+        padding-left: 10px;
+    }
+
+    /* .topDiv{
+        margin-top: -4em;
+    } */
+    .tag {
+        display: block;
+        width: 100%;
+        padding-bottom: 12px;
+    }
+}
+
+@media screen and (min-width: 680px) {
+    .years {
+        float: right;
+    }
+}
+
+@media print {
+    * {
+        break-inside: avoid;
+    }
+}
+
+.candName {
+    display: block !important;
+}
+
+.badge-tab span {
+    padding-left: 10px;
+}
+
+.ninja-badge {
+    position: absolute;
+    right: -5px;
+    bottom: -5px;
+}
+
+.goback {
+    color: #4169E3;
+}
+
+@media screen and (min-width: 300px) and (max-width: 768px) {
+    #downDiv {
+        display: block;
+        position: relative;
+        top: 50px;
+    }
+
+    .text-right {
+        text-align: left;
+    }
+
+
+}
+
+
+@media screen and (min-width: 680px) and (max-width: 768px) {
+    #downDiv {
+        display: block;
+        position: relative;
+        top: 0px;
+        padding: 4px !important;
+
+    }
+
+}
+
+@media screen and (min-width: 900px) and (max-width: 889px) {
+    #downDiv {
+        display: block;
+        position: relative;
+        /* top:70px; */
+        padding: 4px !important;
+
+    }
+
+}
+
+@media screen and (min-width: 990px) and (max-width: 1241px) {
+    #downDiv {
+        display: block;
+        position: relative;
+        top: 70px;
+        padding: 4px !important;
+
+    }
+
+}
+
+
+/* [VINCSS] */
+
+.avatar {
+    position: relative;
+    overflow: visible;
+}
+
+.avatarimg {
+    overflow: hidden;
+    border-radius: 50%;
+    max-width: 100% !important;
+    height: 150px !important;
+}
+
+#ninja-badge {
+    position: absolute;
+    right: -5px;
+    bottom: -5px;
+}
+
+.companydata h4 {
+    font-size: 18px;
+}
+
+
+#pdfbody a {
+    font-size: 18px;
+}
+
+#profheader .btn-capsule {
+    font-size: 14px;
+}
+
+.badge-tab img {
+    max-width: initial;
+}
+
+/* .badge-tab>div {
+    width: 90px;
+} */
+
+
+
+@media screen and (min-width:320px) and (max-width:767px) {
+    a.btn-capsule.btn-viewprofile {
+        font-size: 14px;
+        padding: 0px 25px !important;
+        margin: 5px !important;
+        width: 140px;
+        text-align: center;
+    }
+
+    .candata h2 {
+        text-align: center;
+    }
+
+    #profheader a.btn-capsule {
+        padding: 0 15px;
+        height: 45px;
+        line-height: 45px;
+    }
+
+    #profheader h2 {
+        font-size: 1.5rem;
+    }
+
+    .cdk-drop-list h4 {
+        font-size: 1rem;
+    }
+
+    .resumeDiv {
+        text-align: left;
+    }
+
+    .subheading.pl25 {
+        padding-left: 0;
+    }
+
+    .badge-tab img {
+        width: 70px;
+        /* max-width: 60px; */
+    }
+
+    .badge-tab .gold-badge-main {
+        margin-left: 5px;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:1280px) {
+    .companydata h4 {
+        font-size: 1.2rem;
+    }
+
+    .badge-tab img {
+        width: 70px;
+        /* max-width: 60px; */
+    }
+}
+
+@media screen and (min-width:1200px) and (max-width:1359px) {
+    .btn-profedit i:not(.btn-profedit>div+div i) {
+        display: none;
+    }
+
+    .btn-profedit .btn-capsule {
+        padding: 0 10px;
+        height: 44px;
+        line-height: 44px;
+    }
+
+}
+
+@media screen and (min-width:1200px) {
+    .candata h2 {
+        text-align: left !important;
+    }
+
+    .badge-tab img {
+        width: 80px;
+        /* max-width: 90px; */
+    }
+
+    .candata {
+        width: 100%;
+    }
+
+    .badge-tab .gold-badge-main {
+        margin-left: 10px;
+    }
+
+    .candata ul li {
+        text-align: initial !important
+    }
+}

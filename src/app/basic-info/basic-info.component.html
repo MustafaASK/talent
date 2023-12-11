@@ -1,0 +1,284 @@
+<div id="wrapper" class="dashboard-box">
+  <h2 class="text-center mt-4">Preferences</h2>
+  <div class="container mt-4">
+    <div class="row card p-4 prefbox">
+      <div class="col-sm-1">
+
+      </div>
+      <div class="col-sm-12 cur-main">
+
+        <div class="row">
+          <h5 class="cur-title">Current Employment Status <span class="side-text" style="float:center;">
+              (Select one that applies)
+            </span></h5>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"
+              *ngFor="let empstatusobj of curEmpStatusList;let empIndex = index;">
+              <div class="card-1">
+                <mat-card class="emp-status-1"
+                  [ngClass]="{'selected' : empstatusobj.lookupId == formObj.empStatusLookupID}"
+                  (click)="setcurEmpStatus(empstatusobj.lookupId)">
+                  <mat-card-header>
+                    <mat-card-title class="sub-heading">{{empstatusobj.lookupValue}}</mat-card-title>
+                  </mat-card-header>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <h5 class="cur-title">Availability<span class="side-text" style="float:center;">
+              (Select one that applies)
+            </span></h5>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"
+              *ngFor="let empstatusobj of availabilityList;let empIndex = index;">
+              <div class="card-1">
+                <mat-card class="emp-status-1"
+                  [ngClass]="{'selected' : empstatusobj.lookupId == formObj.empAvailLookupID}"
+                  (click)="setAvailability(empstatusobj.lookupId)">
+                  <mat-card-header>
+                    <mat-card-title class="sub-heading">{{empstatusobj.lookupValue}}</mat-card-title>
+                    <mat-card-subtitle class="sub-text">{{ empstatusobj.lookupScreenDesc}}</mat-card-subtitle>
+                  </mat-card-header>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <h5 class="cur-title">Employment Preference<span class="side-text" style="float:center;">
+              (Select one)
+            </span></h5>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"
+              *ngFor="let empstatusobj of employmentPreferenceList;let empIndex = index;">
+              <div class="card-1">
+                <mat-card class="emp-status-1"
+                  [ngClass]="{'selected' : empstatusobj.lookupId == formObj.empPrefLookupID}"
+                  (click)="setEmpPref(empstatusobj.lookupId)">
+                  <mat-card-header>
+                    <mat-card-title class="sub-heading">{{empstatusobj.lookupValue}}</mat-card-title>
+                    <mat-card-subtitle class="sub-text">{{empstatusobj.lookupScreenDesc}}</mat-card-subtitle>
+                  </mat-card-header>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <h5 class="cur-title">Work Location Preference<span class="side-text" style="float:center;">
+              (Select one that applies)
+            </span></h5>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"
+              *ngFor="let empstatusobj of flexibilityPreferenceList;let empIndex = index;">
+              <div class="card-1">
+                <mat-card class="emp-status-1"
+                  [ngClass]="{'selected' : empstatusobj.lookupId == formObj.empFlexLookupID}"
+                  (click)="setEmpPrefFlex(empstatusobj.lookupId)">
+                  <mat-card-header>
+                    <mat-card-title class="sub-heading">{{empstatusobj.lookupValue}}</mat-card-title>
+                    <mat-card-subtitle class="sub-text">{{empstatusobj.lookupScreenDesc}}</mat-card-subtitle>
+                  </mat-card-header>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <h5 class="cur-title">Compensation Preference</h5>
+          <p>Provide your preferred compensation to tell
+            employers what you want to be paid in your next
+            role. To get the best job matches, please share
+            the minimum you want to be paid to consider a
+            role. You will only be matched with opportunities
+            that meet or exceed your preference.
+          </p>
+          <p><strong>You may enter either or both</strong></p>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 group-input">
+
+              <mat-form-field appearance="outline">
+                <input matInput [(ngModel)]="formObj.empYearCompensation" class="right" placeholder="Per Year"
+                  (blur)="setempYearCompensation()">
+                <span matPrefix>$&nbsp;</span>
+                <span matSuffix>&nbsp;&nbsp;Per Year</span>
+                <mat-error></mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 group-input">
+              <mat-form-field appearance="outline">
+                <input matInput [(ngModel)]="formObj.empHourCompensation" class="right" placeholder="Per Hour"
+                  (blur)="setempYearCompensation()">
+                <span matPrefix>$&nbsp;</span>
+                <span matSuffix>&nbsp;&nbsp;Per Hour</span>
+                <mat-error></mat-error>
+              </mat-form-field>
+            </div>
+            <mat-checkbox [(ngModel)]="formObj.empCompThreshhold" (change)="setempCompThreshhold($event)"
+              class="example-margin">Show me jobs with pay rates below the minimum I provided.
+            </mat-checkbox>
+          </div>
+        </div>
+        <!-- <div class="row">
+          <h5 class="cur-title">Travel Preference</h5>
+          <div class="row">
+            <div class="col-sm-6">
+              <p>How far are you willing to commute?</p>
+              <mat-form-field appearance="outline">
+                <mat-select [(ngModel)]="formObj.empTravelMilesLookupID"
+                  (selectionChange)="setempTravelMilesLookupID()">
+                  <mat-option *ngFor="let topping of milesList" [value]="topping.lookupId">{{topping.lookupValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+              <p>What percentage of time can you travel out of town?</p>
+
+              <mat-form-field appearance="outline">
+                <mat-select [(ngModel)]="formObj.empTravelPerTimeLookupID"
+                  (selectionChange)="setempTravelMilesLookupID()">
+                  <mat-option *ngFor="let topping of travelPercentageList" [value]="topping.lookupId">
+                    {{topping.lookupValue}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              
+            </div>
+           
+          </div>
+        </div> -->
+        <!-- <div class="row">
+          <h5 class="cur-title">Relocation Preference<span class="side-text" style="float:center;">
+              (Select one that applies)
+            </span></h5>
+          <div class="row">
+            <div class="col-sm-6" *ngFor="let empstatusobj of relocationPreferenceList;let empIndex = index;">
+              <div class="card-1">
+                <mat-card class="emp-status-1"
+                  [ngClass]="{'selected' : empstatusobj.lookupId == formObj.empRelocPrefLookupID}"
+                  (click)="setRelocationPref(empstatusobj.lookupId)">
+                  <mat-card-header>
+                    <mat-card-title class="sub-heading">{{empstatusobj.lookupValue}}</mat-card-title>
+                    <mat-card-subtitle class="sub-text">Working 1 to 30 Hours per week</mat-card-subtitle>
+                  </mat-card-header>
+                </mat-card>
+              </div>
+            </div>
+          
+          </div>
+          
+        </div> -->
+        <!-- <form [formGroup]="roleForm">
+          <div class="row">
+            <h5 class="cur-title">Role Preference</h5>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="card-1">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Preferred Role Titles</mat-label>
+                    <input matInput placeholder="Preferred Role Titles" formControlName="preferredRoleTitle"
+                      (blur)="setRolePrefences()">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="card-1">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Preferred Location</mat-label>
+                    <input matInput placeholder="Preferred Location" formControlName="preferredLocation"
+                      (blur)="setRolePrefences()">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card-1">
+                  <mat-form-field appearance="outline">
+                    <mat-select (selectionChange)="setempTravelMilesLookupID()" formControlName="roleMiles">
+                      <mat-option *ngFor="let topping of milesRoleList" [value]="topping.lookupId">
+                        {{topping.lookupValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form> -->
+        <div class="row">
+          <h5 class="cur-title">Are you legally authorized to work in United State<span class="side-text"
+              style="float:center;">
+              (Select one that applies)
+            </span></h5>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <div class="card-1">
+                <mat-card class="emp-status-1" [ngClass]="{'selected' : 1 == formObj.legalStatus}"
+                  (click)="setLegalStatus(1)">
+                  <mat-card-header>
+                    <mat-card-title class="sub-heading">Yes</mat-card-title>
+                  </mat-card-header>
+                </mat-card>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <div class="card-1">
+                <mat-card class="emp-status-1" [ngClass]="{'selected' : 2 == formObj.legalStatus}"
+                  (click)="setLegalStatus(2)">
+                  <mat-card-header>
+                    <mat-card-title class="sub-heading">No</mat-card-title>
+                  </mat-card-header>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <h5 class="cur-title">Do you Require a visa sponsorship<span class="side-text" style="float:center;">
+              (Select one that applies)
+            </span></h5>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <div class="card-1">
+                <mat-card class="emp-status-1" [ngClass]="{'selected' : 1 == formObj.visaSponsorStatus}"
+                  (click)="setVisaSponsorStatus(1)">
+                  <mat-card-header>
+                    <mat-card-title class="sub-heading">Yes</mat-card-title>
+                  </mat-card-header>
+                </mat-card>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <div class="card-1">
+                <mat-card class="emp-status-1" [ngClass]="{'selected' : 2 == formObj.visaSponsorStatus}"
+                  (click)="setVisaSponsorStatus(2)">
+                  <mat-card-header>
+                    <mat-card-title class="sub-heading">No</mat-card-title>
+                  </mat-card-header>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="save-button-row"> -->
+      <div class="row">
+        <div class="col-12 text-center">
+          <button class="btn align-middle btn-primary my-2 mx-3 my-lg-0 btn-lg" mat-raised-button
+            (click)="preferenceSave()">Save</button>
+        </div>
+      </div>
+
+
+
+
+      <div class="col-sm-1">
+
+      </div>
+    </div>
+  </div>
+</div>
+<mat-spinner color="warn" *ngIf="showSpinner"></mat-spinner>

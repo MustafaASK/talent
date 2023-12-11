@@ -1,0 +1,17 @@
+Save a copy of build after build is complete
+
+ng build --configuration qa         
+
+ng b --> Dev
+
+
+1) Index.html
+
+    <base href="/">
+    <base href="/csninja-dev/">
+
+2) main.ts
+
+    
+
+

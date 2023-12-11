@@ -1,0 +1,136 @@
+<div class="container verify-notification-container" *ngIf="candPageModalPopup==1">
+
+    <div class="d-flex justify-content-between align-content-center smsNofification mb-3">
+        <h2 class="verify-header">Verify your mobile number to receive notifications via SMS        </h2>
+        <p><span class='close' (click)="onClose()">&#215;</span></p>
+    </div>
+
+    
+
+    <div mat-dialog-content class="content mb-3">
+        <p class="content-msg mb-3">
+            
+            You agree to receive notifications via SMS on your mobile number {{ candDataPhone }}. These notifications include new job alerts, Timecard notifications. Number of notifications will vary based on your activity on the platform. Within your profile you can Turn On or Turn Off notification.</p>
+
+        <p class="content-msg"> Message and Data rates may apply, Text STOP to stop and HELP for help.
+
+        </p>
+    </div>
+
+
+    <div mat-dialog-actions class="d-flex justify-content-left">
+        <!-- <button mat-raised-button color="primary"  class="btn-space" (click)="onConfirm()">Yes</button> -->
+        <div class="align-middle my-2 mx-2 my-lg-0 changebtn">
+            <mat-form-field appearance="outline">
+                <mat-label>Phone</mat-label>
+                <input (keypress)="numberOnly($event)" type="text" matInput mobMask placeholder="phoneNo" appAutoFocusDirective minlength="12" maxlength="12"
+                [(ngModel)]="candDataPhone" required [disabled]="!candDataPhoneEnable" >
+
+                <span *ngIf="!candDataPhoneEnable">
+                    <a type="button" class="btn btn-primary btn-sm verifybutton1" (click)="openVerifyMobileModal()" >Change</a>
+                </span>
+                <mat-error></mat-error>
+            </mat-form-field>
+        </div>
+           
+
+        <div mat-dialog-actions class="d-flex justify-content-left mb-1">
+            <button class="btn align-middle-btn btn-primary" (click)="SendVerification(candDataPhone)">Send Verification Code</button>
+        </div>
+        
+      </div>
+
+
+    
+
+     
+
+    <div mat-dialog-actions class="d-flex justify-content-left">
+        <!-- <button mat-raised-button color="primary"  class="btn-space" (click)="onConfirm()">Yes</button> -->
+        <a href="https://www.cxninja.com/privacy-cookies" class="align-middle my-2 mx-2 my-lg-0" >Privacy Policy</a>
+        <a href="https://www.cxninja.com/terms" class="align-middle my-2 mx-2 my-lg-0">Terms&Conditions</a>
+      </div>
+
+
+</div>
+  
+  <div class="container verify-mobile-container" *ngIf="candPageModalPopup==2" style="max-width: 450px;">
+    <div class="row" >
+        <div class="col-sm-12 mb-1" >
+            <div class="d-flex justify-content-between align-content-center">
+                <h2 class="verify-header">Verify Mobile Number</h2>
+                <span class='close' (click)="onClose()">&#215;</span>
+            </div>
+        </div>
+        <div class="col-sm-12 mb-3" >
+            <p class="content-msg">Please enter the verification code your received on your mobile number <span class="resendVerifyPhone">{{ candDataPhone }}</span>
+            </p>
+        
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col-sm-12" >
+            <form [formGroup]="verifycodeForm">
+                <div class="row" >
+                    <div class="col-sm-12">
+                        <mat-form-field appearance="outline" class="invisible">
+                          <input matInput formControlName="otp">
+                        </mat-form-field>
+        
+                        <mat-form-field  appearance="outline">
+                            <mat-label>Verification Code</mat-label>
+                            <input matInput placeholder="Verification Code" appConfirmEqualValidator="otp" maxlength="6" formControlName="confirmOtp" required>
+                           
+                            <mat-error class="errorMessage" *ngIf=" ((submitted && !verifycodeForm.controls.confirmOtp.touched) || verifycodeForm.controls.confirmOtp.touched)">
+                              
+                          <span *ngIf="verifycodeForm.controls.confirmOtp.errors?.required">Please enter verification code. It can’t be blank.</span>
+                            <span *ngIf="!verifycodeForm.controls.confirmOtp.errors?.required &&verifycodeForm.controls.confirmOtp.errors?.notEqual">Please enter match verification code.</span>
+                            </mat-error>
+                        </mat-form-field> 
+                    </div>
+                   
+                </div>
+                <div class="row" >
+                    <div class="d-flex justify-content-between align-content-center mt-4">
+                        <a class="otpLink" (click)="ReSendVerification()">
+                            Resend Verification code</a>
+                            <button class="btn btn-sm btn-primary" (click)="Submit()">Save</button>
+
+                    </div>
+                    <!-- <div class="col-sm-7" >
+                         <div mat-dialog-actions class="d-flex justify-content-left">
+                             <a class="otpLink" (click)="SendVerification()">
+                                 Resend Verification code</a>
+                         </div>
+                     </div>
+                     
+                     <div class="col-sm-5 text-left submitbtn mt-3">
+                         <button class="btn btn-sm btn-primary" (click)="Submit()">Save</button>
+                     </div> -->
+                 </div>
+        
+            </form>
+        </div>
+    </div>
+          
+        
+    
+    <!-- <div class="row" >
+        <div class="col-sm-12" >
+            <div mat-dialog-actions class="d-flex justify-content-left">
+                <a class="my-2 mx-2 my-lg-0" class="otpLink" (click)="SendVerification()">
+                    Resend Verification code</a>
+            </div>
+        </div>
+    </div> -->
+   
+    <!-- <div class="row" >
+        <div class="col-sm-12" >
+            <div mat-dialog-actions class="d-flex justify-content-left">
+                <a class="my-2 mx-2 my-lg-0" class="otpLink" (click)="SendVerification()">
+                    Resend Verification code</a>
+            </div>
+        </div>
+    </div> -->
+  </div>
+  <mat-spinner color="warn" *ngIf="showSpinner"></mat-spinner>

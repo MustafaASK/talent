@@ -1,0 +1,65 @@
+<div class="employment-form pt-3 pb-3">
+    <form [formGroup]="trainFormObj">
+        <div class="row">
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Training Type</mat-label>
+                    <!-- (openedChange)="selectClosed($event)" -->
+                    <mat-select name="trainingTypeLookupID" formControlName="trainingTypeLookupID" required>
+                        <!-- <mat-option>None</mat-option> -->
+                        <mat-option *ngFor="let masterTrain of MasterTrainings" [value]="masterTrain.lookupId">
+                            {{masterTrain.lookupValue}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error></mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Institution</mat-label>
+                    <input matInput placeholder="Institution" formControlName="institutionName" required>
+                    <mat-error></mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Name" formControlName="trainingName" required>
+                    <mat-error>This Field is required</mat-error>
+                </mat-form-field>
+
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Year</mat-label>
+                    <input matInput placeholder="Year" [matDatepicker]="datepickerA" formControlName="completedYear"
+                        id="date">
+                    <mat-datepicker-toggle matSuffix [for]="datepickerA">
+                        <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #datepickerA startView="multi-year"
+                        (yearSelected)="chosenYearHandler($event, datepickerA)" panelClass="example-year-picker">
+                    </mat-datepicker>
+                    <!-- (monthSelected)= "chosenMonthHandler($event, datepickerA)" -->
+
+                    <mat-error></mat-error>
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-12  mt-3 text-center">
+                <button type="button" class="btn align-middle btn-primary my-2 mx-1 my-lg-0 cusBtn"
+                    (click)="closeInnerForm()">
+                    Cancel
+                </button>
+                <button type="button" class="btn align-middle btn-primary my-2 mx-1 my-lg-0 cusBtn"
+                    (click)="onBlurMethod()">
+                    Save
+                </button>
+            </div>
+        </div>
+    </form>
+
+</div>
+<mat-spinner color="warn" *ngIf="showSpinner"></mat-spinner>

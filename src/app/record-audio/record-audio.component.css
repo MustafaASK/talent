@@ -1,0 +1,40 @@
+
+.svgImg {
+    height: 18px;
+    width: 18px;
+}
+
+/* #btnStop, */
+/* #adioPlay, */
+/* #timer, */
+/* #reRecordBtn, */
+/* #submitAudio, */
+#resultDiv {
+    display: none;
+}
+
+#textToRecord {
+    font-size: 14px;
+    background-color: none !important;
+    resize: none !important;
+}
+
+.card {
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px
+}
+
+.cusBtnHeight button {
+    height: 54px;
+}
+
+button:disabled {
+    cursor: default;
+    
+  background-color: #E1EAF8;
+  color: #AFB9C8 !important;
+  /*background-color: #E5E5E5;*/
+  border: 1px solid #E1EAF8;
+}
+.ml-4{
+    margin-left: 16px;
+}

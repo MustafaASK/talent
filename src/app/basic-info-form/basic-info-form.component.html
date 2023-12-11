@@ -1,0 +1,436 @@
+<div class="employment-form pt-3 pb-3" *ngIf="isResumeBuildeBasicinfopage">
+  <!-- <p>{{basicInfoFormObj.value|json}}</p> -->
+  <form [formGroup]="basicInfoFormObjResumBuilder">
+    <div class="resume-builder">
+      <div class="row">
+        <div class="col-sm-6">
+          <!-- input -->
+          <mat-form-field appearance="outline">
+            <mat-label>Job Title</mat-label>
+            <input matInput placeholder="Job Title" appAutoFocusDirective formControlName="jobTitle"
+              (blur)="onBlurMethodResumBuilder()" autofocus>
+            <mat-error></mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+          <!-- input -->
+          <!-- <div class="avatar">
+                        <img src="assets/avatar.png" alt="" style="height: 60px;">
+                    </div> -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <!-- input -->
+          <mat-form-field appearance="outline" class="vinput-reg">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="First Name" formControlName="firstName" (blur)="onBlurMethodResumBuilder()"
+              required>
+            <mat-error></mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+          <!-- input -->
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Last Name" formControlName="lastName" (blur)="onBlurMethodResumBuilder()"
+              required>
+            <mat-error></mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <!--input -->
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="Email" formControlName="email" (blur)="onBlurMethodResumBuilder()"
+              required>
+            <mat-error></mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6 vinput-reg">
+          <!--input -->
+          <!-- <mat-form-field appearance="outline">
+                        <mat-label>Phone</mat-label>
+                            <input matInput placeholder="Phone" formControlName="phoneNo"  (blur)="onBlurMethodResumBuilder()">
+                            <a type="button" class="btn btn-primary btn-sm verifybutton" (click)="openVerifyMobileModal()" *ngIf="!disableTextbox">Verify</a>
+                            <a class="text-decoration-none" *ngIf="disableTextbox">
+                                <p style="color:green;font-weight:bold">Verified</p>
+                                <img src="assets/icons/pencil.svg" width="16" height="16" >
+                        </a>
+                        
+                        <mat-error></mat-error>
+                    </mat-form-field> -->
+          <!-- label-->
+          <!-- {{ verifiedPhone }} -->
+          <mat-form-field appearance="outline" *ngIf="(verifiedPhone)">
+            <mat-label>phoneNo</mat-label>
+            <input matInput mobMask placeholder="phoneNo" style="float: left;" formControlName="phoneNo"
+              [readonly]="(verifiedPhone)">
+            <p class="mblverified"><i class="fa fa-check"></i> Verified</p>
+            <span class="editpencilIcon">
+              <a href="javascript:void(0);" class="text-decoration-none btn btn-outline-primary"
+                (click)="isEditVerifiedPhone('resume-builder')">
+                <!-- <img src="assets/icons/pencil.svg" width="16" height="16"> -->
+                <i class="fa fa-pencil"></i>
+              </a>
+            </span>
+          </mat-form-field>
+          <!-- input -->
+          <mat-form-field appearance="outline" *ngIf="!(verifiedPhone)" class="parentVerify">
+            <mat-label>phoneNo</mat-label>
+            <input matInput mobMask placeholder="phoneNo" formControlName="phoneNo" (blur)="onBlurMethodResumBuilder()"
+              (keypress)="numberOnly($event)" (ngModelChange)="validateDuplicate('resume-builder')" type="text"
+              minlength="12" maxlength="12" required>
+            <!-- <a type="button" class="btn btn-primary btn-sm verifybutton" (click)="openVerifyMobileModal('resume-builder')">Verify</a> -->
+            <button type="button" class="btn btn-primary btn-sm verifybutton verify-btn"
+              (click)="openVerifyMobileModal('resume-builder')" [disabled]="sameNumerphoneNo">Verify</button>
+            <mat-error></mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 currntAddr mb-3 mt-2">
+      <h3 class="mb-0 ">Current Address</h3>
+    </div>
+    <div class="resume-builder-address">
+      <div class="row">
+        <div class="col-sm-6">
+          <!-- input -->
+          <!-- #search -->
+          <!-- <mat-form-field appearance="outline" class="vinput-reg">
+                        <mat-label>Address Line 1</mat-label>
+                            <input matInput 
+                            (keypress)="onAutocompleteSelected($event,'resume-builder')"
+                             placeholder="Address Line 1"  formControlName="address">
+                        <mat-error></mat-error>
+                    </mat-form-field> -->
+          <mat-form-field appearance="outline" class="vinput-reg">
+            <mat-label>Address Line 1</mat-label>
+            <input type="text" placeholder="Address Line 1" #trigger="matAutocompleteTrigger" matInput
+              (keypress)="onAutocompleteSelected($event,'resume-builder')" formControlName="address"
+              [matAutocomplete]="auto">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
+              (optionSelected)="placeSelected($event, trigger, $event.option.value, 'resume-builder')">
+              <mat-option *ngFor="let option of options" [value]="option">
+                <!-- (optionSelected)="placeSelected($event, trigger, option, 'resume-builder')" -->
+                {{option.name}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+          <!-- input -->
+          <mat-form-field appearance="outline">
+            <mat-label>APT/STE#</mat-label>
+            <input matInput placeholder="APT/STE#" formControlName="apt"
+              (blur)="addressValid=false;onBlurMethodResumBuilder()">
+            <mat-error></mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <!-- input -->
+          <mat-form-field appearance="outline">
+            <mat-label>City</mat-label>
+            <input matInput placeholder="city" formControlName="cityName"
+              (blur)="addressValid=false;onBlurMethodResumBuilder()">
+            <!-- <input matInput placeholder="city"  formControlName="cityName"
+                            [readonly]="true"> -->
+            <mat-error></mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+          <!-- input -->
+          <mat-form-field appearance="outline">
+            <mat-label>State</mat-label>
+            <input matInput placeholder="State" formControlName="stateName"
+              (blur)="addressValid=false;onBlurMethodResumBuilder()">
+            <!-- <input matInput placeholder="State"  formControlName="stateName"[readonly]="true"> -->
+            <mat-error></mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <!-- input -->
+          <mat-form-field appearance="outline">
+            <mat-label>Country</mat-label>
+            <input matInput placeholder="Country" formControlName="countryName"
+              (blur)="addressValid=false;onBlurMethodResumBuilder()">
+            <!-- <input matInput placeholder="Country"  formControlName="countryName" [readonly]="true"> -->
+            <mat-error></mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+          <!-- input -->
+          <mat-form-field appearance="outline">
+            <mat-label>Zipcode</mat-label>
+            <input matInput placeholder="zipcode" formControlName="zipcode"
+              (blur)="addressValid=false;onBlurMethodResumBuilder()">
+            <!-- <input matInput placeholder="zipcode"  formControlName="zipcode"[readonly]="true" > -->
+            <mat-error></mat-error>
+          </mat-form-field>First Name
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- CREATE-UPLOAD-RESUME-->
+<div class="employment-form pt-3 pb-3" *ngIf="!isResumeBuildeBasicinfopage">
+  <!-- <p>{{basicInfoFormObj.value|json}}</p> -->
+  <form [formGroup]="basicInfoFormObj">
+    <div class="create-upload-resume">
+      <div class="row">
+        <div class="col-sm-6">
+          <!-- label-->
+          <mat-form-field appearance="outline" *ngIf="!canEditCodefirstname">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="First Name" formControlName="firstName" [readonly]="!canEditCodefirstname"
+              required>
+            <a class="text-decoration-none" (click)="isEditFirstName()">
+              <img src="assets/icons/pencil.svg" width="16" height="16">
+            </a>
+          </mat-form-field>
+          <!-- input -->
+          <mat-form-field appearance="outline" *ngIf="canEditCodefirstname">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="First Name" appAutoFocusDirective formControlName="firstName"
+              (blur)="onBlurMethod()" autofocus required>
+            <mat-error></mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+          <!-- label-->
+          <mat-form-field appearance="outline" *ngIf="!canEditCodelastname">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Last Name" formControlName="lastName" [readonly]="!canEditCodelastname"
+              required>
+            <a class="text-decoration-none" (click)="isEditLastName()">
+              <img src="assets/icons/pencil.svg" width="16" height="16">
+            </a>
+          </mat-form-field>
+          <!-- input -->
+          <mat-form-field appearance="outline" *ngIf="canEditCodelastname">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Last Name" appAutoFocusDirective formControlName="lastName"
+              (blur)="onBlurMethod()" required>
+            <mat-error></mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <!-- label-->
+          <mat-form-field appearance="outline" *ngIf="!canEditCodeemail">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" formControlName="email" [readonly]="!canEditCodeemail" required>
+            <a class="text-decoration-none" (click)="isEditEmail()">
+              <img src="assets/icons/pencil.svg" width="16" height="16">
+            </a>
+          </mat-form-field>
+          <!--input -->
+          <mat-form-field appearance="outline" *ngIf="canEditCodeemail">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" appAutoFocusDirective formControlName="email" (blur)="onBlurMethod()"
+              required>
+            <mat-error></mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+          <!-- label-->
+          <!-- <mat-form-field appearance="outline" *ngIf="!canEditCodephone">
+                        <mat-label>Phone</mat-label>
+                            <input matInput  placeholder="Phone"  formControlName="phoneNo" [readonly]="!canEditCodephone">
+                            <a class="text-decoration-none" (click)="isEditPhone()" >
+                                <img src="assets/icons/pencil.svg" width="16" height="16">
+                            </a>
+                    </mat-form-field>
+                
+                    <mat-form-field appearance="outline" *ngIf="canEditCodephone">
+                        <mat-label>Phone</mat-label>
+                            <input matInput placeholder="Phone" appAutoFocusDirective formControlName="phoneNo"  (blur)="onBlurMethod()" >
+                        <mat-error></mat-error>
+                    </mat-form-field> -->
+          <mat-form-field appearance="outline" *ngIf="(verifiedPhone)">
+            <mat-label>phoneNo</mat-label>
+            <input matInput mobMask placeholder="phoneNo" style="float: left;" formControlName="phoneNo"
+              [readonly]="(verifiedPhone)" required>
+            <p class="mblverified"><i class="fa fa-check"></i> Verified</p>
+            <span class="editpencilIcon">
+              <a href="javascript:void(0);" class="text-decoration-none btn btn-outline-primary"
+                (click)="isEditVerifiedPhone('create-upload-resume')">
+                <!-- <img src="assets/icons/pencil.svg" width="16" height="16"> -->
+                <i class="fa fa-pencil"></i>
+              </a>
+            </span>
+          </mat-form-field>
+          <mat-form-field appearance="outline" *ngIf="!(verifiedPhone)" class="parentVerify">
+            <mat-label>phoneNo</mat-label>
+            <input matInput mobMask placeholder="phoneNo" formControlName="phoneNo" (keypress)="numberOnly($event)"
+              (ngModelChange)="validateDuplicate('create-upload-resume')" (blur)="onBlurMethod()" minlength="12"
+              maxlength="12" required>
+            <!-- <a type="button" class="btn btn-primary btn-sm verifybutton" (click)="openVerifyMobileModal('create-upload-resume')">Verify</a> -->
+            <button type="button" class="btn btn-primary btn-sm verifybutton verify-btn"
+              (click)="openVerifyMobileModal('create-upload-resume')" [disabled]="sameNumerphoneNo">Verify</button>
+            <mat-error></mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 currntAddr mb-3 mt-2">
+      <h3 class="mb-0 ">Current Address</h3>
+    </div>
+    <div class="create-upload-resume-address">
+      <div class="row">
+        <div class="col-sm-6">
+          <!-- label-->
+          <mat-form-field appearance="outline" *ngIf="!canEditCodeaddress">
+            <mat-label>Address Line 1</mat-label>
+            <input matInput placeholder="Address" formControlName="address" [readonly]="!canEditCodeaddress" required>
+            <a class="text-decoration-none" (click)="isEditAddress()">
+              <img src="assets/icons/pencil.svg" width="16" height="16">
+            </a>
+          </mat-form-field>
+          <!-- input
+                        (ngModelChange)="onChange($event)" 
+                    -->
+          <!-- <mat-form-field appearance="outline"  *ngIf="canEditCodeaddress" class="vinput-reg">
+                        <mat-label>Address Line 1</mat-label>
+                            <input matInput  
+                              #search1
+                              (keypress)="onAutocompleteSelected($event,'create-upload-resume')" 
+                             placeholder="Address Line 1" appAutoFocusDirective  formControlName="address" required>
+                        <mat-error></mat-error>
+                    </mat-form-field> -->
+          <mat-form-field appearance="outline" class="vinput-reg" *ngIf="canEditCodeaddress">
+            <mat-label>Address Line 1</mat-label>
+            <input type="text" placeholder="Address Line 1" #trigger="matAutocompleteTrigger" matInput
+              (keypress)="onAutocompleteSelected($event,'create-upload-resume')" formControlName="address"
+              [matAutocomplete]="auto" required>
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
+              (optionSelected)="placeSelected($event, trigger, $event.option.value, 'create-upload-resume')">
+              <mat-option *ngFor="let option of options" [value]="option">
+                <!-- (click)="placeSelected($event, trigger, option, 'create-upload-resume')"-->
+                {{option.name}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+          <!-- label-->
+          <mat-form-field appearance="outline" *ngIf="!canEditCodeaddress2">
+            <mat-label>APT/STE#</mat-label>
+            <input matInput placeholder="APT/STE#" formControlName="apt" [readonly]="!canEditCodeaddress2">
+            <a class="text-decoration-none" (click)="isEditAddress2()">
+              <img src="assets/icons/pencil.svg" width="16" height="16">
+            </a>
+          </mat-form-field>
+          <!-- input -->
+          <mat-form-field appearance="outline" *ngIf="canEditCodeaddress2">
+            <mat-label>APT/STE#</mat-label>
+            <input matInput placeholder="APT/STE#" appAutoFocusDirective formControlName="apt"
+              (blur)="addressValid=false;onBlurMethod()">
+            <mat-error></mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <!-- label-->
+          <mat-form-field appearance="outline" *ngIf="!canEditCodecity">
+            <mat-label>City</mat-label>
+            <input matInput placeholder="city" formControlName="cityName" [readonly]="!canEditCodecity" required>
+            <a class="text-decoration-none" (click)="isEditCity()">
+              <img src="assets/icons/pencil.svg" width="16" height="16">
+            </a>
+          </mat-form-field>
+          <!-- input -->
+          <mat-form-field appearance="outline" *ngIf="canEditCodecity">
+            <mat-label>City</mat-label>
+            <input matInput placeholder="City" formControlName="cityName" appAutoFocusDirective
+              (blur)="addressValid=false;onBlurMethod()" required>
+            <mat-error></mat-error>
+          </mat-form-field>
+          <!-- <mat-form-field appearance="outline">
+                        <mat-label>City</mat-label>
+                            <input matInput placeholder="City" [readonly]="true" formControlName="cityName">
+                            <mat-error></mat-error>
+                    </mat-form-field> -->
+        </div>
+        <div class="col-sm-6">
+          <!-- label-->
+          <mat-form-field appearance="outline" *ngIf="!canEditCodestate">
+            <mat-label>State</mat-label>
+            <input matInput placeholder="State" formControlName="stateName" [readonly]="!canEditCodestate" required>
+            <a class="text-decoration-none" (click)="isEditState()">
+              <img src="assets/icons/pencil.svg" width="16" height="16">
+            </a>
+          </mat-form-field>
+          <!-- input -->
+          <mat-form-field appearance="outline" *ngIf="canEditCodestate">
+            <mat-label>State</mat-label>
+            <input matInput placeholder="State" appAutoFocusDirective formControlName="stateName"
+              (blur)="addressValid=false;onBlurMethod()" required>
+            <mat-error></mat-error>
+          </mat-form-field>
+          <!-- <mat-form-field appearance="outline">
+                        <mat-label>State</mat-label>
+                            <input matInput placeholder="State" [readonly]="true"  appAutoFocusDirective formControlName="stateName">
+                            <mat-error></mat-error>
+                    </mat-form-field> -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <!-- label-->
+          <mat-form-field appearance="outline" *ngIf="!canEditCodecountry">
+            <mat-label>Country</mat-label>
+            <input matInput placeholder="Country" formControlName="countryName" [readonly]="!canEditCodecountry"
+              required>
+            <a class="text-decoration-none" (click)="isEditCountry()">
+              <img src="assets/icons/pencil.svg" width="16" height="16">
+            </a>
+          </mat-form-field>
+          <!-- input -->
+          <mat-form-field appearance="outline" *ngIf="canEditCodecountry">
+            <mat-label>Country</mat-label>
+            <input matInput placeholder="Country" appAutoFocusDirective formControlName="countryName"
+              (blur)="addressValid=false;onBlurMethod()" required>
+            <mat-error></mat-error>
+          </mat-form-field>
+          <!-- <mat-form-field appearance="outline">
+                    <mat-label>Country</mat-label>
+                        <input matInput placeholder="Country" [readonly]="true" appAutoFocusDirective formControlName="countryName">
+                        <mat-error></mat-error>
+                </mat-form-field>  -->
+        </div>
+        <div class="col-sm-6">
+          <!-- label -->
+          <mat-form-field appearance="outline" *ngIf="!canEditCodezip">
+            <mat-label>Zipcode</mat-label>
+            <input matInput placeholder="Zipcode" formControlName="zipcode" [readonly]="!canEditCodezip">
+            <a class="text-decoration-none" (click)="isEditZip()">
+              <img src="assets/icons/pencil.svg" width="16" height="16">
+            </a>
+          </mat-form-field>
+          <!--input-->
+          <mat-form-field appearance="outline" *ngIf="canEditCodezip">
+            <mat-label>Zipcode</mat-label>
+            <input matInput placeholder="Zipcode" appAutoFocusDirective formControlName="zipcode"
+              (blur)="addressValid=false;onBlurMethod()">
+            <mat-error></mat-error>
+          </mat-form-field>
+          <!-- <mat-form-field appearance="outline">
+                    <mat-label>Zipcode</mat-label>
+                        <input matInput placeholder="Zipcode" [readonly]="true"  appAutoFocusDirective formControlName="zipcode">
+                    <mat-error></mat-error>
+                </mat-form-field> -->
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<mat-spinner color="warn" *ngIf="showSpinner"></mat-spinner>

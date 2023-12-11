@@ -1,0 +1,45 @@
+<div class="container success-page-banner">
+	<div class="row justify-content-around" *ngIf="isGoldBadge">
+		<div class="col-4 text-right">
+	      <img src="assets/badge/Golden-tenkey.png" width="50" alt="image">
+	  </div>
+		<div class="col-4 align-self-center text-center">
+
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" [style.width.%]="progressPercentage"
+                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+	      <!-- <img src="assets/badge/Golden-tenkey.png"  width="50" alt="image"> -->
+	  </div>
+		<div class="col-4 text-left">
+	      <img src="assets/badge/ninja-badge.png"  width="50" alt="image">
+	  </div>
+	</div>
+	<div class="row" *ngIf="isGoldBadge">
+		<h3 style="margin: 10px 10px;">Congratulations !!</h3>
+		<p class="resumetext text-center" style="margin: 5px 10px;">You've unlocked Golden badge of <b>{{assessData.name}}</b></p>
+		<div class="text-center" style="margin: 5px 10px;">
+		<p class="sub-text mx-auto" *ngIf="compAssessments !== totalAssessments">Complete all pending assessments with golden badges to get Ninja badge on your profile.</p>
+			
+		</div>
+	</div>
+	<!-- {{compAssessments}} == {{totalAssessments}} -->
+	<div class="row" *ngIf="!isGoldBadge">
+		<h3 style="margin: 10px 10px;">Congratulations !!</h3>
+		<p class="resumetext text-center" style="margin: 5px 10px;">You have successfully completed the assessment <b>{{assessData.name}}</b></p>
+		<div class="text-center" style="margin: 5px 10px;">
+		<p class="sub-text mx-auto" *ngIf="assessmentcount<2">You can retake this assessment to  unlock your Golden badge for this assessment <b>{{assessData.name}}</b></p>
+<p class="sub-text mx-auto" *ngIf="compAssessments !== totalAssessments">Complete ALL pending basic assessments with Golden badges to  get Ninja badge on your profile.</p>
+			
+		</div>
+	</div>
+	<!-- <div class="row">
+		<div class="col-12 text-center">
+			<button class="btn btn-outline-dark btn-capsule" (click)="goToList()" routerLink="/dashboard">Go to Dashboard</button>
+	  </div>
+	</div> -->
+  
+</div>
+<app-assessments [isAssessmentList]="isAssessmentList" *ngIf="canAssessmentListLoad">
+</app-assessments>
+<mat-spinner color="warn" *ngIf="showSpinner"></mat-spinner>

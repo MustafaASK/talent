@@ -1,0 +1,176 @@
+<!-- <div class="wide wow-animation desktop landscape js csstransforms  page">
+  <header class="section page-header breadcrumbs-custom-wrap bg-gradient bg-secondary-2">
+    <div class="rd-navbar-wrap rd-navbar-default" style="background-color:#ffffff;">
+      <nav class="rd-navbar rd-navbar-original rd-navbar-static rd-navbar--is-stuck" data-layout="rd-navbar-fixed"
+        data-xs-layout="rd-navbar-fixed" data-xs-device-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed"
+        data-sm-device-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed"
+        data-lg-layout="rd-navbar-fullwidth" data-lg-device-layout="rd-navbar-fixed" data-xl-layout="rd-navbar-static"
+        data-xl-device-layout="rd-navbar-static" data-xxl-layout="rd-navbar-static"
+        data-xxl-device-layout="rd-navbar-static" data-lg-stick-up-offset="2px" data-xl-stick-up-offset="2px"
+        data-xxl-stick-up-offset="2px" data-stick-up="true" data-sm-stick-up="true" data-md-stick-up="true"
+        data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+        <div class="rd-navbar-inner">
+          <div class="rd-navbar-panel">
+            <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+            
+            <div class="rd-navbar-brand"><a class="brand-name" routerLink="/home"><img class="logo-default"
+                  src="assets/new/curately-logo.svg" alt="" width="128" height="61" /><img class="logo-inverse"
+                  src="assets/new/curately-logo.svg" alt="" width="128" height="61" /></a></div>
+          </div>
+          <li><a routerLink="/signup"  *ngIf="!authenticated && isHome || isLogin">Sign up</a>
+          </li>
+          <div class="rd-navbar-aside-right">
+            <div class="rd-navbar-nav-wrap">
+              <ul class="rd-navbar-nav">
+                 <li>
+                  <a routerLink="/login" (click)="logout()">Log out</a>
+                </li> 
+              </ul>
+            
+            </div>
+          </div>
+          
+        </div>
+      </nav>
+    </div>
+  </header>
+
+</div> -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light1234">
+  <div class="container-fluid">
+    <!-- (click)="gotohome()" -->
+    <a class="navbar-brand" href="https://www.askconsulting.com/">
+      <!-- <img src="assets/new/curately-logo.svg" alt="" width="180" height="50"> -->
+      <!-- <img src="assets/icons/logo.png" alt="" width="80" height="40" style="margin-left: 20px;"> -->
+      <img src="assets/icons/logo.png" alt="" width="50" height="25" style="margin-left: 20px;">
+
+
+    </a>
+    <!-- <p class="bottom-text"><i>Powered by <strong>Equity</strong></i></p> -->
+    <button class="navbar-toggler d-none" type="button" aria-controls="navbarSupportedContent"
+      (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"> <i class="fas fa-bars"></i> </span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-right">
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink="/login"  *ngIf="!authenticated && (isHome || (!showLeftMenuForThanksApply && !showLeftMenuForJoining))">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/signup"  *ngIf="!authenticated && (isHome || isLogin || (!showLeftMenuForThanksApply && !showLeftMenuForJoining))">Signup</a>
+        </li>
+        <li class="nav-item d-lg-none" *ngIf="showLeftMenuForThanksApply">
+          <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item d-lg-none" *ngIf="showLeftMenuForThanksApply">
+          <a class="nav-link" routerLink="/profile">Profile</a>
+        </li>
+        <li class="nav-item d-lg-none" *ngIf="showLeftMenuForThanksApply">
+          <a class="nav-link" routerLink="/preference">Preferences</a>
+        </li>
+        <li class="nav-item d-lg-none" *ngIf="showLeftMenuForThanksApply">
+          <a class="nav-link" routerLink="/assessments">Assessments</a>
+        </li>
+        <li class="nav-item d-lg-none" *ngIf="showLeftMenuForThanksApply">
+          <a class="nav-link" routerLink="/jobs">Jobs</a>
+        </li> -->
+        <li class="nav-item d-none" *ngIf="showLeftMenuForThanksApply || showLeftMenuForJoining">
+          <a class="nav-link" routerLink="/login" (click)="logout()">Logout ggg</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class=" profile-menu-cont" aria-controls="navbarSupportLoginMenuedContent"
+      (click)="isLoginMenuCollapsed = !isLoginMenuCollapsed" [attr.aria-expanded]="!isLoginMenuCollapsed"
+      aria-label="Toggle navigation" *ngIf="hideMenuInMobile && showLeftMenuForThanksApply">
+      <!-- <div class="profile-img-cont">
+        <img class="user-img-size" src="assets/icons/user-solid.svg" />
+      </div> -->
+      <div class="profile-name-cont-mobile">
+        <p class="profile-name-style">
+          {{(this.firstName?this.firstName[0].toUpperCase():'')+(this.lastName?this.lastName[0].toUpperCase():'')}}
+          <!-- {{this.lastName?this.lastName[0]:''}} -->
+        </p>
+      </div>
+      <!-- <img class="drop-down-size" src="assets/icons/caret-down-solid.svg" /> -->
+    </div>
+    <div class="collapse navbar-collapse menu-items-cont " id="navbarSupportedContent"
+      [ngbCollapse]="isLoginMenuCollapsed" *ngIf="hideMenuInMobile && showLeftMenuForThanksApply">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 menu-items-card ">
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/preference">Preference</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/jobs">Jobs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/settings">Settings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="logout()">Logout</a>
+        </li>
+      </ul>
+    </div>
+    <div mat-button [matMenuTriggerFor]="menu" class="profile-menu-cont" *ngIf="!hideMenuInMobile && showLeftMenuForThanksApply">
+      <div class="profile-img-cont">
+        <img class="user-img-size" src="assets/icons/user-solid.svg" />
+      </div>
+      <div class="profile-name-cont">
+        <p class="profile-name-style">{{this.firstName?this.firstName:''}} {{this.lastName?this.lastName:''}}</p>
+      </div>
+      <img class="drop-down-size" src="assets/icons/caret-down-solid.svg" />
+    </div>
+
+    <mat-menu #menu="matMenu">
+      <a mat-menu-item routerLink="dashboard">
+        <div class="menu-item-cont">
+          <img class="menu-item-img-size" src="assets/icons/house-solid.svg" />
+          <p class="menu-item-text">Dashboard</p>
+        </div>
+      </a>
+      <a mat-menu-item routerLink="profile">
+        <div class="menu-item-cont">
+          <img class="menu-item-img-size" src="assets/icons/user-solid.svg" />
+          <p class="menu-item-text">Profile</p>
+        </div>
+      </a>
+      <a mat-menu-item routerLink="preference">
+        <div class="menu-item-cont">
+          <img class="menu-item-img-size" src="assets/icons/asterisk-solid.svg" />
+          <p class="menu-item-text">Preferences</p>
+        </div>
+      </a>
+      <a mat-menu-item routerLink="settings">
+        <div class="menu-item-cont">
+          <img class="menu-item-img-size" src="assets/icons/gear-solid.svg" />
+          <p class="menu-item-text">Settings</p>
+        </div>
+      </a>
+      <a mat-menu-item routerLink="jobs">
+        <div class="menu-item-cont">
+          <img class="menu-item-img-size" src="assets/icons/users-solid.svg" />
+          <p class="menu-item-text">Jobs</p>
+        </div>
+      </a>
+      <!-- <button mat-menu-item (click)="openUpdatePassword(true)">
+        <div class="menu-item-cont">
+          <img class="menu-item-img-size" src="assets/icons/lock-solid.svg" />
+          <p class="menu-item-text">Update Password</p>
+        </div>
+      </button> -->
+      <button mat-menu-item (click)="logout()">
+        <div class="menu-item-cont">
+          <img class="menu-item-img-size" src="assets/icons/power-off-solid.svg" />
+          <p class="menu-item-text">Logout</p>
+        </div>
+      </button>
+    </mat-menu>
+  </div>
+</nav>

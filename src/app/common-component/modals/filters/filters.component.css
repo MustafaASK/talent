@@ -1,0 +1,170 @@
+/* filter container */
+
+.filter-container {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cancel-icon {
+    cursor: pointer;
+}
+
+.filter-form {
+    height: 100%;
+}
+
+.filter-container-1st-con {
+    width: 100%;
+    height: 85%;
+    padding: 20px 40px;
+    flex-grow: 1;
+}
+
+.filter-cancel-con {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 16px 0px;
+}
+
+.filters-style {
+    font-family: segoe UI !important;
+    font-size: 21px;
+    font-weight: 600;
+    color: #212121;
+}
+
+.remote-jobs-con {
+    display: flex;
+    flex-direction: row;
+    padding: 16px 0px;
+    padding-bottom: 30px;
+}
+
+.remote-jobs {
+    font-family: segoe UI !important;
+    font-size: 14px;
+    font-weight: 400;
+    color: #1A1A1A;
+}
+
+.job-type-date-distance-cont {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    /* gap: 20%; */
+}
+
+.Job-type-cont {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20%;
+}
+
+.job-type-date-distance-text {
+    font-family: segoe UI !important;
+    font-size: 16px;
+    font-weight: 700;
+    color: #212121;
+    margin-bottom: 20px;
+}
+
+.label-text-style {
+    font-family: segoe UI !important;
+    font-size: 16px;
+    font-weight: 400;
+    color: #1A1A1A;
+    margin-bottom: 8px;
+
+}
+
+.label-text-style.mat-ripple-element {
+    background-color: #146EF6;
+    /* Change this to your desired ripple color */
+    color: #146EF6;
+}
+
+.date-posted-cont {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20%;
+}
+
+.radio-group-custom {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-container-2nd-con {
+    height: 15%;
+    /* height: 80px; */
+    background-color: #F2F2F2;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.cancel-view-results-con {
+    display: flex;
+    flex-direction: row;
+    /* gap: 8px; */
+}
+
+.view-btn-style {
+    background-color: #146EF6;
+    color: #FFFFFF;
+    transition: background-color 0.3s;
+    margin-left: 8px;
+}
+
+.view-btn-style:hover {
+    background-color: #0c5acf;
+}
+
+@media screen and (min-width: 280px) and (max-width: 614px) {
+    .filter-container-1st-con {
+        height: 90%;
+    }
+
+    .fixed-cont-in-1st-cont {
+        height: 12%;
+    }
+
+    .section-filters {
+        height: 88%;
+        overflow-y: auto;
+    }
+
+    .job-type-date-distance-cont {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .filter-container-2nd-con {
+        /* height: 60px; */
+        height: 10%;
+        justify-content: center;
+        padding: 16px;
+    }
+
+    .cancel-view-results-con {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .Job-type-cont {
+        margin-right: 0%;
+    }
+
+    .date-posted-cont {
+        margin-right: 0%;
+    }
+}

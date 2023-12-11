@@ -1,0 +1,42 @@
+.close {
+    cursor: pointer;
+    float: right;
+    font-size: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+h2{
+    text-align: left;
+    color: #000000;
+    font: normal normal bold 24px/35px Poppins;
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+[mat-dialog-content]{
+    max-height: 50vh;
+}
+.mat-dialog-container{
+  padding: 15px;
+}
+
+  
+  .copy-btn{
+    background-color: #0984E3;
+    color: #fff;
+    cursor: pointer;
+  }
+  .copied{
+    background-color: #049C28;
+    color: #fff;
+    /*cursor: pointer;*/
+
+  }
+  .form-control, .form-control:focus,.form-control:active,.form-control:visited{
+    box-shadow: none;
+    border: 1px solid #ced4da;
+  }
+  mat-form-field{width:80%}
+

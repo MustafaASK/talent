@@ -1,0 +1,140 @@
+<div id="wrapper" class="dashboard-box">
+  <div class="container px-sm-0">
+    <div class="row text-center success-tab">
+      <div>
+        <h2 class="success"><i class="fa-solid fa-check-circle"></i></h2>
+      </div>
+      <div>
+        <h2 class="success">Thank you for applying to this Job</h2>
+      </div>
+      <div class="sub-text">You've successfully applied for the job of <span class="job-name">{{selectedJob.jobtitle}}</span></div>
+      <div class="sub-text">You'll be notified with further updates on your registered email address.</div>
+      <div class="go-back"><button class="btn btn-outline-dark btn-capsule" (click)="goToList()">Go to Dashboard</button></div>
+    </div>
+    <div class="row"  *ngIf="assessments.length">
+      <div class="col-10 card px-0 assess-body">
+        <section class="innerpadding my-0 assessment-section-card">
+          <div class="assessment-type text-center assess-requir">
+            <p class="assess-requir-title"><i class="fa-solid fa-triangle-exclamation"></i> Assessments Required</p>
+            <p class="resumetext">
+              This job application requires you to complete the assessments listed below to proceed further. Please start assessments to complete your application
+            </p>
+          </div>
+          <div *ngFor="let assessmentIndidlObj of assessments;let assessmentIndex = index;">
+            <section class="my-0 pb-4 pt-4 assessment-section">
+              <div class="row">
+                <div class="col-sm-9 col-xs">
+                  <div class="row">
+                    <div>
+                      <h3><span><img src="{{badgesPath + assessmentIndidlObj.badgePath }}" alt="badge" width="30" height="auto"></span><span class="assessment-name">{{assessmentIndidlObj.name}}</span></h3>
+                    </div>
+                    <p class="resumetext text-muted">{{assessmentIndidlObj.description}}</p>
+                  </div>
+                  <div class="row assessment-list-footer">
+                    <div class="col-md-5 col-6 px-0"><span><i class="fa-solid fa-hourglass"></i></span> <span class="px-1">Assessment Time: {{assessmentIndidlObj.completeTime}}</span></div>
+                    <div class="col-md-5 col-6 px-0"><span><i class="fa-solid fa-briefcase"></i></span> <span class="px-1">Required by {{assessmentIndidlObj.noOfJobs}} Jobs</span></div>
+                  </div>
+                </div>
+                <div class="col-sm-3 col-xs row align-items-center p-5" *ngIf="(assessmentIndidlObj.completionStatus == '10018000' || assessmentIndidlObj.completionStatus == '10018001' || assessmentIndidlObj.completionStatus == '0' && assessmentIndidlObj.count < 2)">
+                  <button class="btn align-items-center btn-base my-2 mx-3 my-sm-0 btn-sm" (click)="openInviteForm(assessmentIndidlObj)" *ngIf="assessmentIndidlObj.completionStatus == '10018001'">Resume</button>
+                  <button class="btn align-items-center btn-base my-2 mx-3 my-sm-0 btn-sm" (click)="openInviteForm(assessmentIndidlObj)" *ngIf="assessmentIndidlObj.completionStatus == '0'">Start</button>
+                </div>
+                <div class="col-sm-3 col-xs row align-items-center text-center" *ngIf="assessmentIndidlObj.completionStatus == '10018003'">
+                  <div>
+                    <div>
+                      <button class="btn align-items-center btn-base my-2 mx-3 my-sm-0 btn-sm" (click)="openInviteForm(assessmentIndidlObj)" *ngIf="assessmentIndidlObj.requiredBadgePath != '' &&  (assessmentIndidlObj.requiredBadgePath.toLowerCase().indexOf('gold') == '-1') && assessmentIndidlObj.count == 1">Retake</button>
+                      <p *ngIf="assessmentIndidlObj.requiredBadgePath != '' &&  (assessmentIndidlObj.requiredBadgePath.toLowerCase().indexOf('gold') == '-1') && assessmentIndidlObj.count == 1" mat-raised-button matTooltip="{{getMoreInformation()}}" aria-label="Button that displays a tooltip when focused or hovered over"><span class="retake-circle mx-1"><i class="fa fa-info-circle"></i></span><span>Why Retake?</span></p>
+                    </div>
+                    <div>
+                      <img src="assets/badge/Golden-tenkey.png" alt="badge" width="100">
+                    </div>
+                    <div class="completed-status"><span><i class="fa-solid fa-check"></i></span><span>Completed</span></div>
+                    <div class="taken-time">Taken on {{assessmentIndidlObj.date | date : 'd MMM y' }}</div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div *ngIf="!assessments.length">
+      
+        <!-- Job Carousel -->
+        <div class="col-12 card px-0">
+          <section id="smry" class="innerpadding my-0">
+            <div class="d-flex align-items-center justify-content-between card-head">
+              <h3 class="recom-job-title mb-0">Explore more jobs similar to your interest</h3>
+              <!-- <a routerLink="/jobs" class="link-blu">
+                See All
+              </a> -->
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="row slider jobs">
+                  <!-- Job Card -->
+                  <div class="col-12" *ngIf="jobsList.length">
+                    <carousel [itemsPerSlide]="itemsPerSlide" [noWrap]="noWrapSlides" [showIndicators]="showIndicator" [interval]="myInterval">
+                      <slide *ngFor="let job of jobsList" 
+                      (click)="goToJobList(job.jobid)"
+                      class="slide-box">
+                        <div class="jobox">
+                          <div class="d-flex justify-content-between">
+                            <h4><strong>{{job.jobtitle}}</strong></h4>
+                            <!-- <div class="dropdown ml-2">
+                                                            <button class="btn btn-secondary dropdown-toggle"
+                                                                type="button" id="dropdownMenuButton"
+                                                                data-toggle="dropdown" aria-haspopup="true"
+                                                                aria-expanded="false" tabindex="0">
+                                                                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu"
+                                                                aria-labelledby="dropdownMenuButton">
+                                                                <a class="dropdown-item" href="#" tabindex="0"> <i
+                                                                        class="fa fa-heart" aria-hidden="true"></i>
+                                                                    Save
+                                                                    Job</a>
+                                                                <a class="dropdown-item" href="#" tabindex="0"> <i
+                                                                        class="fa fa-ban" aria-hidden="true"></i>
+                                                                    Not
+                                                                    Interested</a>
+                                                            </div>
+                                                        </div> -->
+                          </div>
+                          <ul class="mb-0 jobmeta">
+                            <li><i class="fa fa-building"></i>{{job.compname}}
+                            </li>
+                            <li><i class="fa fa-map-marker"></i> {{job.city}},
+                              {{job.state}}
+                            </li>
+                            <li>
+                              <i class="fa fa-usd"></i>
+                              <span *ngIf="job.payrange">
+                                {{job.payrange}}
+                              </span>
+                              <span *ngIf="!job.payrange">
+                                <span *ngIf="job.payrange1">{{job.payrange1}} -</span>
+                                {{job.payrange2}}
+                              </span>
+                              <span *ngIf="job.paytype">
+                                per {{job.paytype}}
+                              </span>
+                            </li>
+                          </ul>
+                          <div class="jobrief ckTxt" [innerHtml]='job.descShort'>
+                          </div>
+                          <span class="text-muted"><small>
+                              {{job.date | date : 'MMM d, y'}}
+                            </small></span>
+                        </div>
+                      </slide>
+                    </carousel>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+<!-- <ngfFormData
+  [files]      = "files"
+  postName     = "file"
+  [(FormData)] = "sendableFormData"
+></ngfFormData> -->
+<!-- [httpEvent] = "httpEvent" -->
+
+<!-- <ngfUploadStatus
+  [(percent)] = "progress"
+></ngfUploadStatus> -->
+<div id="wrapper" class="dashboard-box">
+  <div class="container upload-resume">
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-sm-12 col-sm-offset-2 text-center">
+          <h4 class="upload-resume-title_inactive"> <strong> Welcome! Let's create your profile </strong></h4>
+            <p class="sub-text_inactive">We know you are busy, Upload your resume and we will create most of your profile</p>
+          </div>
+        </div>
+       
+       
+        <div class="section group dropzone-box mx-auto section-upload-youresume">
+          <p class="sub-heading_inactive mb-2"><span class="upload-res-text">Upload your resume</span></p>
+          <!-- <mat-icon class = "icon">cloud_upload</mat-icon>
+            <p class="center"><strong>Drop your resume here or <span style='color: #57A7F7;'>Browse</span></strong></p> -->
+          <!-- Dropzone -->
+          <ngx-dropzone (change)="onSelectFile($event)"  [multiple]="false" [accept]="'.pdf, .doc, .docx'">
+            <ngx-dropzone-label fxLayout="column" (click)="onClickBrowseFile()" fxLayoutAlign="space-around center" *ngIf="!files.length">
+              <mat-icon class="upload">
+                cloud_upload
+              </mat-icon>
+              <div>
+                 <span class='drop-text-bro'>Drop your resume here or</span>
+                 <span class='text-bro'>Browse</span>
+              </div>
+            </ngx-dropzone-label>
+            <div *ngFor="let f of files" fxLayout="row" fxLayoutAlign="center center" class="fileDiv">
+              <span class="fileName">
+                {{ f.name }}
+              </span>
+              <span (click)="removeFile($event)">
+                <mat-icon>close</mat-icon>
+              </span>
+            </div>
+          </ngx-dropzone>
+          <!-- Dropzone Ends Here -->
+          <div class="createone">
+            <p class="sub-heading2_inactive mt-2 text-center">
+              <span class="do-resume">Do not have resume?</span>
+            <!-- <a routerLink="/resume-builder"> Create one</a> -->
+            <a class="createOne" (click)="resumeBuilder()"> Create one</a>
+  
+          </p>
+          </div>
+        
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- <div ngfSelect multiple="1" [(files)]="files" (change)="onSelectFile($event)">
+    Tap to Select
+  </div> -->
+  
+  <!-- <img [src]="url" height="200"> <br/> -->
+  <!-- <input type='file' [(files)]="files" (change)="onSelectFile($event)"> -->
+  
+  <mat-spinner color="warn" *ngIf="showSpinner"></mat-spinner>
+  
+  <!-- <div ngfDrop selectable="1" multiple="1"
+    [(files)]="files"
+    [(validDrag)]="validComboDrag"
+    [(invalidDrag)]="invalidComboDrag"
+  >
+    Combo drop/select zone
+  </div> -->
+  <!-- [ngClass]="{'goodDragClass':validComboDrag, 'badDragClass':invalidComboDrag}" -->

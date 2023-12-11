@@ -1,0 +1,61 @@
+:host ::ng-deep .ck.ck-editor__editable {
+	min-height: 200px;
+}
+mat-form-field {
+    width: 100%;
+}
+
+.cur-title {
+   margin-bottom: 1em;
+}
+.cur-main-add {
+    cursor: pointer;
+}
+.cur-main-add-button {
+    font-size: 14px;
+    font-weight: bold;
+}
+.cur-main-add-circle-outline {
+    float: left;
+    margin-right:5px;
+}
+.section-expansion{
+    border: 1px solid #29293a;
+}
+.example-custom-date-class {
+    background: orange;
+    border-radius: 100%;
+  }
+
+  .employment-form{
+    border: 1px solid #aaa;
+    position: relative;
+}
+.employment-form .close-icon{
+    position: absolute;
+    top: -15px;
+    right: -8px;
+    cursor: pointer;
+}
+
+
+.basic-container {
+    text-align: center;
+    position: absolute;
+    top: 34px;
+}
+.basic-container .skills {
+    padding:5px;
+}
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+
+  @media screen and (min-width:320px) and (max-width:680px) {
+    .mat-radio-button ~ .mat-radio-button{
+        margin-left: 0 !important;
+    }
+    .basic-container{
+        text-align: left;
+    }
+  }

@@ -1,0 +1,9 @@
+.header-section {
+    padding: 40px 0;
+    text-align: center;
+    background-color: black;
+}
+.header-section .main-title {
+    font-size: 60px;
+    color: white;
+}

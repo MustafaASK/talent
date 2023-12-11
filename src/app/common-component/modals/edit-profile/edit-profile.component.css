@@ -1,0 +1,103 @@
+.close {
+    cursor: pointer;
+    float: right;
+    font-size: 30px;
+}
+h2{
+    text-align: left;
+    color: #000000;
+    font: normal normal bold 24px/35px Poppins;
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+}
+[mat-dialog-content]{
+    max-height: 50vh;
+}
+
+
+.btn {
+    padding: 10px 22px;
+    border-radius: 35px;
+    /* font-family: "Oswald", Helvetica, Arial, sans-serif; */
+    font-weight: 400;
+    text-transform: none;
+   
+}
+/* .btn-primary, .btn-primary:focus {
+    padding: 10px 22px;
+    color: #ffffff;
+ 
+    box-shadow: none;
+    
+} */
+.btn-primary:hover, .btn-primary:active, .btn-primary:hover {
+    color: #ffffff;
+    background-color: #0264b1;
+    border-color: #0264b1;
+    padding: 10px 22px;
+    color: #ffffff;
+    /*background-color: #000;
+    border-color: #000;*/
+    /* font-family: 'Open Sans'; */
+    box-shadow: none;
+  }
+  mat-form-field{width:100%}
+
+  
+a.btn.btn-primary.btn-sm.verifybutton {
+    min-width: 80px !important;
+}
+.mblverified {
+    color: green;
+    font-weight: bold;
+    float: left;
+}
+.verified-pencil {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background: #0984E3;
+}
+a.btn.btn-primary.btn-sm.verifybutton1 { 
+    min-width: 0 !important;
+    float: right;
+    margin-top: -14px;
+}
+
+input[formcontrolname="phoneNo"] {
+    display: inline;
+    border: 1px solid none;
+    max-width: 55%;
+}
+
+.mat-form-field-infix {
+    max-height: 55px;
+}
+
+
+.editpencilIcon a.btn {
+    padding: 0px 4px 0px 2px;
+    border-radius: 2px;
+}
+.currntAddr h3 {
+    margin-bottom: 15px;
+    text-align: left !important;
+    font-weight: bold !important;
+    font-size: 1.4em;
+    text-transform: capitalize;
+}
+
+.verify-btn{
+    min-width: 0!important;
+    float: right;
+    margin-top: -14px;
+}
+button:disabled{
+  background-color: #E1EAF8;
+  color: #AFB9C8 !important;
+  /*background-color: #E5E5E5;*/
+  border: 1px solid #E1EAF8;
+}

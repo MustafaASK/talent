@@ -1,0 +1,312 @@
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid text-center">
+    <a class="navbar-brand" href="{{logoUrl}}">
+      <img src="assets/new/curately-logo.svg" alt="" width="180" height="50">
+    </a>
+  </div>
+</nav>
+<div id="wrapper" class="dashboard-box">
+  <div class="container px-sm-0">
+    <div class="row">
+      <div class="col-sm-1">
+
+      </div>
+      <div class="col-sm-10 cur-main">
+      	
+
+        <div id="jobsContent">
+          <form [formGroup]='jobForm'>
+            <div class="row mt-3">
+              <section class="intro my-0">
+                <div class="container card py-0 px-sm-0">
+                  <div>
+                    <div class="card-body">
+                      <div class="row">
+                        <!-- col-lg-12 col-xl-10  -->
+                        <div class="col-12 d-lg-flex flex-row mb-lg-4 mb-xl-0">
+                          <div class='mt-3 mb-3'
+                            [ngClass]="{'col-sm-12 d-flex justify-content-start': isMobile, 'col-sm-4' : !isMobile}">
+                            <div class="col-4" *ngIf="isMobile">
+                              <button class="btn d-inline-flex" type="button" (click)="filtersHide = !filtersHide"
+                                [ngClass]="{'btn-outline-secondary': filtersHide, 'btn-outline-success': filtersHide}">
+                                <mat-icon>
+                                  filter_alt
+                                </mat-icon>
+                                 <span class="d-none d-md-block"> Filters </span>
+                              </button>
+                            </div>
+                            <!-- <div class="col-1" *ngIf="isMobile"></div> -->
+                            <div class="" [ngClass]="{'col-sm-7': isMobile, 'col-sm-12' : !isMobile}">
+                              <mat-form-field appearance="outline">
+                                <mat-label>Job Title, Keywords</mat-label>
+                                <input matInput placeholder="Job Title, Keywords" formControlName="keyWords"
+                                  (keyup.enter)="getJobs('keyWords')">
+                                <mat-icon matPrefix>search</mat-icon>
+                              </mat-form-field>
+                              <!-- <div class="form-group has-search">
+                                <span class="fa fa-search form-control-feedback"></span>
+                                <input type="text" class="form-control" placeholder="Job Title, Keywords">
+                              </div> -->
+                            </div>
+                          </div>
+                          <div class="mt-3 mb-3" style="margin-right: 10px;"
+                            [ngClass]="{'col-sm-12': isMobile, 'col-sm-2' : !isMobile}"
+                            [hidden]='filtersHide && isMobile'>
+                            <mat-form-field appearance="outline" [ngClass]="{'d-block': isMobile}">
+                              <mat-label>Location</mat-label>
+                              <mat-select formControlName="location" (selectionChange)='getJobs("location")'>
+                                <mat-option value="0"></mat-option>
+                                <mat-option value="AL">Alabama</mat-option>
+                                <mat-option value="AK">Alaska</mat-option>
+                                <mat-option value="AS">American Samoa</mat-option>
+                                <mat-option value="AZ">Arizona</mat-option>
+                                <mat-option value="AR">Arkansas</mat-option>
+                                <mat-option value="CA">California</mat-option>
+                                <mat-option value="CO">Colorado</mat-option>
+                                <mat-option value="CT">Connecticut</mat-option>
+                                <mat-option value="DE">Delaware</mat-option>
+                                <mat-option value="DC">Dist of Columbia</mat-option>
+                                <mat-option value="FL">Florida</mat-option>
+                                <mat-option value="GA">Georgia</mat-option>
+                                <mat-option value="GU">Guam</mat-option>
+                                <mat-option value="HI">Hawaii</mat-option>
+                                <mat-option value="ID">Idaho</mat-option>
+                                <mat-option value="IL">Illinois</mat-option>
+                                <mat-option value="IN">Indiana</mat-option>
+                                <mat-option value="IA">Iowa</mat-option>
+                                <mat-option value="KS">Kansas</mat-option>
+                                <mat-option value="KY">Kentucky</mat-option>
+                                <mat-option value="LA">Louisiana</mat-option>
+                                <mat-option value="ME">Maine</mat-option>
+                                <mat-option value="MH">Marshall Islands</mat-option>
+                                <mat-option value="MD">Maryland</mat-option>
+                                <mat-option value="MA">Massachusetts</mat-option>
+                                <mat-option value="MI">Michigan</mat-option>
+                                <mat-option value="FM">Micronesia</mat-option>
+                                <mat-option value="MN">Minnesota</mat-option>
+                                <mat-option value="MS">Mississippi</mat-option>
+                                <mat-option value="MO">Missouri</mat-option>
+                                <mat-option value="MT">Montana</mat-option>
+                                <mat-option value="NE">Nebraska</mat-option>
+                                <mat-option value="NV">Nevada</mat-option>
+                                <mat-option value="NH">New Hampshire</mat-option>
+                                <mat-option value="NJ">New Jersey</mat-option>
+                                <mat-option value="NM">New Mexico</mat-option>
+                                <mat-option value="NY">New York</mat-option>
+                                <mat-option value="NC">North Carolina</mat-option>
+                                <mat-option value="ND">North Dakota</mat-option>
+                                <mat-option value="MP">Northern Mariana Islands</mat-option>
+                                <mat-option value="OH">Ohio</mat-option>
+                                <mat-option value="OK">Oklahoma</mat-option>
+                                <mat-option value="OR">Oregon</mat-option>
+                                <mat-option value="PW">Palau</mat-option>
+                                <mat-option value="PA">Pennsylvania</mat-option>
+                                <mat-option value="PR">Puerto Rico</mat-option>
+                                <mat-option value="RI">Rhode Island</mat-option>
+                                <mat-option value="SC">South Carolina</mat-option>
+                                <mat-option value="SD">South Dakota</mat-option>
+                                <mat-option value="TN">Tennessee</mat-option>
+                                <mat-option value="TX">Texas</mat-option>
+                                <mat-option value="AA">U.S. Armed Forces America</mat-option>
+                                <mat-option value="AE">U.S. Armed Forces Europe</mat-option>
+                                <mat-option value="AP">U.S. Armed Forces Pacific</mat-option>
+                                <mat-option value="UT">Utah</mat-option>
+                                <mat-option value="VT">Vermont</mat-option>
+                                <mat-option value="VI">Virgin Islands (US)</mat-option>
+                                <mat-option value="VA">Virginia</mat-option>
+                                <mat-option value="WA">Washington</mat-option>
+                                <mat-option value="WV">West Virginia</mat-option>
+                                <mat-option value="WI">Wisconsin</mat-option>
+                                <mat-option value="WY">Wyoming</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+                          <div class="mt-3 mb-3" style="margin-right: 10px;"
+                            [ngClass]="{'col-sm-12': isMobile, 'col-sm-2' : !isMobile}"
+                            [hidden]='filtersHide && isMobile'>
+                            <mat-form-field appearance="outline" [ngClass]="{'d-block': isMobile}">
+                              <mat-label>Job Type</mat-label>
+                              <mat-select formControlName="jobType" (selectionChange)='getJobs("jobtype")'>
+                                <!-- <mat-option *ngFor="let jobtype of jobtypes" [value]="jobtype.lookupId">
+                                  {{jobtype.lookupValue}}</mat-option> -->
+                                <mat-option value="0"></mat-option>
+                                <mat-option value="Part - Time Contract:1-20">Part - Time Contract (1-20 Hrs)</mat-option>
+                                <mat-option value="Part - Time Contract:21-30">Part - Time Contract (21-30 Hrs)</mat-option>
+                                <mat-option value="Full - Time Contract">Full - Time Contract</mat-option>
+                                <mat-option value="Full - Time Employee">Full - Time Employee</mat-option>
+                                <mat-option value="FreeLancer">FreeLancer</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                            <!-- <div class="form-outline">
+                              <select class="form-select" aria-label="Default select">
+                                <mat-option value=''>Job Type</mat-option>
+                                <mat-option *ngFor="let jobtype of jobtypes" [value]="jobtype.lookupValuemat-option>
+                                  {{jobtype.lookupValue}}</option>
+                              </select>
+                            </div> -->
+                          </div>
+                          <!-- <div class="mt-3 mb-3" style="margin-right: 10px;"
+                            [ngClass]="{'col-sm-12': isMobile, 'col-sm-2' : !isMobile}"
+                            [hidden]='filtersHide && isMobile'>
+                            <mat-form-field appearance="outline" [ngClass]="{'d-block': isMobile}">
+                              <mat-label>Hours per week</mat-label>
+                              <mat-select formControlName="hours" (selectionChange)='getJobs()'>
+                                <mat-option value="0"></mat-option>
+                                <mat-option value="1-30"> 1-30</mat-option>
+                                <mat-option value="31-40"> 31-40</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div> -->
+                          <div class="mt-3 mb-3" style="margin-right: 10px;"
+                            [ngClass]="{'col-sm-12': isMobile, 'col-sm-2' : !isMobile}"
+                            [hidden]='filtersHide && isMobile'>
+                            <mat-form-field appearance="outline" [ngClass]="{'d-block': isMobile}">
+                              <mat-label>Pay Type</mat-label>
+                              <mat-select formControlName="payRate" (selectionChange)='getJobs("payrate")'>
+                                <mat-option value="0"></mat-option>
+                                <mat-option value="Hourly"> Hourly</mat-option>
+                                <mat-option value="Salary"> Salary</mat-option>
+                                <mat-option value="Project"> Project</mat-option>
+                                <!-- <mat-option value="DOE"> DOE</mat-option> -->
+                              </mat-select>
+                            </mat-form-field>
+                            <!-- <div class="form-outline">
+                              <select class="form-select" aria-label="Default select">
+                                <mat-option selected>Pay rate</mat-option>
+                                <mat-option value="1">Option 2</mat-option>
+                              </select>
+                            </div> -->
+                          </div>
+
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </form>
+          <div class="row" *ngIf="jobsList && !jobsList.length && searched">
+            <div class="col-sm-12">
+              <div class="jobox card">
+                <h2 class="errorTxt">{{errorTxt}}</h2>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" *ngIf="jobsList && jobsList.length">
+            <div class="joblistDiv" [ngClass]="{'col-sm-12': isMobile, 'col-sm-6' : !isMobile}">
+              <!-- Job Card -->
+              <div class="col-12" *ngFor="let job of jobsList; let i = index;">
+                <div class="jobox card" (click)="selectJob(i)"  [ngClass]="{'selected' : job.jobid == selectedJob.jobid }">
+                  <div class="justify-content-between mb-2">
+                    <h4><strong [title]="job.jobtitle">{{job.jobtitle}}</strong></h4>
+
+                    <!-- <div class="dropdown ml-2">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-ellipsis-v"></i>
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#"> <i class="fa fa-heart"></i>
+                          Save
+                          Job</a>
+                        <a class="dropdown-item" href="#"> <i class="fa fa-ban"></i>
+                          Not
+                          Interested</a>
+                      </div>
+                    </div> -->
+                  </div>
+                  <ul class="mb-0 jobmeta">
+                    <li><i class="fa fa-building"></i>{{job.compname}}</li>
+                    <!-- <i class="fa fa-map-marker-alt -->
+                    <li><i class="fa fa-map-marker"></i> {{job.city}}<span *ngIf="job.city && job.state">, </span>
+                      {{job.state}}</li>
+                    <li>
+                      <i class="fa fa-usd"></i>
+                      <span *ngIf="job.payrange">
+                        {{job.payrange}} 
+                      </span>
+                      <span *ngIf="!job.payrange">
+                        <span *ngIf="job.payrange1">{{job.payrange1}} -</span>
+                        {{job.payrange2}}
+                      </span>
+                      <span *ngIf="job.paytype">
+                        per {{job.paytype}}
+                      </span> 
+                      <!-- <span *ngIf="(job.payrange1 || job.payrange1 == "0") && job.payrange2">
+                        {{job.payrange1 | number : '1.2-2'}} &nbsp;-&nbsp;
+                        {{job.payrange2 | number : '1.2-2'}}
+                      </span>
+                      <span *ngIf="(job.payrange1 || job.payrange1 != 0) && !job.payrange2">
+                        {{job.payrange1 | number : '1.2-2'}} 
+                      </span>
+                      <span *ngIf="!(job.payrange1 || job.payrange1 == 0) && job.payrange2">
+                        {{job.payrange2 | number : '1.2-2'}}
+                      </span>
+                      <span *ngIf="!(job.payrange1 || job.payrange1 != 0) && !job.payrange2">
+                        {{job.payrange}}
+                      </span>
+                      -->
+                    </li>
+                  </ul>
+                  <div class="jobrief ckTxt mb-3" [innerHtml]='job.descShort'>
+
+                  </div>
+                  <span class="text-muted"><small>
+                      {{job.date | date : 'MMM d, y'}}
+                    </small></span>
+                </div>
+              </div>
+            </div>
+            <!-- Job Description -->
+            <div class="col-sm-6" *ngIf="!isMobile">
+              <div class="card" id="jobdesc" *ngIf="selectedJob">
+                <div class="jobdesc-header">
+                  <div class="d-flex justify-content-between mb-2">
+                    <h4><strong [title]="selectedJob.jobtitle">{{selectedJob.jobtitle}}</strong></h4>
+                  </div>
+                  <ul class="mb-0 jobmeta">
+                    <li><i class="fa fa-building"></i>{{selectedJob.compname}}</li>
+                    <li><i class="fa fa-map-marker"></i> {{selectedJob.city}}<span *ngIf="selectedJob.city && selectedJob.state">, </span>
+                      {{selectedJob.state}}</li>
+                    <li>
+                      <i class="fa fa-usd"></i>
+                      <span *ngIf="selectedJob.payrange">
+                        {{selectedJob.payrange}} 
+                      </span>
+                      <span *ngIf="!selectedJob.payrange">
+                        <span *ngIf="selectedJob.payrange1">{{selectedJob.payrange1}} -</span>
+                        {{selectedJob.payrange2}}
+                      </span>
+                      <span *ngIf="selectedJob.paytype">
+                        per {{selectedJob.paytype}}
+                      </span> 
+                    </li>
+                  </ul>
+                  <button href="javascript:void(0);" class="btn btn-primary mt-3 ml-0 mb-0 text-white"  (click)="applyJob()"
+                    *ngIf="!selectedJob.applied">
+                    Apply Now
+                  </button>
+                  <a href="javascript:void(0);" class="btn btn-success mt-3 ml-0 mb-0 text-white"
+                    *ngIf="selectedJob.applied">
+                    Applied
+                  </a>
+                </div>
+                <hr>
+                <div class="jobdesc-body">
+                  <div class="jobrief ckTxt" [innerHtml]='selectedJob.description'>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+   </div>
+</div>
+<mat-spinner color="warn" *ngIf="showSpinner"></mat-spinner>

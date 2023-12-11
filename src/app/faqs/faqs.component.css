@@ -1,0 +1,84 @@
+
+/* #faqsContainer {
+
+    background-color: #fafafa;
+    border: 2px solid #cccccc;
+} */
+#faqsContainer, .row {
+    text-align: justify;
+    padding: 2%;
+    margin-bottom: 0px;
+}
+.row {
+    
+    display: flex;
+    
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.media {
+    display: flex;
+    align-items: flex-start;
+}
+#privacyContainer .row h1, h2, h3 h4 {
+    color: black;
+    text-align: left;
+}
+#cookiesContainer .row h1, h2, h3 h4 {
+    color: black;
+    text-align: left;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Jost', sans-serif !important;
+    line-height: 1.5;
+    margin-top: 0;
+}
+.h1, h1 {
+    font-size: 2.5rem;
+}
+.h4, h4 {
+    font-size: 1.5rem;
+}
+.h3, h3 {
+    font-size: 1.75rem;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: .5rem;
+    font-weight: 500;
+}
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.cookiespolicyul {
+    list-style: none;
+    text-align: left;
+}
+ul.privacy_policy_ul, ul.cookies_policy_ul {
+    
+    text-align: left;
+}
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.cookiespolicyul li p strong::before {
+    content: "\2022";
+    color: black;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    /* margin-left: -1em; */
+}
+ul.privacy_policy_ul li::before, ul.cookies_policy_ul li p::before {
+    content: "\2022";
+    color: black;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    /* margin-left: -1em; */
+}
+.lowerCase{
+    text-transform: lowercase;
+}

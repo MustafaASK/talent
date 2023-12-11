@@ -1,0 +1,57 @@
+.mat-form-field{
+	display: block;
+}
+.looks-good{
+	color: #0984E3;
+	margin: 0;
+    font-weight: bold;
+}
+@media screen and (max-width: 767px) {
+	.newcontinue .missing-main{
+		width: 100%;
+	    margin: 0 auto;
+	}
+	h4{
+		font-size: 18px;
+			/* line-height: 1.42857; */
+			font-weight: bold;
+			text-transform: inherit;
+			letter-spacing: 1px;
+	}
+	
+
+}
+@media screen and (min-width: 768px) {
+	.newcontinue .missing-main{
+		width: 29%;
+	    margin: 0 auto;
+	}
+	h4{
+		font-size: 26px;
+			/* line-height: 1.42857; */
+			font-weight: bold;
+			text-transform: inherit;
+			letter-spacing: 1px;
+	}
+
+}
+button:disabled{
+  background-color: #E1EAF8;
+  color: #AFB9C8 !important;
+  /*background-color: #E5E5E5;*/
+  border: 1px solid #E1EAF8;
+}
+.close {
+    cursor: pointer;
+    float: right;
+    font-size: 30px;
+}
+.mat-icon{
+	color: #7796ae !important;
+	font-size: 170% !important;
+}
+
+.sub-para{
+	color: #818181;
+	font-size: 14px;
+}

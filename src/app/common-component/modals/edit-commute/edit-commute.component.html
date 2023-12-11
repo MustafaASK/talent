@@ -1,0 +1,117 @@
+<div class="container">
+    <div class="edit-commute-container">
+        <div class="edit-commute-container-1st-con">
+            <div class="edit-commute-cancel-con">
+                <p class="edit-commute-style">Edit Commute</p>
+                <img class="cancel-icon" (click)="onClose()" src="assets/icons/md-close@2x.svg" />
+            </div>
+        </div>
+
+        <div class="scroll-con">
+
+            <form [formGroup]='editCommuteForm'>
+
+
+                <div class="edit-commute-container-2nd-con">
+                    <p class="small-heading-text">Starting Location</p>
+                    <input ngx-google-places-autocomplete [options]="placeOptions" #locationFilter
+                        (onAddressChange)="handleAddressChange($event)" spellcheck="false"
+                        (change)="startingLocationChange($event)" formControlName="startingLocation"
+                        class="input1-style" placeholder="City, State or Pincode" />
+                    <!-- <input type="text" id="where"placeholder="City, state or Pin code" #trigger="matAutocompleteTrigger" class="input1-style location-input" [matAutocomplete]="wewewe" matInput (keypress)="onAutocompleteSelected($event)" formControlName="startingLocation" > -->
+                    <!-- <mat-autocomplete (optionSelected)="placeSelected($event, $event.option.value, trigger)" #wewewe="matAutocomplete">
+                        <mat-option *ngFor="let option of options" [value]="option">
+                            {{option.name}}
+                        </mat-option>
+                    </mat-autocomplete> -->
+                    <span *ngIf="userAddress" class="close-icon-cont">
+                        <img (click)="clearLocation()" class="loc-close-icon" src="assets/icons/md-close@2x.svg" />
+                    </span>
+                    <span style="color:red;font-size: 13px;" *ngIf="!userAddress  && 
+                        editCommuteForm.controls['startingLocation']?.touched">You must select a location</span>
+
+                    <!-- <p>Address: {{ userAddress }}</p>
+                    <p>Latitude: {{ userLatitude }}</p>
+                    <p>Longitude: {{ userLongitude }}</p> -->
+
+                </div>
+
+                <div class="edit-commute-container-3rd-con">
+                    <p class="small-heading-text">Maximum Time (in minutes)</p>
+                    <div class="times-cont">
+                        <div (click)="handleClickGetMaxTime(item)" *ngFor="let item of maxTimeItems"
+                            [ngClass]="{'time-box': true, 'time-box-thick': item === selectedGetMaxTimeCont}">
+                            <p [ngClass]="{'time-text': true, 'time-text-thick': item === selectedGetMaxTimeCont}">
+                                {{item}}
+                            </p>
+                        </div>
+
+                        <!-- <div class="time-box">
+                            <p class="time-text">15</p>
+                        </div>
+                        <div class="time-box time-box-thick">
+                            <p class="time-text time-text-thick">30</p>
+                        </div>
+                        <div class="time-box">
+                            <p class="time-text">45</p>
+                        </div>
+                        <div class="time-box">
+                            <p class="time-text">60</p>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="edit-commute-container-4th-con">
+                    <p class="small-heading-text">Preffered Transportation</p>
+                    <div class="logos-cont">
+
+                        <!-- <div *ngFor="let item of transpotationItems"
+                            [ngClass]="{'logo-box': true, 'logo-box-thick': item.name === selectedTranspotation}"
+                            (click)="handleClickTrans(item.name)">
+                        <img [src]="item.imagePath" />
+                    </div> -->
+
+                        <div (click)="handleClickTrans('DRIVING')"
+                            [ngClass]="{'logo-box': true, 'logo-box-thick': 'DRIVING' === selectedTranspotation}">
+                            <img src="assets/icons/car@2x.svg" />
+                        </div>
+                        <div (click)="handleClickTrans('TRANSIT')"
+                            [ngClass]="{'logo-box': true, 'logo-box-thick': 'TRANSIT' === selectedTranspotation}">
+
+                            <img src="assets/icons/Vector@2x.svg" />
+                        </div>
+                        <div (click)="handleClickTrans('WALKING')"
+                            [ngClass]="{'logo-box': true, 'logo-box-thick': 'WALKING' === selectedTranspotation}">
+
+                            <img src="assets/icons/bx-walk.svg" />
+                        </div>
+                        <div (click)="handleClickTrans('CYCLING')"
+                            [ngClass]="{'logo-box': true, 'logo-box-thick': 'CYCLING' === selectedTranspotation}">
+
+                            <img src="assets/icons/icon-cycling@2x.png" />
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="edit-commute-container-5th-con">
+                    <p class="small-heading-text">Include Traffic Estimation</p>
+                    <mat-radio-group formControlName="trafficEstimate" class="radio-group"
+                        aria-label="Select an option">
+                        <mat-radio-button class="radio-btn" value="BUSY_HOUR">Yes</mat-radio-button>
+                        <mat-radio-button value="TRAFFIC_FREE">No</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+    <div class="footer-container">
+        <div class="cancel-view-results-con">
+            <button (click)="startOver()" mat-button color="primary">Start Over</button>
+            <button class="update-btn-style" (click)="saveCommute()" mat-flat-button>Update Commute</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,101 @@
+<form [formGroup]="basicInfoForm">
+<div>
+  <div class="d-flex justify-content-between align-content-center">
+      <h4 mat-dialog-title></h4>
+      <span class='close' [mat-dialog-close]>&#215;</span>
+  </div>
+  <div mat-dialog-content class="col justify-content-center align-content-center text-center">
+     <h4>Some information is missing</h4>
+     <!-- <div class="row mb-3 mt-0" >
+            <div class="col-sm-12">
+                <div class="input-group mb-3">
+  <input type="text" class="form-control" [(ngModel)]="value"  aria-label="Recipient's username" aria-describedby="basic-addon2" >
+</div>
+
+            </div>
+        </div> -->
+        <div class="newcontinue">
+          <div class="p-3 missing-main" >
+            <p class="sub-para">Please enter below details to continue with this job application</p>
+            <div class="pt-3">
+
+                    <div *ngIf="firstNameEmpty">
+                        <mat-form-field appearance="outline">
+                            <mat-label>First Name</mat-label>
+                            <input matInput placeholder="First Name" formControlName="firstName" required>
+                    <mat-icon matSuffix>person</mat-icon>
+                      <mat-error class="errorMessage" *ngIf=" (( !basicInfoForm.controls.firstName.touched) || basicInfoForm.controls.firstName.touched)">
+                          <span *ngIf="basicInfoForm.controls.firstName.errors?.required">The First Name field cannot be blank.
+                          </span>
+                          </mat-error>
+                        </mat-form-field>
+                     </div>
+
+                     <div *ngIf="lastNameEmpty">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput placeholder="Last Name" formControlName="lastName" required>
+                    <mat-icon matSuffix>person</mat-icon>
+                      <mat-error class="errorMessage" *ngIf=" (( !basicInfoForm.controls.lastName.touched) || basicInfoForm.controls.lastName.touched)">
+                          <span *ngIf="basicInfoForm.controls.lastName.errors?.required">The Last Name field cannot be blank.
+                          </span>
+                          </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div *ngIf="emailEmpty">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input matInput placeholder="Email" formControlName="email" required>
+                    <mat-icon matSuffix>email</mat-icon>
+                      <mat-error class="errorMessage" *ngIf=" (( !basicInfoForm.controls.email.touched) || basicInfoForm.controls.email.touched)">
+                          <span *ngIf="basicInfoForm.controls.email.errors?.required">Please enter a valid email ID. The email ID field cannot be blank.
+                          </span>
+                          <span *ngIf="basicInfoForm.controls.email.errors?.pattern">The Email ID format is incorrect. Please enter a valid email ID.
+                          </span>
+                          </mat-error>
+                        </mat-form-field>
+                    </div>
+               <!--  <mat-form-field appearance="outline" *ngIf="firstNameEmpty">
+                    <mat-label>First Name</mat-label>
+                    <input  type="text" matInput  placeholder="Enter First Name"  
+                    [(ngModel)]="firstName" required  appAutoFocusDirective>
+                    <mat-icon matSuffix>person</mat-icon>
+
+                    <mat-error></mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" *ngIf="lastNameEmpty">
+                    <mat-label>Last Name</mat-label>
+                    <input  type="text" matInput  placeholder="Enter Last Name"  
+                    [(ngModel)]="lastName" required  >
+                    <mat-icon matSuffix>person</mat-icon>
+
+                    <mat-error></mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" *ngIf="emailEmpty">
+                    <mat-label>Email</mat-label>
+                    <input  type="email" matInput  placeholder="email" 
+                    [(ngModel)]="emailId" required  >
+                    <mat-icon matSuffix> email</mat-icon>
+
+                    <mat-error></mat-error>
+                </mat-form-field> -->
+                <p class="looks-good" *ngIf="emailEmpty && basicInfoForm.controls.email.valid">Looks good!! We'll use this email to send you updates.</p>
+            </div>
+        </div>
+        </div>
+        
+  </div>
+</div>
+<div mat-dialog-actions class="d-flex justify-content-center">
+  <button class="btn align-middle btn-primary my-2 mx-2 my-lg-0"
+                      [ngClass]="[basicInfoForm.valid ? 'valid' : 'inValid']"
+                      [disabled]='basicInfoForm.invalid || !basicInfoForm.dirty'
+                      (click)="submitForm($event)"
+                      >Continue</button>
+
+  <!-- <button class="btn align-middle btn-primary my-2 mx-2 my-lg-0" >No</button> -->
+</div>
+</form>
+<mat-spinner color="warn" *ngIf="showSpinner"></mat-spinner>

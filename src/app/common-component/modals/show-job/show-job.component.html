@@ -1,0 +1,152 @@
+<div>
+  <!-- <h2 mat-dialog-title>
+    <mat-icon (click)="closeModal()" class="goBack">arrow_back</mat-icon>
+  </h2> -->
+  <div mat-dialog-content>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card" id="jobdesc-popup" *ngIf="selectedJob">
+          <div class="jobdesc-header">
+            <div class="d-flex justify-content-between">
+              <h4>
+                <strong [title]="selectedJob.jobtitle">{{
+                  selectedJob.jobtitle
+                }}</strong>
+              </h4>
+            </div>
+            <ul class="mb-0 jobmeta">
+              <li>
+                <i class="fa-icons fa fa-building"></i
+                >{{ selectedJob.compname }}
+              </li>
+              <li>
+                <i class="fa-icons fa fa-map-marker"></i>
+                {{ selectedJob.city }}, {{ selectedJob.state }}
+              </li>
+              <li>
+                <i class="fa-icons fa fa-usd"></i>
+
+                <span *ngIf="selectedJob.payrange">
+                  {{ selectedJob.payrange }}
+                </span>
+                <span *ngIf="!selectedJob.payrange">
+                  <span *ngIf="selectedJob.payrange1"
+                    >{{ selectedJob.payrange1 }} -</span
+                  >
+                  {{ selectedJob.payrange2 }}
+                </span>
+                <span *ngIf="selectedJob.paytype">
+                  per {{ selectedJob.paytype }}
+                </span>
+              </li>
+            </ul>
+            <div
+              class="assessment-pending"
+              id="assessment-pending"
+              *ngIf="assessmentsAry.length"
+              #myIdentifier
+            >
+              <p class="required-desc mb-0" *ngIf="!selectedJob.applied">
+                Please complete these assessments to apply for this job:
+              </p>
+              <p class="required-desc mb-0" *ngIf="selectedJob.applied">
+                Please complete these assessments to increase your chance to get
+                hired for this Job
+              </p>
+
+              <div>
+                <!-- <a style="cursor: text;" class="btn btn-outline-dark btn-capsule"> -->
+                <img
+                  class="image-scrolled-down"
+                  *ngFor="let assessment of assessmentsAry; let i = index"
+                  src="{{ badgesPath + assessment.badgePath }}"
+                  alt="badge"
+                  width="40"
+                  matTooltip="{{ assessment.name }}"
+                  aria-label="Button that shows a red tooltip"
+                />
+                <!-- </a> -->
+              </div>
+              <!-- <div>
+                            <a style="cursor: text;" class="btn btn-outline-dark btn-capsule"  *ngFor="let assessment of assessmentsAry; let i = index;">
+                            <img src="{{badgesPath + assessment.badgePath }}" alt="badge" width="25"> 
+                          &nbsp; <span class="assessment-name">{{(assessment).name}}</span></a>
+                        </div> -->
+            </div>
+            <!-- <button href="javascript:void(0);" class="btn btn-primary mt-3 ml-0 mb-0 text-white" [disabled]="assessmentsAry.length" (click)="applyJob()"
+                        *ngIf="!selectedJob.applied">
+                        Apply Now
+                      </button> -->
+            <!-- <a href="javascript:void(0);" class="btn btn-primary mt-3 ml-0 mb-0 text-white"
+                                (click)="applyJob()" *ngIf="!selectedJob.applied">
+                                Apply Now
+                            </a> -->
+
+            <!-- <a
+              href="javascript:void(0);"
+              class="btn btn-success mt-3 ml-0 mb-0 text-white"
+              *ngIf="selectedJob.applied"
+            >
+              Applied
+            </a> -->
+            <!-- <div class="row">
+              <div class="col-xs-3">Back</div>
+              <div class="col-xs-9">
+                <span class="applied-success" >
+              <i class="fa-regular fa-check"></i>
+              <span>Already Applied</span></span>
+
+              </div>
+              <div></div>
+            </div> -->
+          </div>
+          <hr />
+          <div class="jobdesc-body card-body px-0" style="padding-bottom: 6em">
+            <div
+              class="jobrief ckTxt"
+              [innerHtml]="selectedJob.description"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+          <div class="card-footer">
+            <!-- <button
+              href="javascript:void(0);"
+              class="btn btn-primary mt-3 ml-0 mb-0 text-white"
+              [disabled]="assessmentsAry.length"
+              (click)="applyJob()"
+              *ngIf="!selectedJob.applied"
+            >
+              Apply Now
+            </button> -->
+            <div class="row btm-fixed apply-btn-parent"
+              *ngIf="!selectedJob.applied">
+              <div class="col-4 row back-btn" (click)="closeModal()">
+                <span class="col-2"><mat-icon class="goBack">arrow_back</mat-icon></span>
+                <span class="col-8 ml-2 back-text">Back</span>
+              </div>
+              <div class="col-8 applied-btn" (click)="applyJob()">
+                <span>Apply</span>
+
+              </div>
+              <div></div>
+            </div>
+
+            <div class="row btm-fixed"
+              *ngIf="selectedJob.applied">
+              <div class="col-6 row back-btn" (click)="closeModal()">
+                <span class="col-3"><mat-icon class="goBack">arrow_back</mat-icon></span>
+                <span class="col-6 ml-2 back-text">Back</span></div>
+              <div class="col-6">
+                <span class="applied-success" >
+              <i class="fa-regular fa-check"></i>
+              <span>Applied</span></span>
+
+              </div>
+              <div></div>
+            </div>
+          </div>
+</div>

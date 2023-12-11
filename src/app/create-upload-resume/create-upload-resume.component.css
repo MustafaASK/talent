@@ -1,0 +1,481 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&display=swap');
+
+
+body,
+html {
+    background: #F3F5F7;
+}
+
+#wrapper {
+    background: #F3F5F7;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Jost', sans-serif;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+h4 {
+    font-weight: normal;
+    font-size: 20px !important;
+    margin-bottom: 0;
+}
+
+h4+span {
+    color: #969EB5;
+}
+
+a {
+    color: #111111;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+ul,
+p,
+span,
+.btn {
+    font-family: Segoe UI !important;
+}
+
+p,
+li {
+    font-weight: normal;
+}
+
+i {
+    color: #969EB5;
+    font-style: normal;
+}
+
+i.active {
+    color: #4A7AFF;
+}
+
+.ul-aside li {
+    line-height: 35px;
+}
+
+p {
+    line-height: 30px;
+}
+
+li {
+    line-height: 26px;
+    text-align: left;
+}
+
+.h2,
+h2 {
+    font-size: 2rem;
+}
+
+.h3,
+h3 {
+    font-size: 1.75rem;
+}
+
+h3 {
+    margin-bottom: 15px;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+#wrapper {
+    margin: 0px auto;
+    max-width: 98%;
+    overflow: hidden;
+}
+
+section {
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+#pdfbody {
+    margin-top: 10px;
+}
+
+#pdfheader {
+    margin-bottom: 10px;
+}
+
+.card {
+    border-radius: 10px !important;
+    box-shadow: 0px 0px 15px #DEEEF9;
+    margin: 10px auto;
+    box-sizing: border-box;
+    padding: 30px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul.stripe>li:nth-child(even) {
+    background: #fff;
+    margin: 15px 0;
+    padding: 15px 30px;
+}
+
+.jobsmry {
+    margin: 10px auto 30px;
+}
+
+.jobsmry li {
+    margin: 20px 0 0;
+}
+
+.innerpadding {
+    padding: 0 30px;
+}
+
+.years {
+    font-size: 16px;
+    color: #969EB5;
+}
+
+.tag {
+    color: #777981;
+    border: 1px solid #D8DDE8;
+    border-radius: 30px;
+    font-size: 14px;
+    padding: 0px 15px;
+    line-height: 22px;
+    margin: 5px 0px;
+    height: 25px;
+    overflow: hidden;
+}
+
+.langlist li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.prefname {
+    font-size: 14px;
+    color: #969EB5;
+}
+
+.pref {
+    margin-bottom: 25px;
+}
+
+.aside .card {
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    min-width: 120px;
+    min-height: 120px;
+    border: 1px solid #D1D5E1;
+    overflow: hidden;
+    border-radius: 100%;
+}
+
+.avatar img {
+    max-width: 100%;
+}
+
+.candata ul li,
+ul.contactinfo li {
+    line-height: 30px;
+}
+
+
+.hire.tag {
+    background-color: #E5F9E7;
+    border: none;
+    color: #111;
+    padding: 5px 15px;
+    margin-top: 5px;
+    display: inline-block;
+    line-height: 15px;
+}
+
+.hire.tag i {
+    font-size: 12px;
+    color: #54C75F;
+}
+
+ul.emplist {
+    border-left: 1px dashed #969EB5;
+    margin-left: 30px;
+}
+
+li.innerpadding.emprecord:before {
+    content: "•";
+    font-size: 66px;
+    position: absolute;
+    left: 19px;
+    color: #969EB5;
+}
+
+.card-head {
+    margin-bottom: 25px;
+}
+
+.link-primary {
+    color: #000;
+    cursor: pointer;
+}
+
+.link-primary:hover,
+.link-primary:focus,
+.link-primary:active {
+    color: #EE1D23;
+}
+
+.dataction .link-pencilTrash-icons {
+    cursor: pointer;
+}
+
+button#dropdownMenuButton {
+    background: #fff;
+    border: none;
+    color: #111;
+}
+
+button#dropdownMenuButton {
+    box-shadow: none;
+}
+
+a.dropdown-item {
+    margin-left: 0;
+}
+
+.card-head+ul>li {
+    margin-top: 25px;
+}
+
+ul.socialinks>li {
+    margin-top: 5px !important;
+}
+
+a.btn-capsule {
+    border-radius: 40px;
+    padding: 0 30px;
+    height: 50px;
+    line-height: 50px;
+    color: #000000;
+}
+
+a.btn-capsule i {
+    color: #000;
+}
+
+a.btn-capsule:hover {
+    background-color: #fff;
+    color: #4169E3;
+    border-color: #4169E3;
+}
+
+a.btn-capsule:hover i {
+    color: #4169E3;
+}
+
+a.btn-capsule:focus,
+a.btn-capsule:active {
+    box-shadow: none !important;
+    background-color: #fff !important;
+}
+
+a.viewprofile,
+a.viewprofile i,
+a.link-blu,
+a.link-blu i {
+    color: #4169E3 !important;
+}
+
+a.link-blu {
+    margin-left: 0;
+}
+
+a,
+a.link-blu {
+    font-weight: normal;
+}
+
+i.fa-pencil:hover {
+    color: #DEA712;
+}
+
+i.fa-trash:hover {
+    color: #FF4040;
+}
+
+/* Dashboard and Job box */
+.jobox {
+    border: 1px solid #aaa;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+ul.jobmeta i {
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+ul.jobmeta {
+    font-size: 14px;
+}
+
+ul.jobrief li {
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+
+ul.jobrief {
+    font-size: 13px;
+    list-style: disc;
+    padding-left: 15px;
+    padding-top: 10px;
+}
+
+button#dropdownMenuButton {
+    width: 25px;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+#profheader .dropdown-toggle::after {
+    display: inherit;
+}
+
+#pdfheader .dropdown-toggle::after {
+    display: inline-block;
+}
+
+.progress {
+    display: -ms-flexbox;
+    display: flex;
+    height: 1.5rem;
+    overflow: hidden;
+    line-height: 0;
+    font-size: .75rem;
+    background-color: #e9ecef;
+    border-radius: 1rem;
+}
+
+p.resumetext.text-muted {
+    line-height: 25px;
+    font-size: 14px;
+}
+
+.slick-arrow {
+    position: absolute;
+    top: 45%;
+    cursor: pointer;
+    z-index: 999;
+    transition: all 0.2s ease;
+}
+
+
+.slick-arrow.nextArrow {
+    right: 0;
+}
+
+.slick-arrow i {
+    color: #969EB5 !important;
+    font-size: 2.5em;
+}
+
+r̥ .slick-arrow:hover i {
+    color: #981DF0 !important;
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 35px;
+    /* font-family: "Oswald", Helvetica, Arial, sans-serif; */
+    font-weight: 400;
+    letter-spacing: initial;
+    text-transform: capitalize;
+    transition: .22s;
+}
+
+h3 {
+    margin-bottom: 15px;
+    text-align: left !important;
+    font-weight: bold !important;
+    font-size: 1.4em;
+}
+
+small {
+    display: inline;
+}
+
+@media screen and (max-width:640px) {
+    .link-primary {
+        margin-left: 0;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+    }
+
+    .innerpadding {
+        padding: 0 15px;
+    }
+
+    .dataction {
+        text-align: right;
+    }
+
+    .dataction a {
+        margin-bottom: 15px;
+    }
+
+    span.subheading {
+        font-size: 14px !important;
+    }
+
+    .btn-capsule {
+        margin-left: 0;
+        margin-right: 15px;
+    }
+}
+
+@media screen and (min-width:990px) and (max-width:1200px) {
+    .avatar {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* .cur-main{
+    margin-top: 26px;
+} */
+
+.example-handle {
+    /* position: absolute;
+    top: 10px;
+    right: 10px; */
+    color: #ccc;
+    cursor: move;
+    width: 24px;
+    height: 24px;
+    margin-right: 20px;
+}
+
+.fa-pencil {
+    font-size: 18px !important;
+}

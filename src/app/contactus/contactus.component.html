@@ -1,0 +1,91 @@
+<div class="page">
+     
+    <div class="header-section">
+        <h1 class="main-title">Contact Us</h1>
+    </div>
+        
+    <!-- <div class="container ng-scope" id="contactusContainer">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="media">
+                    <div class="media-body">
+                        
+                        <p>6495 Shiloh Road, Suite 300 </p>
+                        <p>Alpharetta, GA 30005</p>
+                        <p>770-813-8947</p>
+                        <p>info@incredibleme.com </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="container ng-scope" id="contactusContainer">
+
+        
+        <form [formGroup]='contactusForm' id="contactusForm">
+            
+            <div class="radio-options" style="text-align: left;">
+                <mat-radio-group formControlName="isCandidate">
+                    <mat-radio-button value="Candidate">Candidate</mat-radio-button>
+                    <mat-radio-button value="Employer">Employer</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <mat-form-field appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input matInput placeholder="First Name" appAutoFocusDirective required formControlName="firstName">
+            </mat-form-field>
+          
+            <mat-form-field appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input matInput placeholder="Last Name" required formControlName="lastName">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" *ngIf="contactusForm.value.isCandidate == 'Candidate'">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" required formControlName="candEmail">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" *ngIf="contactusForm.value.isCandidate == 'Employer'">
+                <mat-label>Work Email</mat-label>
+                <input matInput placeholder="Work Email" required formControlName="workEmail" (blur)="validateEmail(false)" #workEmail>
+                <mat-icon matSuffix class="spinner" *ngIf="loadEmailSpinner">cached</mat-icon>
+                <mat-icon matSuffix class="validEmail" *ngIf="validEmail">check_circle</mat-icon>
+                <mat-icon matSuffix class="errorEmail" *ngIf="contactusForm.controls.workEmail.errors?.invalidEmail">cancel</mat-icon>
+                <mat-error *ngIf="contactusForm.controls.workEmail.errors?.invalidEmail">Please enter the valid Business Email.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Phone No</mat-label>
+                <input matInput placeholder="Phone No" required mobMask type="tel" formControlName="phoneNo">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" *ngIf="contactusForm.value.isCandidate == 'Candidate'">
+                <mat-label>Interested In</mat-label>
+                <mat-select formControlName="interestedIn">
+                  <mat-option value="Incredible Resume">Incredible Resume</mat-option>
+                  <mat-option value="Job Concierge">Job Concierge</mat-option>
+                  <mat-option value="Interview Preparation">Interview Preparation</mat-option>
+                  <mat-option value="Upskill & Reskill">Upskill & Reskill</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" *ngIf="contactusForm.value.isCandidate == 'Employer'">
+                <mat-label>Interested In</mat-label>
+                <mat-select formControlName="interestedIn">
+                  <mat-option value="Hire Talent">Hire Talent</mat-option>
+                  <mat-option value="Returnship Program">Returnship Program</mat-option>
+                  <mat-option value="Talent Community">Talent Community</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <div mat-dialog-actions class="d-flex justify-content-center pt-5">
+                <button class="btn align-middle btn-primary my-2 mx-2 my-lg-0" (click)="createContactUsForm()">Submit</button>
+                <!-- [disabled]="loadEmailSpinner" -->
+              </div>
+
+        </form>
+    </div>
+
+    
+    
+</div>

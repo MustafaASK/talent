@@ -1,0 +1,198 @@
+:host ::ng-deep .ck.ck-editor__editable {
+    min-height: 200px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.cur-title {
+    margin-bottom: 1em;
+}
+
+.cur-main-add {
+    cursor: pointer;
+}
+
+.cur-main-add-button {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.cur-main-add-circle-outline {
+    float: left;
+    margin-right: 5px;
+}
+
+.section-expansion {
+    border: 1px solid #29293a;
+}
+
+.example-custom-date-class {
+    background: orange;
+    border-radius: 100%;
+}
+
+.employment-form {
+    /* border: 1px solid #aaa; */
+    position: relative;
+}
+
+.employment-form .close-icon {
+    position: absolute;
+    top: -20px;
+    right: -3px;
+    cursor: pointer;
+}
+
+.text-decoration-none {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    cursor: pointer;
+}
+
+/****************/
+/* .verifybutton {
+    position: absolute;
+    top:3px;
+    right:0px;
+    cursor: pointer;
+    padding: 8px 8px 8px 8px;
+    border-radius: 8px;
+    width: 108px;
+    text-transform:initial;
+    font-weight: bold;
+    letter-spacing: 0px;
+    font-size: 14px;
+} */
+
+a.btn.btn-primary.btn-sm.verifybutton {
+    min-width: 80px !important;
+}
+
+.editpencilIcon a.btn {
+    padding: 1px 10px 3px 11px;
+    border-radius: 2px;
+    margin-top: -9px;
+}
+
+.mblverified {
+    color: green;
+    font-weight: bold;
+    float: left;
+    font-size: 14px;
+    margin-top: -5px;
+}
+
+.verified-pencil {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background: #0984E3;
+}
+
+a.btn.btn-primary.btn-sm.verifybutton1 {
+    min-width: 0 !important;
+    float: right;
+    margin-top: -14px;
+}
+
+input[formcontrolname="phoneNo"] {
+    display: inline;
+    border: 1px solid none;
+    max-width: 55%;
+}
+
+.mat-form-field-infix {
+    max-height: 55px;
+}
+
+.currntAddr h3 {
+    margin-bottom: 15px;
+    text-align: left !important;
+    font-weight: bold !important;
+    font-size: 1.4em;
+    text-transform: capitalize;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 1em 0 2em 0;
+}
+
+
+.verify-btn:disabled {
+    background-color: #E1EAF8;
+    color: #AFB9C8 !important;
+    border: 1px solid #E1EAF8;
+}
+
+.verify-btn {
+    min-width: 0 !important;
+    float: right;
+    margin-top: -30px;
+    text-transform: none;
+}
+
+
+
+.parentVerify .verify-btn {
+    color: #ffffff;
+    font-family: Segoe UI !important;
+    padding: 10px 20px;
+    box-shadow: none;
+}
+
+@media only screen and (min-width: 200px) and (max-width: 767px) {
+    .verify-btn.btn.btn-primary {
+        min-width: 100px !important;
+    }
+
+    .verify-btn {
+        min-width: 0 !important;
+        float: right;
+        margin-top: -14px !important;
+        text-transform: none;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .verify-btn.btn.btn-primary {
+        min-width: 100px !important;
+    }
+
+    .verify-btn {
+        min-width: 0 !important;
+        float: right;
+        margin-top: -14px;
+        text-transform: none;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .verify-btn.btn.btn-primary {
+        min-width: 100px !important;
+    }
+
+    .verify-btn {
+        min-width: 0 !important;
+        float: right;
+        margin-top: -14px;
+        text-transform: none;
+    }
+}
+
+@media screen and (min-width: 1360px) {
+    .verify-btn.btn.btn-primary {
+        min-width: 100px !important;
+    }
+
+    .verify-btn {
+        min-width: 0 !important;
+        float: right;
+        margin-top: -14px;
+        text-transform: none;
+    }
+}

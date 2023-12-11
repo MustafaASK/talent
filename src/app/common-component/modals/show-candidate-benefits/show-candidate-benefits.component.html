@@ -1,0 +1,32 @@
+<div>
+  <div class="d-flex justify-content-between align-content-center">
+    <h4 mat-dialog-title></h4>
+    <span class="close" [mat-dialog-close]>&#215;</span>
+  </div>
+  <div
+    mat-dialog-content
+    class="d-flex justify-content-between align-content-center"
+  >
+    <h2 mat-dialog-title>{{ message }}</h2>
+  </div>
+</div>
+<div mat-dialog-actions class="d-flex justify-content-center">
+  <p>
+    Information related to <strong> 'avail candidate benefits' </strong>will be
+    shared here
+  </p>
+  <!-- <button mat-raised-button color="primary"  class="btn-space" (click)="onConfirm()">Yes</button> -->
+  <!-- <button
+    class="btn align-middle btn-primary my-2 mx-2 my-lg-0"
+    (click)="onConfirm()"
+  >
+    Yes
+  </button>
+
+  <button
+    class="btn align-middle btn-primary my-2 mx-2 my-lg-0"
+    (click)="onDismiss()"
+  >
+    No
+  </button> -->
+</div>

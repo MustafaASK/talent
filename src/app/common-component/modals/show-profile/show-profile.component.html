@@ -1,0 +1,362 @@
+<div class="pt-4 bg-grey topDiv">
+    <div class="" id="downDiv">
+        <!-- <h2 mat-dialog-title>Profile Details</h2> -->
+        <!-- <button (click)="generatePDF()">download</button> -->
+        <!-- div class="container">
+            <div class="d-flex justify-content-end align-content-center">
+                <a target="_blank" (click)="generatePDF()" class="btn btn-outline-dark btn-capsule pdfdownbtn">
+                    <i class="fa fa-download"></i>
+                    Download
+                </a>
+            </div>
+    </div> -->
+    <!-- <span class='close' [mat-dialog-close]>&#215;</span> -->
+</div>
+<div>
+    <div id="wrapperDivPdf" #profileDetails>
+        <div>
+            <!-- <div *ngIf="!showSpinner"> -->
+            <section id="pdfheader">
+                <div class="container">
+                    <div class="card mx-2">
+                        <div class="row" style="padding: 8px 12px;">
+                            <div class="col-lg-8 col-md-12">
+                                <div class="row d-flex align-items-center">
+                                    <div class="col-lg-4 col-md-12">
+                                        <!-- <div class="avatar" *ngIf="!profileImageBase64">
+                                            <img src="assets/images/avatar.png" alt="">
+                                        </div> -->
+                                        <div class="avatar">
+                                            <!-- <div class="avatarimg" > -->
+                                                <div class="avatarimg" [style.background]="'url(' + profileImageBase64 + ')'" *ngIf="profileImageBase64">
+                                                <!-- <img *ngIf="profileImageBase64" [src]="profileImageBase64" alt=""> -->
+                                            </div>
+                                            <div class="ninja-badge" *ngIf="starNinja"><img
+                                                    src="assets/badge/ninja-badge.png" alt="badge" width="50"></div>
+                                        </div>
+                                        <!-- <div class="avatar" *ngIf="profileImageBase64">
+                                                <img *ngIf="profileImageBase64" [src]="profileImageBase64" alt="">
+                                            </div>
+                                            <div class="ninja-badge" *ngIf="starNinja"><img src="assets/badge/ninja-badge.png" alt="badge" width="50"></div> -->
+                                    </div>
+                                    <div class="col-lg-8 col-md-12 p-0">
+                                        <div class="candata">
+                                            <h2 class="text-sm-left">{{candData.firstName}} {{candData.lastName}}</h2>
+                                            <ul class="mb-0">
+                                                <li *ngIf="candData.jobTitle"><i class="fa fa-briefcase"></i>
+                                                    {{candData.jobTitle}}</li>
+                                                <li *ngIf="candData.location"><i class="fa fa-map-marker"></i>
+                                                    {{candData.location}}</li>
+                                                <!-- <li><span class="hire tag"><i class="fas fa-circle"></i> Available for
+                                            Hire</span>
+                                    </li> -->
+                                                <li>
+                                                      <!-- Dynamic code -->
+                          <div class="col-12" *ngIf="goldBadges.length">
+                            <div class="row">
+                                <div class="col-12 p-0">
+                                <div
+                                class="badge-tab row d-flex flex-wrap flex-md-nowrap  justify-content-md-left">
+                                <div class="col-3 col-sm-2 gold-badge-main" *ngFor="let assessmentIndidlObj of goldBadges;"
+                                   >
+                                   <div  *ngIf="assessmentIndidlObj.requiredBadgePath">
+                                    <img src="{{badgesPath + assessmentIndidlObj.requiredBadgePath }}" alt="badge"
+                                    >
+                                   </div>
+                                   
+                                </div>
+                                </div>
+                            </div> 
+                            </div>
+                        </div>
+                            
+                         
+
+                              <!-- Static code -->
+                              <!-- <div class="col-12">
+                                <div class="row">
+                                  <div class="col-12">
+                                    <div
+                                      class="badge-tab row d-flex flex-wrap flex-md-nowrap justify-content-center justify-content-md-left">
+                                      <div class="col-3 col-sm-2 ps-0 px-2 py-2">
+                                          <img src="assets/badge/Golden - CLIK.png" alt="badge">
+                                        </div>
+                                        <div class="col-3 col-sm-2 ps-0 px-2 py-2">
+                                          <img src="assets/badge/Golden - excel.png" alt="badge">
+                                        </div>
+                                        <div class="col-3 col-sm-2 ps-0 px-2 py-2">
+                                          <img src="assets/badge/Golden - Promounciation copy.png" alt="badge">
+                                        </div>
+                                        <div class="col-3 col-sm-2 ps-0 px-2 py-2">
+                                          <img src="assets/badge/Golden - SPE.png" alt="badge">
+                                        </div>
+                                        <div class="col-3 col-sm-2 ps-0 px-2 py-2">
+                                          <img src="assets/badge/Golden - TKT.png" alt="badge">
+                                        </div> 
+                                      </div>
+                                  </div>
+                             </div>
+                          </div> -->
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-12 d-md-flex align-items-center justify-content-end text-right">
+                                <ul class="contactinfo">
+                                    <li *ngIf="candData.phoneNo"> <i class="fa fa-mobile"></i> <a
+                                            href="javascript:void(0);">{{candData.phoneNo}}</a>
+                                    </li>
+                                    <!-- <li> <i class="fa fa-whatsapp"></i> <a href="https://wa.me/+917566610101" target="_blank"> +91 98765 43211</a></li> -->
+                                    <li *ngIf="candData.email"> <i class="fa fa-envelope"></i> <a
+                                            href="mailto:#">{{candData.email}}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- <div class="row d-flex align-items-center justify-content-center mt-4 mb-3"  *ngIf="goldBadges.length">
+                              <div class="col-1"></div>
+                              <div class="col-9">
+                                <div class="badge-tab">
+                                    <span *ngFor="let assessmentIndidlObj of goldBadges;">
+                                        <span *ngIf="assessmentIndidlObj.requiredBadgePath">
+                                      <img src="{{badgesPath + assessmentIndidlObj.requiredBadgePath }}" alt="badge" width="80">
+                                    </span>
+                                    </span>
+                                    
+                                </div>
+                              </div>
+                              <div class="col-2 d-flex justify-content-end ">
+                              </div>
+                            </div> -->
+                    </div>
+                </div>
+            </section>
+            <section id="pdfbody">
+                <div class="container">
+                    <div class="row mx-2">
+                        <!-- Left Section -->
+                        <div class="col-lg-8 col-md-12 card px-0">
+                            <div>
+                                <!-- Career Summary -->
+                                <section id="smry" class="innerpadding mt-0" *ngIf="candData.careersummary">
+                                    <h3>Career Summary</h3>
+                                    <p class="ckTxt" [innerHtml]='candData.careersummary'>
+                                    </p>
+                                </section>
+                                <hr *ngIf="candData.careersummary">
+                                <!-- Employment History -->
+                                <section id="emphistory" *ngIf="candData.empHistory.length">
+                                    <h3 class="innerpadding">Employment History</h3>
+                                    <ul class="emplist">
+                                        <li class="innerpadding emprecord toAddBreak"
+                                            *ngFor="let emp of this.candData.empHistory">
+                                            <div class="dot"></div>
+                                            <div class="companydata">
+                                                <h4>{{emp.jobTitle}} | {{emp.companyName}}</h4>
+                                                <span class="subheading">{{emp.startDate.substring(0, 4)}} -
+                                                    {{emp.currentCompany ? 'Present' : emp.endDate.substring(0, 4)}}
+                                                    |
+                                                    {{emp.workAddress}}</span>
+                                            </div>
+                                            <ul class="jobsmry ckTxt">
+                                                <li [innerHtml]="emp.empResponsibilities">
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </section>
+                                <hr *ngIf="candData.empHistory.length">
+                                <!-- Education -->
+                                <section id="edu" *ngIf="candData.education.length">
+                                    <h3 class="innerpadding">Education</h3>
+                                    <ul class="stripe">
+                                        <li class="innerpadding toAddBreak" *ngFor="let edu of candData.education">
+                                            <div class="companydata">
+                                                <h4>{{edu.degreeName}} | {{edu.degreeType}} <span
+                                                        class="years">{{edu.degreeCompletionDate.substring(0,
+                                                        4)}}</span>
+                                                </h4>
+                                                <span class="subheading">{{edu.schoolName}}</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </section>
+                                <hr *ngIf="candData.education.length">
+                                <!-- Certification -->
+                                <section id="certifications" *ngIf="candData.certficationList.length">
+                                    <h3 class="innerpadding">Certifications</h3>
+                                    <ul class="stripe">
+                                        <li class="innerpadding toAddBreak"
+                                            *ngFor="let cert of candData.certficationList">
+                                            <div class="companydata">
+                                                <h4>{{cert.certName}}<span
+                                                        class="years">{{cert.completedYear.substring(0,
+                                                        4)}}</span>
+                                                </h4>
+                                                <span class="subheading">{{cert.authorityName}}</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </section>
+                                <hr *ngIf="candData.certficationList.length">
+                                <!-- Trainings -->
+                                <section id="trainings" *ngIf="candData.trainingList.length">
+                                    <h3 class="innerpadding">Trainings</h3>
+                                    <ul class="stripe">
+                                        <li class="innerpadding toAddBreak"
+                                            *ngFor="let trainObj of candData.trainingList">
+                                            <div class="companydata px-0">
+                                                <h4>{{trainObj.trainValue}} -
+                                                    {{trainObj.trainingName}} <span
+                                                        class="years">{{trainObj.completedYear | date:
+                                                        'yyyy'}}</span>
+                                                </h4>
+                                                <span class="subheading">{{ trainObj.institutionName }}</span><br>
+                                                <!-- <span class="subheading col-3 px-0"></span> -->
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </section>
+                            </div>
+                        </div>
+                        <!-- Right Sidebar -->
+                        <div class="col-lg-4 col-md-12 pr-0 aside">
+                            <!-- Social Links -->
+                            <div id="socialinks" class="card" *ngIf="candData.socialsLinks.length">
+                                <h3>Social Links</h3>
+                                <ul class="socialinks ul-aside mb-0">
+                                    <li class="toAddBreak" *ngFor="let social of candData.socialsLinks">
+                                        <!-- {{social.socialURL}} -->
+                                        <a [href]="social.socialURL" target="_blank">{{social.socialURL}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Languages -->
+                            <div id="languages" class="card" *ngIf="candData.languages.length">
+                                <h3>Languages</h3>
+                                <div class="rows mx-0">
+                                    <ul class="ul-aside mb-0 langlist">
+                                        <li class="toAddBreak" *ngFor="let lang of candData.languages">
+                                            <span class="skillname">{{lang.langName}}</span>
+                                            <span class="tag">{{lang.langValue}}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Skills -->
+                            <div id="skills" class="card" *ngIf="candData.skills.length">
+                                <h3>Skills</h3>
+                                <div class="mx-0">
+                                    <div>
+                                        <ul class="ul-aside mb-0">
+                                            <li class="toAddBreak" *ngFor="let skill of candData.skills">
+                                                <span class="skillname">{{skill.skillName}}</span>
+                                                <span class="skillrating float-right">
+                                                    <!-- {{(skill.skillValue) ? ' | ' + skill.skillValue : ''}} -->
+                                                    <span>
+                                                        <span class='skillDot'
+                                                            [ngClass]="{'blueDot': (skill.skillValue == 'Beginer' || skill.skillValue == 'Intermediate' || skill.skillValue == 'Experienced' || skill.skillValue == 'Expert')  }"></span>
+                                                        <span class='skillDot'
+                                                            [ngClass]="{'blueDot': (skill.skillValue == 'Intermediate' || skill.skillValue == 'Experienced' || skill.skillValue == 'Expert')}"></span>
+                                                        <span class='skillDot'
+                                                            [ngClass]="{'blueDot': ( skill.skillValue == 'Experienced' || skill.skillValue == 'Expert')}"></span>
+                                                        <span class='skillDot'
+                                                            [ngClass]="{'blueDot': (skill.skillValue == 'Expert')}"></span>
+                                                    </span>
+                                                </span>
+
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="preferences" class="card" *ngIf="assessmentsReportsList">
+                                <p class="resumetext text-muted graphimagePath">
+                                    <img src="{{ graphimagePath }}" alt="badge">
+                                </p>
+                            </div>
+
+                            <!-- Preferences -->
+                            <div id="preferences" class="card">
+                                <h3>Preferences</h3>
+                                <ul class="preflist">
+                                    <!--  -->
+                                    <div class="pref toAddBreak">
+                                        <div class="prefname">Current Employment Status</div>
+                                        <div class="prefval">{{candData.currEmpStatus}}</div>
+                                    </div>
+                                    <!--  -->
+                                    <div class="pref toAddBreak">
+                                        <div class="prefname">Availability</div>
+                                        <div class="prefval">{{candData.availability}}</div>
+                                    </div>
+                                    <!--  -->
+                                    <div class="pref toAddBreak">
+                                        <div class="prefname">Employment Preference</div>
+                                        <div class="prefval">{{candData.empPerf}}</div>
+                                    </div>
+                                    <!--  -->
+                                    <div class="pref toAddBreak">
+                                        <div class="prefname">Flexibility Preference</div>
+                                        <div class="prefval">{{candData.flexibilityPref}}</div>
+                                    </div>
+                                    <!--  -->
+                                    <div class="pref toAddBreak">
+                                        <div class="prefname">Compensation Preference</div>
+                                        <div class="prefval">
+                                            <span *ngIf="candData.compensationPref">{{candData.compensationPref}}
+                                                per Year</span>
+                                        </div>
+                                        <div class="prefval">
+                                            <span *ngIf="candData.empHourCompensation">{{candData.empHourCompensation}}
+                                                per Hour</span>
+                                        </div>
+                                        <!-- / {{candData.payType}} -->
+                                    </div>
+                                    <!--  -->
+                                    <!-- <div class="pref toAddBreak">
+                                        <div class="prefname">Out of Town Travel Preference</div>
+                                        <div class="prefval"> {{candData.travelPrefMiles}}
+                                            <span *ngIf="candData.travelPrefMiles && candData.travelPrefPercent">
+                                                for </span>
+                                            {{candData.travelPrefPercent}}
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    <div class="pref toAddBreak">
+                                        <div class="prefname">Relocation Preference</div>
+                                        <div class="prefval">{{candData.relocationPref}}</div>
+                                    </div>
+                                  
+                                    <div class="pref toAddBreak">
+                                        <div class="prefname">Role Preferences</div>
+                                        <div class="prefval">
+                                            {{candData.empPrefRoleTitle}} <br>
+                                            <span> {{candData.empPrefLocation}} {{(candData.miles) ?
+                                                '('+candData.miles+')' : ''}}</span>
+                                        </div>
+                                    </div> -->
+                                    <!--  -->
+                                    <div class="pref toAddBreak">
+                                        <div class="prefname">Legally Authorized to Work in US </div>
+                                        <div class="prefval">{{candData.legalUS}}</div>
+                                    </div>
+                                    <!--  -->
+                                    <div class="pref toAddBreak">
+                                        <div class="prefname">Require Visa Sponsorship</div>
+                                        <div class="prefval">{{candData.requireVisa}}</div>
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+</div>
+<mat-spinner color="warn" *ngIf="showSpinner"></mat-spinner>

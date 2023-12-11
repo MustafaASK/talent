@@ -1,0 +1,67 @@
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Jost', sans-serif !important;
+    line-height: 1.5;
+    margin-top: 0;
+}
+p{
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: normal;
+    line-height: 1.5;
+
+}
+
+#container{
+    margin-top: 100px;
+}
+  
+  /* Float four columns side by side */
+  .column {
+    float: left;
+    width: 30%;
+    padding: 0 10px;
+  }
+  
+  /* Remove extra left and right margins, due to padding in columns */
+  .row {margin: 0 -5px;}
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Style the counter cards */
+  .card {
+    border-color: black;
+    padding: 16px;
+    text-align: center;
+    height: 300px;
+  }
+ 
+  
+  /* Responsive columns - one column layout (vertical) on small screens */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+  .button-primary-meta a:link, a:visited {
+    background-color: black;
+    color: white;
+    padding: 8px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 35px;
+    /* margin-top: 59px;
+    margin-left: 445px;
+    margin-bottom: 100px; */
+  }
+  .header-img{
+    max-width: none;
+    height: 250px;
+    margin-bottom: 30px;
+}

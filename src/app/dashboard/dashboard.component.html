@@ -1,0 +1,410 @@
+<div id="wrapper" class="reset dashboard-box">
+  <section id="pdfbody">
+    <div class="container">
+      <div class="row">
+
+        <!-- Header -->
+        <div class="col-12 card px-0">
+          <section id="smry" class="innerpadding my-0">
+            <div class="row mx-0">
+              <div class="col-12 col-md-9">
+                <!-- col-md-6 col-lg-6 -->
+                <div class="row d-flex align-items-center">
+                  <div class="col-12 col-md-4 col-lg-2 d-flex justify-content-center">
+                    <div class="avatar">
+                      <div class="avatarimg" [style.background]="'url(' + profileImageBase64 + ')'">
+                        <!-- <img [src]="(candData.profilePicPath) ? candData.profilePicPath : user_icon" alt="" *ngIf="(candData.profilePicPath) ? candData.profilePicPath : user_icon "> -->
+                        <!-- <img [src]="(profileImageBase64) ? profileImageBase64 : 'assets/icons/user_icon.svg'" alt=""> -->
+                        <!-- <i class="far fa-user-circle" *ngIf="!candData.profilePicPath"></i> -->
+                        <a href="javascript:void(0);" class="change-avatar" (click)="imageFileInput.click()"><i
+                            class="fa fa-pencil"></i><input #imageFileInput type="file"
+                            (click)="onClickProfilePicFile()" (change)="imageUpload($event)" style="display:none;"
+                            accept=".jpeg, .jpg, .png" /></a>
+                      </div>
+                      <div id="ninja-badge" *ngIf="starNinja">
+                        <img src="assets/badge/ninja-badge.png" alt="badge" width="50">
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="col-12 col-md-8 col-lg-8 d-flex justify-content-center justify-content-md-start text-center text-md-left px-0 px-md-4">
+                    <div class="candata">
+                      <h2 class="text-sm-left">{{candData.name}}</h2>
+                      <ul class="mb-0">
+                        <li *ngIf="candData.jobTitle"><i class="fa fa-briefcase"></i>{{candData.jobTitle}}</li>
+                        <!-- <li><img [src]="googleMapicon" style="width:20px;height: 18px;cursor: pointer;">{{candData.location}}</li> -->
+                        <li *ngIf="candData.location"><i class="fa fa-map-marker"></i>
+                          {{candData.location}}</li>
+                        <li>
+                          <!-- Dynamic code -->
+                          <div class="col-12" *ngIf="goldBadges.length">
+                            <div class="row">
+                              <!-- <div class="col-12">
+                                                                  <div
+                                                                  class="badge-tab row wrapper d-flex flex-wrap flex-md-nowrap  justify-content-md-left">
+                                                                  <div class="col-3 col-sm-2 ps-0 px-2 py-2" *ngFor="let assessmentIndidlObj of goldBadges;"
+                                                                  >
+                                                                  <div  *ngIf="assessmentIndidlObj.requiredBadgePath">
+                                                                  <img src="{{badgesPath + assessmentIndidlObj.requiredBadgePath }}" alt="badge"
+                                                                  width="80">
+                                                                  </div>
+
+                                                                  </div>
+                                                                  </div>
+                                                                  </div>  -->
+                              <div class="col-12 px-0">
+                                <div class="d-flex flex-wrap justify-content-center justify-content-md-start">
+                                  <div class="my-2" *ngFor="let assessmentIndidlObj of goldBadges;">
+                                    <div *ngIf="assessmentIndidlObj.requiredBadgePath">
+                                      <img src="{{badgesPath + assessmentIndidlObj.requiredBadgePath }}" alt="badge"
+                                        width="80">
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+
+                          <!-- Static code -->
+                          <!-- <div class="col-12" *ngIf="simpleArray.length">
+                            <div class="row">
+                              <div class="col-12">
+                                <div
+                                  class="badge-tab row d-flex flex-wrap flex-md-nowrap justify-content-center justify-content-md-left">
+                                  <div class="col-3 col-sm-2 ps-0 px-2 py-2" *ngFor="let assessmentIndidlObj of simpleArray;" >
+                                    <div *ngIf="assessmentIndidlObj > 0">
+                                      <img src="assets/badge/Golden - CLIK.png" alt="badge">
+                                    </div>
+                                   
+                                  </div>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                          </div> -->
+
+                        </li>
+
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- col-md-6  -->
+              <div class="col-12 col-md-3 d-flex justify-content-center justify-content-md-end mt-3 btn-profedit">
+                <a href="javascript:void(0);" class="btn btn-outline-dark btn-capsule" (click)="openProfileModal(true)">
+                  <i class="fa fa-pencil"></i> <span class=""> Edit</span></a>
+              </div>
+            </div>
+            <!-- <div class="row d-flex align-items-center justify-content-center mt-4 mb-3" *ngIf="goldBadges.length">
+              <div class="col-1"></div>
+              <div class="col-9">
+                <div class="badge-tab">
+                  <span *ngFor="let assessmentIndidlObj of goldBadges;"><span
+                      *ngIf="assessmentIndidlObj.requiredBadgePath">
+                      <img src="{{badgesPath + assessmentIndidlObj.requiredBadgePath }}" alt="badge" width="80"
+                        height="80">
+                    </span></span>
+                </div>
+              </div>
+              <div class="col-2 d-flex justify-content-end ">
+              </div>
+            </div> -->
+            <!--  -->
+          </section>
+        </div>
+        <!-- Progress -->
+        <div class="col-12 card px-0">
+          <section id="smry" class="innerpadding my-0">
+            <div class="d-flex minNone">
+              <!-- <div class="col-12 maxNone">
+                <div class="d-flex">
+                  <div class="brief-cls">
+                    <span class=""><i class="fa-solid fa-briefcase"></i></span>
+                  </div>
+                  <h3>Opportunities Are Waiting</h3>
+                </div>
+              </div> -->
+              <div class=" brief-cls">
+                <span class=""><i class="fa-solid fa-briefcase"></i></span>
+              </div>
+              <div class="">
+                <h2>Opportunities Are Waiting</h2>
+                <p class="resumetext text-muted">
+                  Candidates who earn all assessment badges are 94.36% more likely to get interviews.Complete all the
+                  assessments and get great opportunities!
+
+                </p>
+                <!-- <p class="badge-tab">
+                          <span *ngFor="let assessmentObj of assessments">
+                            <span *ngFor="let assessmentIndidlObj of assessmentObj.assessmentList;">
+                              <img src="{{badgesPath + assessmentIndidlObj.badgePath }}" alt="badge" width="100"   *ngIf="assessmentIndidlObj.completionStatus == '10018003'">
+                            </span>
+                            
+                          </span>
+                        </p> -->
+              </div>
+            </div>
+            <div class="row mx-0">
+              <div class="col-12 col-lg-6 col-xl-4 row mx-0 parent-block pr-0"
+                *ngFor="let assessmentIndidlObj of assessmentsList;">
+                <div class="assessment-list-back row mx-0">
+                  <div class="col-2">
+                    <span><img
+                        src="{{(assessmentIndidlObj.requiredBadgePath != '' &&  (assessmentIndidlObj.requiredBadgePath.toLowerCase().indexOf('gold') != '-1')) ? (badgesPath + assessmentIndidlObj.requiredBadgePath) : (badgesPath + assessmentIndidlObj.badgePath) }}"
+                        alt="badge" width="80" height="auto"></span>
+                    <!-- {{badgesPath + assessmentIndidlObj.badgePath }} -->
+                    <!-- <span><img src="assets/badge/Golden-tenkey.png" alt="badge" width="80"></span> -->
+                  </div>
+                  <div class="col-10">
+                    <p class="assess-title">{{assessmentIndidlObj.name}}</p>
+                    <div class="row assessment-list-footer ps-3"
+                      *ngIf="assessmentIndidlObj.completionStatus == '0' || assessmentIndidlObj.completionStatus == '10018001'">
+                      <div class="col-3"><span><i class="fa-solid fa-hourglass"></i></span> <span
+                          class="px-2">{{assessmentIndidlObj.completeTime}}</span></div>
+                      <div class="col-4"><span><i class="fa-solid fa-briefcase"></i></span> <span class="px-2">{{
+                          assessmentIndidlObj.noOfJobs}} Jobs</span></div>
+                      <div class="col-5 start-resume-retake">
+                        <a class="btn btn-capsule"
+                          (click)="openInviteForm(assessmentIndidlObj)">{{assessmentIndidlObj.completionStatus ==
+                          '10018001' ? 'Resume' : 'Start'}}
+                          <i class="fa-solid fa-angle-right"></i><i class="fa-solid fa-angle-right"></i></a>
+                      </div>
+                    </div>
+                    <div class="row assessment-list-footer ps-3"
+                      *ngIf="assessmentIndidlObj.completionStatus == '10018003' && assessmentIndidlObj.requiredBadgePath == '' && (assessmentIndidlObj.count == 1 || assessmentIndidlObj.count == 2)">
+                      <div class="col-6"><span class="passed"><i class="fa-thin fa-check"></i> &nbsp; Passed</span>
+                      </div>
+                      <div class="col" *ngIf="assessmentIndidlObj.count == 1">
+                        <a class="btn btn-capsule" (click)="openInviteForm(assessmentIndidlObj)">Retake <i
+                            class="fa-solid fa-angle-right"></i><i class="fa-solid fa-angle-right"></i></a>
+                      </div>
+                    </div>
+                    <div class="row assessment-list-footer ps-3"
+                      *ngIf="assessmentIndidlObj.requiredBadgePath != '' &&  (assessmentIndidlObj.requiredBadgePath.toLowerCase().indexOf('gold') != '-1')">
+                      <div class="col-11 top-percent"><span class="passed"><i class="fa-thin fa-check"></i> &nbsp; Top
+                          Percentile</span></div>
+                    </div>
+
+                    <!-- <p class="badge-tab">
+                          <span *ngFor="let assessmentObj of assessments">
+                            <span *ngFor="let assessmentIndidlObj of assessmentObj.assessmentList;">
+                              <img src="{{badgesPath + assessmentIndidlObj.badgePath }}" alt="badge" width="100"   *ngIf="assessmentIndidlObj.completionStatus == '10018003'">
+                            </span>
+                            
+                          </span>
+                        </p> -->
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!--Edit Number -->
+        <div class="col-12 card px-0" *ngIf="!(candData.verifiedPhone)">
+          <section id="smry" class="innerpadding my-0">
+            <div class="row">
+
+              <div class="col-12 col-md-9 justify-content-start">
+                <h3 class="edit-numer-heading">Verify Mobile Number: <span>+1 {{candData.phoneNo}} </span></h3>
+                <a type="button" class="align-items-center edit-numberlink " (click)="openProfileModal(false)">
+                  <strong>(Edit Number)</strong> </a>
+              </div>
+
+              <div class="col-12 col-md-3 justify-content-md-end btn-profedit dashverify">
+                <a type="button" class="btn btn-primary btn-sm" (click)="openProfileModal(false)">Verify</a>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12">
+                <p class="resumetext text-muted">
+                  Please verify your mobile number to receive job notification and updates on your mobile.
+                </p>
+
+              </div>
+            </div>
+          </section>
+        </div>
+
+
+
+
+        <!-- Progress -->
+        <div class="col-12 card px-0">
+          <section id="smry" class="innerpadding my-0">
+            <div class="row d-flex align-items-center justify-content-between card-head">
+              <div class="col-12 col-md-6 d-flex justify-content-start">
+                <h3 class="mb-0">Profile</h3>
+              </div>
+              <div class="col-12 col-md-6 d-flex justify-content-end">
+                <a class="btn btn-outline-dark btn-capsule" [routerLink]="'/profile'"><span class="">Update
+                    Profile</span></a>
+                <!-- <a  class="link-primary mt-2" style="cursor: pointer;">
+                  <strong>+</strong>Update Profile</a> -->
+              </div>
+            </div>
+            <!-- <h3>Profile <span class="badge badge-light"> <small> {{progressPercentage}}% Completed </small></span></h3> -->
+            <div class="row pt-4">
+              <div class="col-12">
+                <p class="resumetext text-muted">
+                  Complete your profile and get noticed! Complete profiles help us match you with opportunities and
+                  increases
+                  your chance to succeed – plus, employers are 10x more likely to notice candidates with complete
+                  profiles.
+                </p>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" [style.width.%]="progressPercentage" aria-valuemin="0"
+                    aria-valuemax="100">{{progressPercentage}}%</div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <!-- Resume -->
+        <div class="col-12 card px-0">
+          <section id="smry" class="innerpadding my-0">
+            <h3>Resume</h3>
+            <div class="row">
+              <div class="col-12 col-md-6 d-flex justify-content-start mb-4">
+                <div class="row mx-0">
+                  <div class="col-12 px-0">
+                    <a target="_blank" *ngIf="resumeData.name" [href]="resumeData.path" [download]="resumeData.name"
+                      class="link-blu">
+                      <i class="fa fa-file-o mr-2"></i> {{resumeData.name}}
+                    </a>
+                    <!-- <a *ngIf="!resumeData.name" href="javascript:void(0);" (click)="loadPDF()" class="link-blu">
+                      <i class="fa fa-file-o mr-2"></i> {{candData.firstName}}.pdf
+                    </a> -->
+                  </div>
+                  <!-- <div class="col-12 px-0"><small class="text-muted">Updated on
+                                            {{resumeData.date}}</small>
+                                    </div> -->
+                </div>
+              </div>
+              <div class="col-12 col-md-6 d-flex justify-content-start justify-content-md-end">
+                <!-- <a target="_blank" [href]="resumeData.path" [download]="resumeData.name"
+                                    class="btn btn-outline-dark btn-capsule"> <i class="fa fa-download"></i>
+                                    Download</a> -->
+                <div class='resumeDiv'>
+                  <a href="javascript:void(0);" (click)="fileInput.click()" class="btn btn-outline-dark btn-capsule">
+                    <i class="fa fa-cloud-upload-alt"></i> {{resumeData.name ? 'Replace' : 'Upload'}}
+                    <input #fileInput type="file" (click)="onClickReplaceFile()"
+                      (change)="onSelectFile($event,fileInput)" style="display:none;" accept=".doc,.docx,.pdf" />
+                  </a>
+                  <div class='resumeText'>Supported upload formats: 2MB max in .DOC, .DOCX, or .PDF
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!--Your Work Personality -->
+        <div class="col-12 card px-0" *ngIf="assessmentsReportsList">
+          <section id="smry" class="innerpadding my-0">
+            <div class="row">
+              <div class="col-sm-8">
+                <h3 class="edit-numer-heading">Your Work Personality </h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <p class="resumetext text-muted graphimagePath">
+                  <img src="{{ graphimagePath }}" alt="badge">
+                </p>
+
+              </div>
+            </div>
+          </section>
+        </div>
+
+
+        <!-- Job Carousel -->
+        <div class="col-12 card px-0">
+          <section id="smry" class="innerpadding my-0">
+            <div class="d-flex align-items-center justify-content-between card-head">
+              <h3 class="mb-0">Recommended Jobs</h3>
+              <a routerLink="/jobs" class="link-blu">
+                See All
+              </a>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="row slider jobs">
+                  <!-- Job Card -->
+                  <div class="col-12" *ngIf="jobsList.length">
+                    <carousel [itemsPerSlide]="itemsPerSlide" [noWrap]="noWrapSlides" [showIndicators]="showIndicator"
+                      [interval]="myInterval">
+                      <slide *ngFor="let job of jobsList" [routerLink]="'/jobs'" [queryParams]="{jobId: job.jobid}"
+                        class="slide-box">
+                        <div class="jobox">
+                          <div class="d-flex justify-content-between">
+                            <h4><strong>{{job.jobtitle}}</strong></h4>
+                            <!-- <div class="dropdown ml-2">
+                                                            <button class="btn btn-secondary dropdown-toggle"
+                                                                type="button" id="dropdownMenuButton"
+                                                                data-toggle="dropdown" aria-haspopup="true"
+                                                                aria-expanded="false" tabindex="0">
+                                                                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu"
+                                                                aria-labelledby="dropdownMenuButton">
+                                                                <a class="dropdown-item" href="#" tabindex="0"> <i
+                                                                        class="fa fa-heart" aria-hidden="true"></i>
+                                                                    Save
+                                                                    Job</a>
+                                                                <a class="dropdown-item" href="#" tabindex="0"> <i
+                                                                        class="fa fa-ban" aria-hidden="true"></i>
+                                                                    Not
+                                                                    Interested</a>
+                                                            </div>
+                                                        </div> -->
+                          </div>
+                          <ul class="mb-0 jobmeta">
+                            <li><i class="fa fa-building"></i>{{job.compname}}
+                            </li>
+                            <li><i class="fa fa-map-marker"></i> {{job.city}},
+                              {{job.state}}
+                            </li>
+                            <li>
+                              <i class="fa fa-usd"></i>
+                              <span *ngIf="job.payrange">
+                                {{job.payrange}}
+                              </span>
+                              <span *ngIf="!job.payrange">
+                                <span *ngIf="job.payrange1">{{job.payrange1}} -</span>
+                                {{job.payrange2}}
+                              </span>
+                              <span *ngIf="job.paytype">
+                                per {{job.paytype}}
+                              </span>
+                            </li>
+                          </ul>
+                          <div class="jobrief ckTxt" [innerHtml]='job.descShort'>
+                          </div>
+                          <span class="text-muted"><small>
+                              {{job.date | date : 'MMM d, y'}}
+                            </small></span>
+                        </div>
+                      </slide>
+                    </carousel>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="col-12 card px-0" [hidden]="loadProfile">
+    <app-show-profile (dataToParent)="pdfLoaded($event)" [dataToPass]="candData"></app-show-profile>
+  </div>
+</div>
+<mat-spinner color="warn" *ngIf="showSpinner"></mat-spinner>

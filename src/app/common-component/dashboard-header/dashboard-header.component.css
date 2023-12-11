@@ -1,0 +1,136 @@
+/* .custom-menu li a,
+.custom-menu > li > a{
+	color: #000000 !important;
+	font-weight:  bold;
+    transition: 0.35s all cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+.dropdown-toggle::after {
+    content: none;
+	color: #000000 !important;
+	font-weight:  bold;
+    transition: 0.35s all cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+.dropdown-item{
+	font-family: 'Open Sans', sans-serif !important;
+
+} */
+.container-fluid .navbar-brand {
+    cursor: pointer;
+}
+
+.bottom-text {
+    font-size: small;
+    position: absolute;
+    bottom: 0%;
+    color: black !important;
+
+}
+
+@media screen and (min-width: 280px) and (max-width: 614px) {
+    .menu-items-cont {
+        position: absolute;
+        top: 70px;
+        width: 100%;
+        left: 0;
+        z-index: 1;
+    }
+
+    .menu-items-card {
+        background-color: #ffffff;
+        text-align: left;
+        padding: 0px 5px;
+    }
+}
+
+@media screen and (min-width: 615px) {
+    .menu-items-cont {
+        display: none;
+    }
+
+}
+
+
+.profile-menu-cont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 5%;
+    cursor: pointer;
+}
+
+.profile-img-cont {
+    height: 40px;
+    width: 40px;
+    border-radius: 25px;
+    background-color: #c9c8c5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.profile-name-cont {
+    margin-right: 5px;
+}
+
+.profile-name-cont-mobile {
+    margin-right: 5px;
+    /* margin-bottom: 5px; */
+    background-color: #f2edeb;
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-name-style {
+    font-family: Segoe UI !important;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-transform: capitalize;
+}
+
+.user-img-size {
+    height: 25px;
+    width: 25px;
+}
+
+.drop-down-size {
+    height: 20px;
+    width: 20px;
+}
+
+.menu-item-cont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.mat-menu-item {
+    line-height: 38px;
+    height: 38px;
+    border-bottom: 1px solid #ebe8e4;
+    width: 180px;
+}
+
+
+
+.menu-item-img-size {
+    height: 16px;
+    width: 16px;
+    margin-right: 10px;
+}
+
+.menu-item-text {
+    font-family: Segoe UI !important;
+    font-size: 16px;
+    font-weight: 500;
+    color: #1a1a1a;
+    margin-top: 0px;
+}

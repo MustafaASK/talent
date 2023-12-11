@@ -1,0 +1,65 @@
+<div class="container pt-5">
+    <form id="audioForm">
+        <div class="card">
+            <div class="card-body">
+                <!-- <h2>Question</h2> -->
+                <h6>Record yourself speaking the following text:</h6>
+                <div>
+                    <textarea type="text" value="" id="textToRead" name="textToRead" class="form -control w-100" [(ngModel)]="textToRead"
+                        rows="4" disabled=""></textarea>
+                </div>
+                <div id="textDiv" class="d-none"></div>
+                <div class="my-4 d-flex cusBtnHeight">
+                    <button type="button" class="btn btn-sm btn-success start-recording-button" id="btnStart"
+                        (click)="startRecording()" *ngIf="recording == 'toStart' || recording == 'started'"
+                        [disabled]="recording == 'started'">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="svgImg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z">
+                            </path>
+                        </svg>
+                        <span>Start Recording</span>
+                    </button>
+                    <input type="hidden" name="fileName" value="test">
+                    <!-- <audio id="adioPlay" class="ml-4" controls name="audio" *ngIf="recording == 'stopped'" [src]="sanitize(audioSrc)">
+                    </audio> -->
+                    <audio class="ml-4" name="audio" controls="" *ngIf="audioSrc && recording == 'stopped'">
+                        <source [src]="sanitize(audioSrc)" type="audio/wav">
+                    </audio>
+                    <!-- <source>  [hidden]="!(recording == 'stopped')"-->
+                    <button type="button" class="btn btn-sm btn-outline-danger stop-recording-button ml-4" id="btnStop"
+                        (click)="stopRecording()" *ngIf="recording == 'started'">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            class="svgImg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"></path>
+                        </svg>
+                        <span>Stop Recording</span>
+                    </button>
+                    <div class="ml-4 mt-3" id="timer" *ngIf="recording == 'started'">
+                        <span id="hours" class="d-none">{{disHours}}</span>
+                        <span id="mins">{{disMins}} </span>
+                        <span id="seconds">{{disSeconds}}</span>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-outline-primary ml-4" id="reRecordBtn"
+                        (click)="reRecording()" *ngIf="recording == 'stopped'">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="svgImg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z">
+                            </path>
+                        </svg>
+                        <span>Record Again</span>
+                    </button>
+
+                </div>
+                <div class="my-2">
+                    <button type="button" id="submitAudio" class="btn btn-sm btn-success" (click)="submitForm()"
+                        *ngIf="recording == 'stopped'">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<mat-spinner color="warn" *ngIf="showSpinner"></mat-spinner>

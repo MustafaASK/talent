@@ -1,0 +1,514 @@
+.signup-main-box {
+  width: 100%;
+  padding: 1em;
+  /* box-shadow: 0px 0px 10px 10px rgba(238,29,35,0.1); */
+  margin-top: 2%;
+}
+.signup-main-box .left-side-box {
+  /* background-color:#DADADA; */
+  margin: 0px;
+  /* padding: .5em; */
+  min-height: 100%;
+  text-align: justify;
+  box-shadow: 0px 0px 0px 0px #dfd8fd;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #29293a;
+  padding: 0 0px 0 80px;
+}
+.signup-main-box .left-side-box p {
+  /* background-color:#DADADA; */
+
+  padding: 0px;
+}
+.signup-main-box .right-side-box {
+  margin: 0px;
+  min-height: 100%;
+}
+
+.signup-main-box .right-side-box .signup-account-box {
+  /* border: 1px solid #888787;; */
+  padding: 1em;
+}
+.signup-main-box .right-side-box .signup-title {
+  display: block;
+  text-align: center;
+  /* background-color:#DADADA; */
+  /* padding: 5px; */
+}
+
+.eye-icon {
+  /* float: right;
+    position: relative;
+    top: -30px;
+    right: 25px; */
+  cursor: pointer;
+}
+
+/* .form-control.ng-invalid.ng-touched {
+  border: 1px solid #dd2c00;
+    border-radius: 0px;
+    font-weight: 500;
+} */
+/* .errorMessage{
+  font-size: 12px;
+    line-height: 14px;
+    -webkit-transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+    transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+    opacity: 1;
+    margin-top: 0;
+    padding-top: 5px;
+    color: rgb(221,44,0);
+} */
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+::ng-deep .mat-form-field-wrapper {
+  margin-bottom: 1.25em;
+}
+
+.container {
+  width: 100%;
+  /* background-color:#DADADA; */
+  padding: 1em;
+  /* important */
+  display: flex;
+  /* important */
+  align-items: stretch;
+  justify-content: space-around;
+  font-family: "Oswald", Helvetica, Arial, sans-serif;
+}
+
+.signup-left-content {
+  width: 100%;
+  background: white;
+  color: grey;
+  margin: 0 0.2em;
+  padding: 0.5em;
+  /* important */
+  min-height: 100%;
+}
+
+.signup-right-content {
+  width: 100%;
+  background: white;
+  color: grey;
+  margin: 0 0.2em;
+  padding: 0.5em;
+  /* important */
+  min-height: 100%;
+}
+
+.signup-account-form mat-card {
+  max-width: 400px;
+  margin: 2em auto;
+  box-shadow: none;
+}
+
+mat-form-field {
+  display: block;
+}
+.title {
+  letter-spacing: normal;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 1.25em;
+  text-align: center;
+}
+
+.forgot-link {
+  /* letter-spacing: normal; */
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 31px;
+  letter-spacing: 0.45px;
+  opacity: 1;
+  color: #29293a;
+}
+.forgot-link a {
+  color: #0984e3;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif !important;
+}
+
+.forgot-link a:hover {
+  color: #ee1d23;
+  text-decoration: underline;
+  font-family: "Poppins", sans-serif !important;
+}
+
+/* button.mat-raised-button {
+ 
+   width: 227px;
+    height: 56px;
+    border-radius: 30px;
+} 
+
+button.mat-raised-button:hover {
+background-color: rgb(119,15,194)
+} */
+
+.mat-card-actions {
+  padding: 18px 8px 0px !important;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.text-success {
+  text-align: left;
+  /* font: normal normal bold 14px/19px Open Sans; */
+  letter-spacing: 0px;
+  color: #049c28;
+}
+.text-danger {
+  text-align: left;
+  /* font: normal normal bold 14px/19px Open Sans; */
+  letter-spacing: 0px;
+  color: #111111 !important;
+  display: block;
+}
+
+.text-danger .material-icons {
+  display: inline-flex;
+  vertical-align: middle;
+  font-size: 8px;
+  line-height: 12px;
+  width: 24px;
+}
+
+.text-success .material-icons {
+  display: inline-flex;
+  vertical-align: middle;
+  font-size: 17px;
+  line-height: 12px;
+  width: 24px;
+}
+
+.social-button {
+  background-position: 25px 0px;
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  display: inline-block;
+  height: 50px;
+  line-height: 50px;
+  text-align: left;
+  text-decoration: none;
+  /*    text-transform: uppercase;*/
+  vertical-align: middle;
+  width: 100%;
+  border-radius: 3px;
+  margin: 10px auto;
+  outline: rgb(255, 255, 255) none 0px;
+  padding-left: 20%;
+  transition: all 0.2s cubic-bezier(0.72, 0.01, 0.56, 1) 0s;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+#facebook-connect {
+  background: rgb(255, 255, 255)
+    url("https://raw.githubusercontent.com/eswarasai/social-login/master/img/facebook.svg?sanitize=true")
+    no-repeat scroll 5px 0px / 30px 50px padding-box border-box;
+  border: 1px solid rgb(60, 90, 154);
+}
+
+#facebook-connect {
+  border-color: rgb(60, 90, 154);
+  background: rgb(60, 90, 154)
+    url("https://raw.githubusercontent.com/eswarasai/social-login/master/img/facebook-white.svg?sanitize=true")
+    no-repeat scroll 5px 0px / 30px 50px padding-box border-box;
+  -webkit-transition: all 0.8s ease-out;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease-out;
+}
+
+#facebook-connect span {
+  box-sizing: border-box;
+  color: rgb(60, 90, 154);
+  cursor: pointer;
+  text-align: center;
+  /*    text-transform: uppercase;*/
+  border: 0px none rgb(255, 255, 255);
+  outline: rgb(255, 255, 255) none 0px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+#facebook-connect span {
+  color: #fff;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+#google-connect {
+  background: rgb(255, 255, 255)
+    url("https://raw.githubusercontent.com/eswarasai/social-login/master/img/google-plus.png")
+    no-repeat scroll 5px 0px / 50px 50px padding-box border-box;
+  border: 1px solid rgb(220, 74, 61);
+}
+
+#google-connect {
+  border-color: rgb(220, 74, 61);
+  background: rgb(220, 74, 61)
+    url("https://raw.githubusercontent.com/eswarasai/social-login/master/img/google-plus-white.png")
+    no-repeat scroll 5px 0px / 50px 50px padding-box border-box;
+  -webkit-transition: all 0.8s ease-out;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease-out;
+}
+
+#google-connect span {
+  box-sizing: border-box;
+  color: rgb(220, 74, 61);
+  cursor: pointer;
+  text-align: center;
+  /*    text-transform: uppercase;*/
+  border: 0px none rgb(220, 74, 61);
+  outline: rgb(255, 255, 255) none 0px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+#google-connect span {
+  color: #fff;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+#twitter-connect {
+  background: rgb(255, 255, 255)
+    url("https://raw.githubusercontent.com/eswarasai/social-login/master/img/twitter.png")
+    no-repeat scroll 5px 1px / 45px 45px padding-box border-box;
+  border: 1px solid rgb(85, 172, 238);
+}
+
+#twitter-connect:hover {
+  border-color: rgb(85, 172, 238);
+  background: rgb(85, 172, 238)
+    url("https://raw.githubusercontent.com/eswarasai/social-login/master/img/twitter-white.png")
+    no-repeat scroll 5px 1px / 45px 45px padding-box border-box;
+  -webkit-transition: all 0.8s ease-out;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease-out;
+}
+
+#twitter-connect span {
+  box-sizing: border-box;
+  color: rgb(85, 172, 238);
+  cursor: pointer;
+  text-align: center;
+  /*    text-transform: uppercase;*/
+  border: 0px none rgb(220, 74, 61);
+  outline: rgb(255, 255, 255) none 0px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+#twitter-connect:hover span {
+  color: #fff;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+#linkedin-connect {
+  background: rgb(255, 255, 255)
+    url("https://raw.githubusercontent.com/eswarasai/social-login/master/img/linkedin.svg?sanitize=true")
+    no-repeat scroll 13px 0px / 28px 45px padding-box border-box;
+  border: 1px solid rgb(0, 119, 181);
+}
+
+#linkedin-connect {
+  border-color: rgb(0, 119, 181);
+  background: rgb(0, 119, 181)
+    url("https://raw.githubusercontent.com/eswarasai/social-login/master/img/linkedin-white.svg?sanitize=true")
+    no-repeat scroll 13px 0px / 28px 45px padding-box border-box;
+  -webkit-transition: all 0.8s ease-out;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease-out;
+}
+
+#linkedin-connect span {
+  box-sizing: border-box;
+  color: rgb(0, 119, 181);
+  cursor: pointer;
+  text-align: center;
+  /*    text-transform: uppercase;*/
+  border: 0px none rgb(0, 119, 181);
+  outline: rgb(255, 255, 255) none 0px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+#linkedin-connect span {
+  color: #fff;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.hr-line {
+  padding: 0;
+  border-right: 1px solid #ccc;
+  position: relative;
+}
+.hr-line .or-box {
+  /* border: 2px solid #111111;
+  border-radius: 40px;
+  position: absolute;
+  top: 49%;
+  right: -24px;
+  z-index: 10;
+  background-color: #fff;
+  padding: 3px;
+  text-align: left;
+  font: normal normal bold 16px/24px Open Sans;
+  letter-spacing: 0.54px;
+  color: #111111;
+  opacity: 1;
+  padding: 10px;
+  font-weight: 600; */
+  position: absolute;
+  top: 49%;
+  right: -28px;
+}
+
+/* .alternate-signin-container .or-separator .or-text {
+font-size: 16px;
+line-height: 1.42857;
+color: rgba(0,0,0,0.6);
+margin: 0 12px;
+font-weight: 600;
+border: 2px solid #111111;
+border-radius: 35px;
+padding: 5px;
+
+} */
+
+.alternate-signin-container .or-separator::before {
+  content: "";
+  width: 50%;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.alternate-signin-container .or-separator .or-text {
+  font-size: 16px;
+  line-height: 1.42857;
+  font-weight: 600;
+  color: #ccc;
+  margin: 0 12px;
+}
+
+.alternate-signin-container .or-separator::after,
+.alternate-signin-container .or-separator::before {
+  content: "";
+  width: 50%;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.alternate-signin-container .or-separator {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 4px;
+}
+
+.isDisplay {
+  display: none;
+}
+
+.img-or img {
+  max-width: 100%;
+}
+.sociallink {
+  cursor: pointer;
+}
+
+/** pasword-ruls **/
+::ng-deep .password .mat-form-field-wrapper {
+  padding-bottom: 0px !important;
+  /* border-radius: 5px;
+    border: 2px solid #e1eaf8;
+    color: #f4f5f8; */
+}
+
+.error-messages {
+  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 3px;
+  opacity: 1;
+  padding: 0.6rem;
+  max-width: 100%;
+  width: 100%;
+  display: block;
+}
+.error-message_heading {
+  font-size: 15px;
+}
+
+@media screen and (max-width: 760px) {
+  .isMobile {
+    display: none;
+  }
+
+  .or-box {
+    display: none;
+  }
+
+  .isDisplay {
+    display: block;
+  }
+}
+.singIn {
+  color: #0984e3;
+  background-color: #fff;
+}

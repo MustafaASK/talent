@@ -1,0 +1,73 @@
+/* #termscontainer {
+    background-color: #fafafa;
+    border: 2px solid #cccccc;
+} */
+#termscontainer .row {
+    text-align: justify;
+    padding: 3%;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.media {
+    display: flex;
+    align-items: flex-start;
+}
+.media-body {
+    width: 100%;
+}
+#termscontainer .row h1, h2, h3 h4 {
+    color: black;
+    text-align: left;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Jost', sans-serif !important;
+    line-height: 1.5;
+    margin-top: 0;
+}
+.h1, h1 {
+    font-size: 2.5rem;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: .5rem;
+    font-weight: 500;
+}
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+#cookiesContainer .row h1, h2, h3 h4 {
+    color: black;
+    text-align: left;
+}
+.termscontainer_ul {
+    list-style: none;
+    text-align: left;
+}
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.termscontainer_ul li p::before {
+    content: "\2022";
+    color: black;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    /* margin-left: -1em; */
+}
+p{
+    color: black !important;
+}
+/* .header-section {
+    padding: 40px 0;
+    text-align: center;
+    background-color: black;
+}
+.header-section .main-title {
+    font-size: 60px;
+    color: white;
+} */

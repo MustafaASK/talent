@@ -1,0 +1,201 @@
+.close {
+  cursor: pointer;
+  float: right;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+}
+.verify-header {
+  text-align: left;
+  color: #000000;
+  font: normal normal bold 24px/35px Poppins;
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  
+}
+.content .content-msg {
+  text-align: justify;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 0px;
+  color: #111111;
+}
+.content .content-msg span {
+
+  font-style: italic;
+  font-weight: bold;
+}
+.align-middle-btn {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  letter-spacing: 0px;
+  text-transform: initial;
+  color: #FFFFFF;
+  opacity: 1;
+
+}
+
+a.align-middle {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 0px;
+  text-transform: initial;
+  color: #0264b1;
+  text-decoration: underline;
+  opacity: 1;
+  cursor: pointer;
+
+
+}
+
+
+a.align-middle:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #EE1D23;
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:hover {
+  color: #ffffff;
+  background-color: #0264b1;
+  border-color: #0264b1;
+}
+.invisible{
+  display: none;
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
+a.otpLink {
+  cursor: pointer;
+  color: #0984e3;
+  font-weight: 700;
+  font-size: 14px;
+
+}
+a.otpLink:hover {
+   text-decoration: underline;
+   cursor: pointer;
+   color: #EE1D23;
+   font-weight: 700;
+}
+
+.close[_ngcontent-egw-c96] {
+  cursor: pointer;
+  float: right;
+  font-size: 46px;
+  font-family: Poppins,sans-serif;
+  font-weight: 700;
+  position: relative;
+  top: -20px;
+  right: -20px;
+  color: #111;
+}
+.mat-dialog-actions button {
+  max-width: 280px;
+  padding: 15px 25px;
+  margin-bottom: 15px;
+}
+.submitbtn button.mat-raised-button {
+  width: 132px !important;
+  height: 41px !important;
+  border-radius: 30px;
+  margin-top: 17px !important;
+}
+.mat-form-field {
+  font-size: inherit;
+  font-weight: 400;
+  line-height: 1.125;
+  font-family: 'Open Sans', sans-serif !important;
+  letter-spacing: normal;
+  width: 100%;
+}
+
+.btn-primary, .btn-primary:focus, .btn-base, .btn-base:focus {
+  
+  padding: 10px 32px !important
+
+}
+.verify-mobile-container .content-msg .resendVerifyPhone {
+  font-weight: bold;
+}
+
+
+
+@media screen and (min-width: 220px) and (max-width: 402px){
+  .verify-mobile-container .content-msg .resendVerifyPhone {
+      display: block;
+   }
+   .verify-mobile-container .verify-header {
+     font-size: 22px;
+  }
+}
+
+@media screen and (min-width: 992px){
+  h2 + p {
+     margin-top: 0px !important;
+  }
+}
+
+
+@media screen and (min-width:600px) and (max-width: 767px){
+  
+ 
+  .verify-notification-container .smsNofification {
+     margin-top:22px
+  }
+  
+}
+
+@media screen and (min-width:300px) and (max-width:414px){
+  .verify-notification-container{
+    max-height: 500px;
+ }  
+}
+
+
+.changebtn.btn-primary:hover, .btn-primary:active, .btn-primary:hover {
+  color: #ffffff;
+  background-color: #0264b1;
+  border-color: #0264b1;
+  padding: 10px 22px;
+  color: #ffffff;
+  /*background-color: #000;
+  border-color: #000;*/
+  /* font-family: 'Open Sans'; */
+  box-shadow: none;
+  cursor: pointer;
+}
+
+
+.changebtn a.btn.btn-primary.btn-sm{ 
+  padding: 9px 9px !important;
+  border-radius: 6px;
+  /* font-family: "Oswald", Helvetica, Arial, sans-serif; */
+  font-weight: 400;
+}
+.changebtn a.btn.btn-primary.btn-sm{ 
+  padding: 9px 9px !important;
+  border-radius: 6px;
+  /* font-family: "Oswald", Helvetica, Arial, sans-serif; */
+  font-weight: 400;
+}
+.changebtn a.btn.btn-primary.btn-sm.verifybutton1 { 
+  min-width: 0 !important;
+  float: right;
+  /* margin-top:-28px; */
+  text-transform: none;
+
+}
+.changebtn mat-form-field {
+  max-width: 300px !important;
+  width:300px !important
+  
+}
+.changebtn.mat-form-field-infix {
+  max-height: 55px;
+}
+.mat-input-element {
+  width: 75% !important;
+}

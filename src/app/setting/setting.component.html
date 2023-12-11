@@ -1,0 +1,59 @@
+<div class="card card-outer-container">
+    <p class="setting-text">Settings</p>
+    <mat-divider></mat-divider>
+    <div class="item-cont">
+        <p class="sub-head-text">Email</p>
+        <p class="sub-head-text email-item-text">{{userEmail}}</p>
+    </div>
+
+    <div class="item-cont">
+        <!-- <p class="sub-head-text">Phone Number</p> -->
+        <!-- <mat-form-field appearance="outline">
+            <mat-label>Phone</mat-label>
+            <input size="small" type="number" matInput placeholder="Phone Number" required>
+            <button mat-flat-button color="primary" matSuffix>Verify</button>
+            
+            <mat-error></mat-error>
+        </mat-form-field> -->
+        <!-- <form [formGroup]="educationForm" class="phoneForm">
+            <div class="row">
+                <div class="col-sm-4">
+                    <mat-form-field class="phone-input" appearance="outline" *ngIf="(verifiedPhone)">
+                        <mat-label>Phone</mat-label>
+                        <input matInput mobMask placeholder="phoneNo" style="float: left;" formControlName="phoneNo"
+                            [readonly]="(verifiedPhone)" class="phoneinput">
+                        <div style="float: left; font-size: 12px;">
+                            <p class="mblverified pe-2">
+                                <i class="fa fa-check"></i> Verified
+                            </p>
+                        </div>
+                        <div class="editpencilIcon">
+                            <a href="javascript:void(0);" class="text-decoration-none btn btn-sm btn-outline-primary"
+                                (click)="isEditVerifiedPhone()">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                        </div>
+
+                        <mat-error></mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="phone-input" appearance="outline" *ngIf="!(verifiedPhone)">
+                        <mat-label>Phone</mat-label>
+                        <input (keypress)="numberOnly($event)" (ngModelChange)="validateDuplicate()" type="text"
+                            matInput mobMask placeholder="phoneNo" appAutoFocusDirective formControlName="phoneNo"
+                            required>
+                        <button type="button" class="btn btn-primary btn-sm verifybutton1 verify-btn"
+                            (click)="openVerifyMobileModal('edit-profile')"
+                            [disabled]="sameNumerphoneNo">Verify</button>
+                        <mat-error></mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </form> -->
+    </div>
+
+    <div class="item-cont">
+        <p class="sub-head-text">Password</p>
+        <p class="sub-head-text change-password-text" (click)="openUpdatePassword(true)">Change Password</p>
+    </div>
+</div>

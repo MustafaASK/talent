@@ -1,0 +1,122 @@
+.card1 {
+    /* border-radius: 10px !important;
+    box-shadow: 0px 0px 15px #deeef9;
+    margin: 10px 0px 30px 5px;
+    box-sizing: border-box;
+    padding: 0px;
+    max-width: 297px;
+    line-height: 5px; */
+
+    /* box-shadow: 0px 0px 35px #B2B2B229; */
+    border-radius: 16px 16px 16px 16px;
+    opacity: 1;
+    margin: 16px 0px 30px 5px;
+    border: 2px solid #DEEEF9;
+
+
+}
+
+.card2 {
+    border-radius: 16px 16px 0px 0px;
+    box-shadow: 0px 0px 35px #B2B2B229;
+    margin: 16px 0px 0px 4px;
+    box-sizing: border-box;
+}
+
+
+
+.list-group-flush>.list-group-item {
+    border-width: 0 0 1px;
+    padding: -1em !important;
+}
+
+.btn-primary,
+.btn-primary:focus,
+.btn-base,
+.btn-base:focus {
+    color: #ffffff;
+    background-color: #0984E3;
+    border-color: #0984E3;
+    font-family: Segoe UI !important;
+    padding: 10px 87px;
+    box-shadow: none;
+    max-width: 260px;
+    border-radius: 16px 16px 0px 0px;
+
+}
+
+.sidebar-wrapper {
+    position: sticky;
+    top: 76px;
+}
+
+/* div.sidebar-wrapper{
+   
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow:0 0 15px #DEEEF9 ;
+    border:1px solid #DEEEF9 ;
+    
+
+} */
+
+#sidebar-wrapper {
+    position: sticky;
+    top: 76px;
+}
+
+div#sidebar-wrapper {
+    margin-top: 1em;
+    margin-left: 1em;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px #DEEEF9;
+    border: 1px solid #DEEEF9;
+}
+
+.left-ninja-badge-section {
+    padding: 10px;
+    background-color: #111111;
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.left-ninja-badge-section .imp {
+    color: #F1634D;
+    font-weight: bold;
+}
+
+.left-ninja-badge-section .num-of-assessments {
+    font-weight: bold;
+}
+
+.left-view-assessment a {
+    /* border: none;
+    background-color: #0984E3;
+    color: #ffffff;
+    width: 100%;
+    border-radius: 0;
+    font-size: 12px;
+    padding: 5px 31px;
+    text-transform: capitalize;
+    margin-left:4px;
+    border-radius: 0px 0px 16px 16px; */
+    border: none;
+    background-color: #0984e3;
+    color: #fff;
+    width: 100% !important;
+    border-radius: 0;
+    font-size: 14px;
+    padding: 10px 20px;
+    text-transform: capitalize;
+    margin-left: 4px;
+    border-radius: 0 0 16px 16px;
+    max-width: 98.6% !important;
+
+
+}
+.menu-item-img-size {
+    height: 16px;
+    width: 16px;
+    margin-right: 10px;
+}

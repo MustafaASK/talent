@@ -1,0 +1,12 @@
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light" *ngIf="!isRedirectAssessmentPage">
+  <div class="container-fluid text-left">
+    <a class="navbar-brand" (click) = "gotohome()" style="cursor:pointer;">
+      <!-- <img src="../assets/icons/arrow_back.svg" alt="back" width="180" height="50">  -->
+      Dashboard
+    </a>
+  </div>
+</nav>
+<div class="container123">
+                                  <iframe *ngIf="assessmentid" [src]="assessmentid"></iframe>
+                                </div>

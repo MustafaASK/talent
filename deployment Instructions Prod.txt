@@ -1,0 +1,9 @@
+ng build --configuration prod
+
+
+1) main.ts
+
+Candidate Profile Picture
+    https://ova-qatest.s3.us-west-2.amazonaws.com/ova-pre-dev/CandidateProfilepic
+
+    https://ovastorage.s3.us-west-2.amazonaws.com/IncredibleMe/CandidateProfilepic
