@@ -73,7 +73,7 @@ import { JobApplyResumeComponent } from './job-apply-resume/job-apply-resume.com
 import { VerifiedEmailContinueApplyComponent } from './verified-email-continue-apply/verified-email-continue-apply.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/find-jobs', pathMatch: 'full' },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'home/:id', component: HomeComponent },
   { path: 'aboutus', component: AboutusComponent },
@@ -104,7 +104,7 @@ const routes: Routes = [
   },
   { path: 'jobs/:emailid/:id', component: JobsComponent },
   { path: 'jobs', component: JobsComponent },
-  { path: 'find-jobs', component: FindJobsComponent },
+  // { path: 'find-jobs', component: FindJobsComponent },
   { path: 'find-jobs/:id', component: FindJobsComponent },
   // { path: 'apply-jobs', component: ApplyJobsComponent },
   // { path: 'apply-jobs/:id', component: ApplyJobsComponent },
